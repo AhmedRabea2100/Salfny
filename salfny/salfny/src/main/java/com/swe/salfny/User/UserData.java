@@ -1,10 +1,24 @@
-package com.swe.salfny.classes;
+package com.swe.salfny.User;
 
 import jakarta.persistence.*;
+
 
 @Entity
 @Table(name = "users")
 public class UserData {
+//    int id;
+//    String name;
+//    String email;
+//    String password;
+//    String address;
+//    User.type gender;
+//    float rating;
+//    List offeredProducts;
+//    List rentedProducts;
+//    enum type{
+//        male,
+//        female
+//    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

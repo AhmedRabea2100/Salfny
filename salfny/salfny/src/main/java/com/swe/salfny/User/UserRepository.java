@@ -1,4 +1,4 @@
-package com.swe.salfny.classes;
+package com.swe.salfny.User;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
