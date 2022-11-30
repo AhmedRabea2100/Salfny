@@ -31,12 +31,13 @@ public class UserRepositoryTests {
         user.setPassword("ravi2020");
         user.setFirstName("Ravi");
         user.setLastName("Kumar");
-
+        user.setPhoneNumber("01012717483");
+        System.out.println("yaraab "+repo);
         UserData savedUser = repo.save(user);
 
         UserData existUser = entityManager.find(UserData.class, savedUser.getId());
-
-        assertThat(user.getEmail()).isEqualTo(existUser.getEmail());
+        //System.out.println(+existUser.getEmail());
+       assertThat(user.getEmail()).isEqualTo(existUser.getEmail());
 
     }
 }
