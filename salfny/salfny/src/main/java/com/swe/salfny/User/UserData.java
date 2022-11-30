@@ -27,6 +27,8 @@ public class UserData {
     @Column(name = "email",nullable = false, unique = true, length = 45)
     private String email;
 
+
+
     @Column(name = "password",nullable = false, length = 64)
     private String password;
 
@@ -70,5 +72,8 @@ public class UserData {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+    public String getPassword() {
+        return password;
     }
 }
