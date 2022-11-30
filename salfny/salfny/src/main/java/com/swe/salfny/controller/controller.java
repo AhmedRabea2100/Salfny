@@ -1,5 +1,6 @@
 package com.swe.salfny.controller;
 
+import com.swe.salfny.User.Credential;
 import com.swe.salfny.User.UserData;
 import com.swe.salfny.User.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,15 +13,26 @@ public class controller {
     @Autowired
     private UserRepository repo;
 
-    @CrossOrigin
+    //@CrossOrigin
     @RequestMapping("/signUp")
     public boolean createAccount(@RequestBody UserData u) {
         UserData userr = repo.findByEmail(u.getEmail());
-
+        // check email is not duplicated
         if (userr!=null && userr.getEmail().equals(u.getEmail()))
             return false;
-//        UserData u = user.build(fName, lName, email, password, phoneNumber);
+        // store to database
         UserData savedUser = repo.save(u);
+        return true;
+    }
+
+    //@CrossOrigin
+    @RequestMapping("/login")
+    public boolean login(@RequestBody Credential c){
+        String email = c.getEmail();
+        String password  = c.getPassword();
+        UserData user = repo.authenticate(email, password);
+        if(user == null)
+            return false;
         return true;
     }
 }
