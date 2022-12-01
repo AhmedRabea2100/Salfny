@@ -32,8 +32,7 @@ public class UserRepositoryTests {
         UserData user = new UserData();
         user.setEmail("ravikumar@gmail.com");
         user.setPassword("ravi2020");
-        user.setFirstName("Ravi");
-        user.setLastName("Kumar");
+        user.setUsername("RaviKumar");
         user.setPhoneNumber("01012717483");
         System.out.println("yaraab "+repo);
         UserData savedUser = repo.save(user);
@@ -49,8 +48,7 @@ public class UserRepositoryTests {
         UserData user = new UserData();
         user.setEmail("ravikumarrr@gmail.com");
         user.setPassword("ravi2020");
-        user.setFirstName("Ravi");
-        user.setLastName("Kumar");
+        user.setUsername("RaviKumar");
         user.setPhoneNumber("01012717483");
         System.out.println("yaraab "+repo);
         UserData savedUser = repo.save(user);
@@ -66,8 +64,7 @@ public class UserRepositoryTests {
         UserData user = new UserData();
         user.setEmail("ravikumarrrrrrrr@gmail.com");
         user.setPassword("ravi2020");
-        user.setFirstName("Ravi");
-        user.setLastName("Kumar");
+        user.setUsername("RaviKumar");
         user.setPhoneNumber("01012717483");
         System.out.println("yaraab "+repo);
         UserData savedUser = repo.save(user);

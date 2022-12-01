@@ -53,7 +53,7 @@ public class loginTest {
         Credential c = new Credential();
         c.setEmail("j@gmail.com");
         c.setPassword("1234569");
-        assertEquals("Email not found",repo.authenticate(c.getEmail(),c.getPassword()),null);
+        assertEquals("Email not found",repo.authenticate(c.getEmail()),null);
 
 
     }
