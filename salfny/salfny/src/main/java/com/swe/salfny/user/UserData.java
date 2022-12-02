@@ -128,6 +128,6 @@ public class UserData {
         this.noOfDoneDeals = noOfDoneDeals;
     }
 
-    @OneToMany(mappedBy="user")
+    @OneToMany(mappedBy="user", fetch = FetchType.LAZY)
     private Set<Post> posts;
 }

@@ -21,7 +21,6 @@ public class signupController {
     public String createAccount(@RequestBody UserData u){
 
         UserData user = repo.findByEmail(u.getEmail());
-
         // check email is not duplicated
         if (user!=null && user.getEmail().equals(u.getEmail()))
             return "This Email is already used";

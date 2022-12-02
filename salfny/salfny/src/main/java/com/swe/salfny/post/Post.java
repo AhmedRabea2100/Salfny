@@ -108,7 +108,7 @@ public class Post {
         return user_id;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
     private UserData user;
 
