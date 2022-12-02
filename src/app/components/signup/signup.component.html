@@ -1,69 +1,53 @@
-<body>
-    <div class="full-page">
-        <div class="navbar">
-            <div>
-                <a href='website.html'>Seek Coding</a>
-            </div>
-            <nav>
-                <ul id='MenuItems'>
-                    <li><a href='#'>Home</a></li>
-                    <li><a href='#'>About Us</a></li>
-                    <li><a href='#'>Services</a></li>
-                    <li><a href='#'>Contact</a></li>
-                    <li><button class='loginbtn' onclick="document.getElementById('login-form').style.display='block'" style="width:auto;">Login</button></li>
-                </ul>
-            </nav>
+<div class="box-form">
+    <div class="left">
+        <div class="overlay">
+            <span>
+            </span>
         </div>
-        <div id='login-form'class='login-page'>
-            <div class="form-box">
-                <div class='button-box'>
-                    <div id='btn'></div>
-                    <button type='button'onclick='login()'class='toggle-btn'>Log In</button>
-                    <button type='button'onclick='register()'class='toggle-btn'>Register</button>
-                </div>
-                <form id='login' class='input-group-login'>
-                    <input type='text'class='input-field'placeholder='Email Id' required >
-		    <input type='password'class='input-field'placeholder='Enter Password' required>
-		    <input type='checkbox'class='check-box'><span>Remember Password</span>
-		    <button type='submit'class='submit-btn'>Log in</button>
-		 </form>
-		 <form id='register' class='input-group-register'>
-		     <input type='text'class='input-field'placeholder='First Name' required>
-		     <input type='text'class='input-field'placeholder='Last Name ' required>
-		     <input type='email'class='input-field'placeholder='Email Id' required>
-		     <input type='password'class='input-field'placeholder='Enter Password' required>
-		     <input type='password'class='input-field'placeholder='Confirm Password'  required>
-		     <input type='checkbox'class='check-box'><span>I agree to the terms and conditions</span>
-                    <button type='submit'class='submit-btn'>Register</button>
-	         </form>
-            </div>
-        </div>
+
+        <hr />
     </div>
-    <script>
-        var x=document.getElementById('login');
-		var y=document.getElementById('register');
-		var z=document.getElementById('btn');
-		function register()
-		{
-			x.style.left='-400px';
-			y.style.left='50px';
-			z.style.left='110px';
-		}
-		function login()
-		{
-			x.style.left='50px';
-			y.style.left='450px';
-			z.style.left='0px';
-		}
-	</script>
-	<script>
-        var modal = document.getElementById('login-form');
-        window.onclick = function(event) 
-        {
-            if (event.target == modal) 
-            {
-                modal.style.display = "none";
-            }
-        }
-    </script>
-</body>
+
+    <div class="right">
+        <h2>Signup</h2>
+
+        <p>You have an account already? <a routerLink='/signin' routerLinkActive="Active">Sign in</a></p>
+        <form class="inputs" (ngSubmit)="onSubmit()" #signupForm="ngForm">
+            <div class="form-group">
+                <label for="fullname"><strong>Name</strong></label>
+                <input class="form-control" id="fullname" [(ngModel)]="signup.name" placeholder="Full Name" required
+                    name="uName" #fullname="ngModel" />
+            </div>
+            <div [hidden]="fullname.valid || fullname.pristine" class="alert alert-danger">Name is required</div>
+            <div class="form-group">
+                <label for="emailField"><strong>Email address</strong></label>
+                <input type="email" class="form-control" id="emailField" [(ngModel)]="signup.email" required
+                    placeholder="name@example.com" name="uEmail" #email="ngModel" />
+            </div>
+            <div [hidden]="email.valid || email.pristine" class="alert alert-danger">Email address is required</div>
+            <div class="form-group">
+                <label for="password"><strong>Password</strong></label>
+                <input type="password" class="form-control" id="password" [(ngModel)]="signup.password" name="password"
+                    (blur)="confirmPassword()" required placeholder="Password" #pswd="ngModel" />
+            </div>
+            <div [hidden]="pswd.valid || pswd.pristine" class="alert alert-danger">Password is required</div>
+            <div class="form-group">
+                <label for="cnfpassword"><strong>Confirm Password</strong></label>
+                <input type="password" class="form-control" id="cnfpassword" [(ngModel)]="passwordConfirmationTxt"
+                    (blur)="confirmPassword()" name="passwordConfirmationTxt" placeholder=" confirm Password" />
+            </div>
+            <div [hidden]="!passwordConfirmationFailed" class="alert alert-danger">Password did not match</div>    
+            
+            <div class="form-group">
+                <label for="city"><strong>City</strong></label>
+                <select class="form-control" id="city" required>
+                    <option *ngFor="let city of cities" [value]="city">{{city}}</option>
+                </select>
+            </div>
+
+            <br><br>
+            <button type="submit" class="btn btn-success" [disabled]="!signupForm.form.valid">Submit</button>
+        </form>
+    </div>
+
+    <router-outlet></router-outlet>
