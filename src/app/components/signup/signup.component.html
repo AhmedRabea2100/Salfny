@@ -21,10 +21,11 @@
             <div [hidden]="fullname.valid || fullname.pristine" class="alert alert-danger">Name is required</div>
             <div class="form-group">
                 <label for="emailField"><strong>Email address</strong></label>
-                <input type="email" class="form-control" id="emailField" [(ngModel)]="signup.email" required
+                <input type="email" class="form-control" id="emailField" [(ngModel)]="signup.email" required email
                     placeholder="name@example.com" name="uEmail" #email="ngModel" />
             </div>
             <div [hidden]="email.valid || email.pristine" class="alert alert-danger">Email address is required</div>
+            <div class="alert alert-danger" *ngIf="email.touched && email.errors?.email"></div>
             <div class="form-group">
                 <label for="password"><strong>Password</strong></label>
                 <input type="password" class="form-control" id="password" [(ngModel)]="signup.password" name="password"
