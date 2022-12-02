@@ -34,7 +34,7 @@ public class HomePageTest {
 
     @Test
     public void onePost() {
-        Post post = new Post(1, "title", null, 15, null, 3, "2000-01-01", 1, 1);
+        Post post = new Post("title", null, 15, null, 3, "2000-01-01", 1, 1);
         repo.save(post);
         List<Post> result = repo.showRecentPosts();
         assertEquals("Size = 1", 1, result.size());
@@ -43,9 +43,9 @@ public class HomePageTest {
 
     @Test
     public void threePostsSameOrder() {
-        Post post1 = new Post(1, "title1", null, 15, null, 3, "2000-01-01", 1, 1);
-        Post post2 = new Post(2, "title2", "null", 16, null, 4, "2003-01-01", 1, 1);
-        Post post3 = new Post(3, "title3", "f", 17, null, 1, "2005-02-01", 1, 1);
+        Post post1 = new Post("title1", null, 15, null, 3, "2000-01-01", 1, 1);
+        Post post2 = new Post("title2", "null", 16, null, 4, "2003-01-01", 1, 1);
+        Post post3 = new Post("title3", "f", 17, null, 1, "2005-02-01", 1, 1);
         repo.save(post1);
         repo.save(post2);
         repo.save(post3);
@@ -58,9 +58,9 @@ public class HomePageTest {
 
     @Test
     public void threePostsDifferentOrder() {
-        Post post1 = new Post(1, "title1", null, 15, null, 3, "2007-01-01", 1, 1);
-        Post post2 = new Post(2, "title2", "null", 16, null, 4, "2003-01-01", 1, 1);
-        Post post3 = new Post(3, "title3", "f", 17, null, 1, "2005-02-01", 1, 1);
+        Post post1 = new Post("title1", null, 15, null, 3, "2007-01-01", 1, 1);
+        Post post2 = new Post("title2", "null", 16, null, 4, "2003-01-01", 1, 1);
+        Post post3 = new Post("title3", "f", 17, null, 1, "2005-02-01", 1, 1);
         repo.save(post1);
         repo.save(post2);
         repo.save(post3);
@@ -73,10 +73,10 @@ public class HomePageTest {
 
     @Test
     public void fourPostsDifferentOrder() {
-        Post post1 = new Post(1, "title1", null, 15, null, 3, "2007-01-01", 1, 1);
-        Post post2 = new Post(2, "title2", "null", 16, null, 4, "2003-01-01", 1, 1);
-        Post post3 = new Post(3, "title3", "f", 17, null, 1, "2005-02-01", 1, 1);
-        Post post4 = new Post(4, "title4", "", 1, 2, 1, "2000-02-01", 1, 1);
+        Post post1 = new Post("title1", null, 15, null, 3, "2007-01-01", 1, 1);
+        Post post2 = new Post("title2", "null", 16, null, 4, "2003-01-01", 1, 1);
+        Post post3 = new Post("title3", "f", 17, null, 1, "2005-02-01", 1, 1);
+        Post post4 = new Post("title4", "", 1, 2, 1, "2000-02-01", 1, 1);
         repo.save(post1);
         repo.save(post2);
         repo.save(post3);

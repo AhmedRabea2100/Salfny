@@ -8,8 +8,7 @@ public class Post {
 
     public Post() {}
 
-    public Post(int id, String title, String description, int price, Integer payment_option, int views, String date, int category_id, int user_id) {
-        this.id = id;
+    public Post(String title, String description, int price, Integer payment_option, int views, String date, int category_id, int user_id) {
         this.title = title;
         this.description = description;
         this.price = price;
