@@ -24,7 +24,7 @@
                 <input type="password" class="form-control" id="password" [(ngModel)]="login.password" name="password" id="password"
                 placeholder="Password" #pswd="ngModel" required />
             </div>
-			<div [hidden]="pswd.valid" class="alert alert-danger" class="req" >Password is required</div>
+			<div [hidden]="pswd.valid || pswd.pristine" class="alert alert-danger" class="req" >Password is required</div>
 			<br><br>
 		<button type="submit" [disabled]="!loginForm.form.valid">Login</button>
 		</form>
