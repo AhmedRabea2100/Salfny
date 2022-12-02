@@ -1,14 +1,14 @@
 package com.swe.salfny.post;
 
-import com.swe.salfny.User.UserData;
+import com.swe.salfny.user.UserData;
 import jakarta.persistence.*;
-import org.hibernate.annotations.Cascade;
 
 @Entity
 @Table(name = "post")
 public class Post {
 
     public Post() {}
+
     public Post(String title, String description, int price, Integer payment_option, int views, String date, int category_id, int user_id) {
         this.title = title;
         this.description = description;
@@ -109,7 +109,7 @@ public class Post {
     }
 
     @ManyToOne
-    @JoinColumn(name="user_id", insertable = false, updatable = false)
+    @JoinColumn(name = "user_id", insertable = false, updatable = false)
     private UserData user;
 
     public String getUserName() {
