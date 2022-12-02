@@ -18,7 +18,7 @@ public class Controller {
 
     @CrossOrigin
     @GetMapping("/")
-    public List<Post> homePage() {
+    public List<Object[]> homePage() {
         return repo.showRecentPosts();
     }
 }

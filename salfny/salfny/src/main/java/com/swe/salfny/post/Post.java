@@ -7,7 +7,6 @@ import jakarta.persistence.*;
 public class Post {
 
     public Post() {}
-
     public Post(String title, String description, int price, Integer payment_option, int views, String date, int category_id, int user_id) {
         this.title = title;
         this.description = description;
