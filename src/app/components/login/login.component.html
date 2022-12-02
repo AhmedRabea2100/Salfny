@@ -11,13 +11,24 @@
 			<p>Don't have an account? <a routerLink='/signup' routerLinkActive="Active">Create Your Account</a> it takes
 				less than a minute</p>
 		</nav>
-		<div class="inputs">
-			<input type="text" placeholder="Email" id="email">
+		<form class="inputs" (ngSubmit)="onSubmit()"  #loginForm="ngForm">
+			<div class="form-group">
+                <label for="emailField"><strong>Email address</strong></label>		
+                <input id="email" type="email" class="form-control" id="emailField" [(ngModel)]="login.email" required 
+                    placeholder="name@example.com" name="uEmail" #email="ngModel" />
+            </div>	
+			<div [hidden]="email.valid || email.pristine" class="alert alert-danger"  class="req">Email address is required</div>
 			<br>
-			<input type="password" placeholder="password" id="password">
-		</div>
-		<br><br>
-		<button >Login</button>
+			<div class="form-group">
+                <label for="password"><strong>Password</strong></label>
+                <input type="password" class="form-control" id="password" [(ngModel)]="login.password" name="password" id="password"
+                placeholder="Password" #pswd="ngModel" required />
+            </div>
+			<div [hidden]="pswd.valid" class="alert alert-danger" class="req" >Password is required</div>
+			<br><br>
+		<button type="submit" [disabled]="!loginForm.form.valid">Login</button>
+		</form>
+		
 	</div>
 	<router-outlet></router-outlet>
 </div>

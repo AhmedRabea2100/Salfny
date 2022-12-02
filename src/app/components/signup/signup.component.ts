@@ -14,7 +14,7 @@ export class SignupComponent {
  
   signup = new Signup('', '', '', '');
  
-  cities = ['Cairo', 'Alexandria', 'Behara','Dakahlaya'];
+  
  
   confirmPassword() {
     if (this.signup.password === this.passwordConfirmationTxt) {

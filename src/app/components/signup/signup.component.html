@@ -18,31 +18,31 @@
                 <input class="form-control" id="fullname" [(ngModel)]="signup.name" placeholder="Full Name" required
                     name="uName" #fullname="ngModel" />
             </div>
-            <div [hidden]="fullname.valid || fullname.pristine" class="alert alert-danger">Name is required</div>
+            <div [hidden]="fullname.valid || fullname.pristine" class="alert alert-danger" class="req">Name is required</div>
             <div class="form-group">
                 <label for="emailField"><strong>Email address</strong></label>
                 <input type="email" class="form-control" id="emailField" [(ngModel)]="signup.email" required email
                     placeholder="name@example.com" name="uEmail" #email="ngModel" />
             </div>
-            <div [hidden]="email.valid || email.pristine" class="alert alert-danger">Email address is required</div>
+            <div [hidden]="email.valid || email.pristine" class="alert alert-danger" class="req">Email address is required</div>
             <div class="form-group">
                 <label for="password"><strong>Password</strong></label>
                 <input type="password" class="form-control" id="password" [(ngModel)]="signup.password" name="password"
                     (blur)="confirmPassword()"  placeholder="Password" #pswd="ngModel" required minlength="8"/>
             </div>
-            <div [hidden]="pswd.valid || pswd.pristine" class="alert alert-danger"  >Password is required (minlength required= 8)</div>
+            <div [hidden]="pswd.valid || pswd.pristine" class="alert alert-danger" class="req" >Password is required (minlength required= 8)</div>
             <div class="form-group">
                 <label for="cnfpassword"><strong>Confirm Password</strong></label>
                 <input type="password" class="form-control" id="cnfpassword" [(ngModel)]="passwordConfirmationTxt"
                     (blur)="confirmPassword()" name="passwordConfirmationTxt" placeholder=" confirm Password"/>
             </div>
-            <div [hidden]="!passwordConfirmationFailed" class="alert alert-danger">Password did not match</div>
+            <div [hidden]="!passwordConfirmationFailed" class="alert alert-danger" class="req">Password did not match</div>
             <div class="form-group">
                 <label for="phonenumber"><strong>Phone Number</strong></label>
                 <input class="form-control" id="phonenumber" [(ngModel)]="signup.phonenumber" placeholder="Phone number" required
                     name="uName" #phonenumber="ngModel" />
             </div>
-            <div [hidden]="phonenumber.valid || phonenumber.pristine" class="alert alert-danger">Name is required</div>
+            <div [hidden]="phonenumber.valid || phonenumber.pristine" class="alert alert-danger" class="req">phone number is required</div>
 
             <br><br>
             <button type="submit" class="btn btn-success" [disabled]="!signupForm.form.valid">Submit</button>

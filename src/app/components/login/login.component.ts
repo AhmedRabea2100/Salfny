@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+import {Login} from './login';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,6 +10,12 @@ import { Observable } from 'rxjs';
 })
 
 export class LoginComponent{
+  login = new Login('', '');
+
+  onSubmit() {
+  
+    console.log(' Email: ' + this.login.email + ', Password: ' + this.login.password );
+  }
   
 } 
 //implements OnInit {
