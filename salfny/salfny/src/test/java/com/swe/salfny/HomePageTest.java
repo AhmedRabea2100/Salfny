@@ -27,7 +27,13 @@ public class HomePageTest {
     private PostRepository repo;
 
     @Test
-    public void onlyOnePost() {
+    public void zeroPosts() {
+        List<Post> result = repo.showRecentPosts();
+        assertEquals("Size = 0", 0, result.size());
+    }
+
+    @Test
+    public void onePost() {
         Post post = new Post(1, "title", null, 15, null, 3, "2000-01-01", 1, 1);
         repo.save(post);
         List<Post> result = repo.showRecentPosts();
