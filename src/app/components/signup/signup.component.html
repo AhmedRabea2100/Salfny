@@ -34,10 +34,10 @@
             <div class="form-group">
                 <label for="cnfpassword"><strong>Confirm Password</strong></label>
                 <input type="password" class="form-control" id="cnfpassword" [(ngModel)]="passwordConfirmationTxt"
-                    (blur)="confirmPassword()" name="passwordConfirmationTxt" placeholder=" confirm Password" />
+                    (blur)="confirmPassword()" name="passwordConfirmationTxt" placeholder=" confirm Password"/>
             </div>
-            <div [hidden]="!passwordConfirmationFailed" class="alert alert-danger">Password did not match</div>    
-            
+            <div [hidden]="!passwordConfirmationFailed" class="alert alert-danger">Password did not match</div>
+
             <div class="form-group">
                 <label for="city"><strong>City</strong></label>
                 <select class="form-control" id="city" required>
@@ -51,3 +51,4 @@
     </div>
 
     <router-outlet></router-outlet>
+</div>
