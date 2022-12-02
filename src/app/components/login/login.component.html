@@ -1,27 +1,23 @@
-<div class="box-form" >
+<div class="box-form">
 	<div class="left">
 		<div class="overlay">
 		</div>
 	</div>
-	
-	
-		<div class="right">
+
+
+	<div class="right">
 		<h5>Login</h5>
-    <nav>
-		<p>Don't have an account? <a routerLink='/signup' routerLinkActive="Active">Create Your Account</a> it takes less than a minute</p></nav>
+		<nav>
+			<p>Don't have an account? <a routerLink='/signup' routerLinkActive="Active">Create Your Account</a> it takes
+				less than a minute</p>
+		</nav>
 		<div class="inputs">
-			<input type="text" placeholder="Email" id="email" >
+			<input type="text" placeholder="Email" id="email">
 			<br>
 			<input type="password" placeholder="password" id="password">
 		</div>
-			
-			<br><br>
-			
-		
-			
-			<br>
-			<button (click) = 'signin()'>Login</button>
+		<br><br>
+		<button >Login</button>
 	</div>
-	
+	<router-outlet></router-outlet>
 </div>
-<router-outlet ></router-outlet>
