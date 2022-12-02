@@ -6,6 +6,20 @@ import jakarta.persistence.*;
 @Table(name = "post")
 public class Post {
 
+    public Post() {}
+
+    public Post(int id, String title, String description, int price, Integer payment_option, int views, String date, int category_id, int user_id) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.price = price;
+        this.payment_option = payment_option;
+        this.views = views;
+        this.date = date;
+        this.category_id = category_id;
+        this.user_id = user_id;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
