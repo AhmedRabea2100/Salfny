@@ -1,8 +1,8 @@
-.ng-valid[required], .ng-valid.required  {
+.box-form .right .form-group .ng-valid[required],.box-form .right .form-group .ng-valid.required  {
 	border-left: 5px solid #42A948; /* green */
   }
    
-  .ng-invalid:not(form)  {
+  .box-form .right .form-group .ng-invalid:not(form)  {
 	border-left: 5px solid #a94442; /* red */
 	
   }
@@ -25,6 +25,7 @@
   .box-form {
     margin: 0 auto;
     width: 80%;
+    height: 900px;
     background: #FFFFFF;
     border-radius: 10px;
     overflow: hidden;
@@ -67,7 +68,7 @@
   
   /*change 40-> 150*/
    .right {
-    padding: 100px;
+    padding: 10px;
     overflow: hidden;
     
   }
@@ -108,8 +109,8 @@
 	font-size: 20px;
     display: block;
     position: relative;
-    margin-top: 50px;
-	margin-bottom: 10px;
+    margin-top: 30px;
+	margin-bottom: 0;
 
   }
   
@@ -117,7 +118,7 @@
 	font-weight: 200;
 	font-size: large;
   }
-  
+
  
   
   
