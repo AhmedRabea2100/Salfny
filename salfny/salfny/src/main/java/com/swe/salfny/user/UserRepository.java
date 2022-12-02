@@ -1,8 +1,7 @@
-package com.swe.salfny.User;
+package com.swe.salfny.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -11,5 +10,5 @@ public interface UserRepository extends JpaRepository<UserData, Integer> {
     public UserData findByEmail(String email);
 
     @Query("SELECT u.password FROM UserData u WHERE u.email = ?1")
-    public List<Object[]> authenticate(String email);
+    public String authenticate(String email);
 }

@@ -1,4 +1,4 @@
-package com.swe.salfny.User;
+package com.swe.salfny.user;
 
 import com.swe.salfny.post.Post;
 import jakarta.persistence.*;
