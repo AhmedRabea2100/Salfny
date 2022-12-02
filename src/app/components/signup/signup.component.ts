@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import {Signup} from './signup';
 
 @Component({
@@ -13,7 +14,7 @@ export class SignupComponent {
  
   signup = new Signup('', '', '', '');
  
-  cities = ['Cairo', 'Alexandria', 'behara','dakhlaya'];
+  cities = ['Cairo', 'Alexandria', 'Behara','Dakahlaya'];
  
   confirmPassword() {
     if (this.signup.password === this.passwordConfirmationTxt) {
