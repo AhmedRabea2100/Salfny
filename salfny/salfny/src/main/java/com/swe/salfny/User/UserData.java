@@ -1,7 +1,11 @@
 package com.swe.salfny.User;
 
+import com.swe.salfny.post.Post;
 import jakarta.persistence.*;
+import org.hibernate.annotations.Cascade;
+
 import java.time.LocalDateTime;
+import java.util.Set;
 
 
 @Entity
@@ -10,7 +14,7 @@ public class UserData {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     @Column(name = "username", nullable = false, length = 45)
     private String username;
@@ -52,11 +56,11 @@ public class UserData {
     @Column(name = "no_of_done_deals")
     private int noOfDoneDeals;
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -123,4 +127,7 @@ public class UserData {
     public void setNoOfDoneDeals(int noOfDoneDeals) {
         this.noOfDoneDeals = noOfDoneDeals;
     }
+
+    @OneToMany(mappedBy="user")
+    private Set<Post> posts;
 }
