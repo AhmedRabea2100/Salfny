@@ -11,39 +11,38 @@
     <div class="right">
         <h2>Signup</h2>
 
-        <p>You have an account already? <a routerLink='/signin' routerLinkActive="Active">Sign in</a></p>
+        <p>You have an account already? <a routerLink='/login' routerLinkActive="Active">Sign in</a></p>
         <form class="inputs" (ngSubmit)="onSubmit()" #signupForm="ngForm">
             <div class="form-group">
-                <label for="fullname"><strong>Name</strong></label>
+                <label for="fullname"><strong>User Name</strong></label>
                 <input class="form-control" id="fullname" [(ngModel)]="signup.name" placeholder="Full Name" required
                     name="uName" #fullname="ngModel" />
             </div>
             <div [hidden]="fullname.valid || fullname.pristine" class="alert alert-danger">Name is required</div>
             <div class="form-group">
                 <label for="emailField"><strong>Email address</strong></label>
-                <input type="email" class="form-control" id="emailField" [(ngModel)]="signup.email" required
+                <input type="email" class="form-control" id="emailField" [(ngModel)]="signup.email" required email
                     placeholder="name@example.com" name="uEmail" #email="ngModel" />
             </div>
             <div [hidden]="email.valid || email.pristine" class="alert alert-danger">Email address is required</div>
             <div class="form-group">
                 <label for="password"><strong>Password</strong></label>
                 <input type="password" class="form-control" id="password" [(ngModel)]="signup.password" name="password"
-                    (blur)="confirmPassword()" required placeholder="Password" #pswd="ngModel" />
+                    (blur)="confirmPassword()"  placeholder="Password" #pswd="ngModel" required minlength="8"/>
             </div>
-            <div [hidden]="pswd.valid || pswd.pristine" class="alert alert-danger">Password is required</div>
+            <div [hidden]="pswd.valid || pswd.pristine" class="alert alert-danger"  >Password is required (minlength required= 8)</div>
             <div class="form-group">
                 <label for="cnfpassword"><strong>Confirm Password</strong></label>
                 <input type="password" class="form-control" id="cnfpassword" [(ngModel)]="passwordConfirmationTxt"
                     (blur)="confirmPassword()" name="passwordConfirmationTxt" placeholder=" confirm Password"/>
             </div>
             <div [hidden]="!passwordConfirmationFailed" class="alert alert-danger">Password did not match</div>
-
             <div class="form-group">
-                <label for="city"><strong>City</strong></label>
-                <select class="form-control" id="city" required>
-                    <option *ngFor="let city of cities" [value]="city">{{city}}</option>
-                </select>
+                <label for="phonenumber"><strong>Phone Number</strong></label>
+                <input class="form-control" id="phonenumber" [(ngModel)]="signup.phonenumber" placeholder="Phone number" required
+                    name="uName" #phonenumber="ngModel" />
             </div>
+            <div [hidden]="phonenumber.valid || phonenumber.pristine" class="alert alert-danger">Name is required</div>
 
             <br><br>
             <button type="submit" class="btn btn-success" [disabled]="!signupForm.form.valid">Submit</button>

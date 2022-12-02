@@ -3,6 +3,6 @@ export class Signup {
       public email: string,
       public name: string,
       public password: string,
-      public city: string,
+      public phonenumber:string
     ) {  }
   }
