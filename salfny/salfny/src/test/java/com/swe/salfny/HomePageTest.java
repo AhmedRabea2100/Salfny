@@ -2,6 +2,7 @@ package com.swe.salfny;
 
 import com.swe.salfny.post.Post;
 import com.swe.salfny.post.PostRepository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -25,6 +26,11 @@ public class HomePageTest {
 
     @Autowired
     private PostRepository repo;
+
+    @BeforeEach
+    void clear() {
+        repo.deleteAll();
+    }
 
     @Test
     public void zeroPosts() {
