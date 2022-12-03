@@ -3,6 +3,9 @@ package com.swe.salfny.post;
 import com.swe.salfny.user.UserData;
 import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "post")
 public class Post {
@@ -115,4 +118,5 @@ public class Post {
     public String getUserName() {
         return user.getUsername();
     }
+
 }
