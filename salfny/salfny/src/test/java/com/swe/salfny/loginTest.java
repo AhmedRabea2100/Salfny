@@ -3,9 +3,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.util.AssertionErrors.assertEquals;
 import static org.springframework.test.util.AssertionErrors.assertNotEquals;
 
-import com.swe.salfny.User.Credential;
-import com.swe.salfny.User.UserData;
-import com.swe.salfny.User.UserRepository;
+import com.swe.salfny.user.Credential;
+import com.swe.salfny.user.UserRepository;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

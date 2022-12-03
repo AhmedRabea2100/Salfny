@@ -1,7 +1,7 @@
 package com.swe.salfny.controller;
 
-import com.swe.salfny.User.UserData;
-import com.swe.salfny.User.UserRepository;
+import com.swe.salfny.user.UserData;
+import com.swe.salfny.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.security.crypto.bcrypt.BCrypt;

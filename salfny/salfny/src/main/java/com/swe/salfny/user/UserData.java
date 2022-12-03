@@ -1,4 +1,4 @@
-package com.swe.salfny.User;
+package com.swe.salfny.user;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
