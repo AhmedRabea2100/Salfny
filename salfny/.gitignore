@@ -18,6 +18,8 @@ target/
 *.iws
 *.iml
 *.ipr
+*.properties
+salfny/salfny/src/main/resources/application.properties
 
 ### NetBeans ###
 /nbproject/private/
@@ -31,3 +33,7 @@ build/
 
 ### VS Code ###
 .vscode/
+**/.idea
+
+### Environments Variables ###
+.env
