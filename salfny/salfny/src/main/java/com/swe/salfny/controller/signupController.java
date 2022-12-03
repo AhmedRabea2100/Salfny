@@ -20,9 +20,10 @@ public class signupController {
     @RequestMapping("/signup")
     public String createAccount(@RequestBody UserData u){
 
-        UserData user = repo.findByEmail(u.getEmail());
+        String id = repo.findByEmail(u.getEmail());
+
         // check email is not duplicated
-        if (user!=null && user.getEmail().equals(u.getEmail()))
+        if (id!=null)
             return "This Email is already used";
 
 
