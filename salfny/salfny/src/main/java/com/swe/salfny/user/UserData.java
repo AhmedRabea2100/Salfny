@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.Cascade;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -45,7 +47,6 @@ public class UserData {
 
     @Column(name = "password",nullable = false, length = 64)
     private String password;
-
 
     @Column(name = "phone_number", nullable = false, length = 15)
     private String phoneNumber;
@@ -130,4 +131,6 @@ public class UserData {
 
     @OneToMany(mappedBy="user", fetch = FetchType.LAZY)
     private Set<Post> posts;
+
+
 }

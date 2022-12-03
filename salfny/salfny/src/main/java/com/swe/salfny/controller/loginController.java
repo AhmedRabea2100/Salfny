@@ -23,7 +23,6 @@ public class loginController {
         if(password == null)
             return "Email not found";
 
-
         if (BCrypt.checkpw(c.getPassword(),password))
             return "Login Successfully";
 
