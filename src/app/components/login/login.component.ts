@@ -9,90 +9,57 @@ import {Login} from './login';
   styleUrls: ['./login.component.css']
 })
 
-export class LoginComponent{
+export class LoginComponent implements OnInit{
   login = new Login('', '');
 
+
+  constructor(private http: HttpClient) { }
+
+  ngOnInit(): void {
+  }
+  email: any
+  pass: any
+  flag: boolean = false;
+  signinmap: any
+  t: any;
   onSubmit() {
   
     console.log(' Email: ' + this.login.email + ', Password: ' + this.login.password );
+
+    this.email = this.login.email;
+    this.pass = this.login.password;
+    console.log( JSON.stringify({
+      "email": this.email,
+      "password": this.pass,
+    }))
+    this.loginn();
+  
   }
   
-} 
-//implements OnInit {
-//   constructor(private http: HttpClient) { }
-
-//   ngOnInit(): void {
-//   }
-//   email: any
-//   pass: any
-//   flag: boolean = false;
-//   signinmap: any
-//   t: any;
-//   signin() {
-//     this.signinmap = new Map()
-//     this.email = (<HTMLInputElement>document.getElementById("email")).value
-//     this.pass = (<HTMLInputElement>document.getElementById("password")).value
-
-//     this.signinmap['email'] = this.email
-//     this.signinmap['password'] = this.pass
-//     console.log(this.signinmap);
-//     console.log( JSON.stringify({
-//       "email": this.email,
-//       "password": this.pass,
-//     }))
-//     console.log(this.login());
-  
-//   }
-  
-//   // SignIn() {
-//   //   this.http.post('http://localhost:8080/login', JSON.stringify({
-//   //     "email": this.email,
-//   //     "password": this.pass,
-//   //   }
+  loginn() {
+    var httpOptions = {
+      headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      })
+    }
+    this.http.post('http://localhost:8080/login', JSON.stringify({
+      email: this.email,
+      password: this.pass
+    }
     
-//   //   ))
+    ), httpOptions)
 
-//       // .subscribe((response) => {
-//       //   console.log(response);
-//       // // if(response.toString"Login Successfully") alert("Logged in Successfully!!");
-//       // // else alert("Wrong e-mail or Password!! please check Again.");
-//       // })
+    .subscribe({
+        next: (data: any) => {
+            console.log("hii")
+            console.log(data);
+            },
+            error: (error: any) => {
+            console.error(error);
+            }
+        });
+  }
 
-//   //}
 
 
-//    user: any;
-//   // public SignIn(): Observable<any> {
-//   //   this.user=JSON.stringify({
-//   //     "email": this.email,
-//   //     "password": this.pass
-//   // })
-//   //   const url = 'http://localhost:8080/login';
-//   //   return this.http.post<any>(url, this.user);
-//   // }
-  
-
-//   // saveUser() {
-//   //     this.user = this.addUserForm.value;
-//   //     this.userService.saveUser(this.user).subscribe((response: any) => {
-//   //       console.log(response);
-//   //     });
-//   // }
-
-//   login(){
-  
-//     this.http.post("http://localhost:8080/login", this.user=JSON.stringify({
-//           "email": this.email,
-//           "password": this.pass
-//       })).subscribe(
-//       () => {},
-//       (error) => {
-//         alert("Username or password are incorrect");
-//       },
-//       () => {
-//         alert("Correct");
-//       }
-//     );
-//   }
-
-// }
+}
