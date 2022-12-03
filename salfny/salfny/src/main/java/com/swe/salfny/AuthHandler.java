@@ -6,12 +6,17 @@ import java.util.Map;
 import java.util.function.Function;
 
 import com.swe.salfny.user.Credential;
+import com.swe.salfny.user.UserRepository;
 import io.jsonwebtoken.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
 public class AuthHandler {
+
+	@Autowired
+	private UserRepository repo;
 
 	public static final long JWT_TOKEN_VALIDITY = 7*24*60*60;
 
@@ -72,8 +77,13 @@ public class AuthHandler {
 		return (!isTokenExpired(token) || ignoreTokenExpiration(token));
 	}
 
+	private String email;
+
+	public String getEmail() {
+		return email;
+	}
+
 	public Boolean validateToken(String token) {
-		String email;
 
 		if (token != null) {
 			try {
@@ -93,7 +103,8 @@ public class AuthHandler {
 			return false;
 		}
 
-		String id="";
+		String id= repo.findByEmail(email);
+
 		return (id!=null && !isTokenExpired(token));
 	}
 }

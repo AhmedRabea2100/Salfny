@@ -21,11 +21,11 @@ public class Controller {
     private AuthHandler authHandler;
 
     @CrossOrigin
-    @GetMapping("/")
+    @GetMapping("/home")
     public List<Post> homePage(@CookieValue(name="token",required = false) String token) {
 
         if(token!=null && authHandler.validateToken(token)){
-            return new ArrayList<Post>();//Preferences posts
+            return repo.showPreferredPosts(authHandler.getEmail());
         }else{
             return repo.showRecentPosts();
         }
