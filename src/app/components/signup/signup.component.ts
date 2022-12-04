@@ -73,7 +73,7 @@ export class SignupComponent implements OnInit {
         });
   }
   
-  
+
   /*signupp(signup:Signup): Observable<Signup> {
     const headers = { 'content-type': 'application/json'}  
     const body=JSON.stringify(signup);

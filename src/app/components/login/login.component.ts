@@ -27,12 +27,6 @@ export class LoginComponent implements OnInit{
   
     console.log(' Email: ' + this.login.email + ', Password: ' + this.login.password );
 
-    this.email = this.login.email;
-    this.pass = this.login.password;
-    console.log( JSON.stringify({
-      "email": this.email,
-      "password": this.pass,
-    }))
     this.loginn();
   
   }
@@ -76,7 +70,7 @@ export class LoginComponent implements OnInit{
             console.error(error);
             }
         });
-        
+
   }
 
 
