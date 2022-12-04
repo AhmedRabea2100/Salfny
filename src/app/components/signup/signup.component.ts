@@ -13,7 +13,7 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
     
   }
-  constructor(private http: HttpClient) { }
+  constructor(private router: Router, private route: ActivatedRoute,private http: HttpClient) { }
   title = '';
   passwordConfirmationFailed = false;
   passwordConfirmationTxt = '';
@@ -53,19 +53,20 @@ export class SignupComponent implements OnInit {
   }
 
   signupp() {
-    var httpOptions = {
-      headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      'authentication': 'key' 
-      }),
-    }
-    this.http.post('http://localhost:8080/signup', this.signup, httpOptions)
+  
+    const headerr=new HttpHeaders({'Content-Type': 'application/json' ,'authentication': 'key' });
+    this.http.post('http://localhost:8080/signup', this.signup, { headers: headerr, responseType:'text'})
     .subscribe({
+
         next: (data: any) => {
             console.log("hii")
             console.log(data)
-            console.log(Response.toString)
-            console.log(JSON.parse(data));
+            if(data==='Registration Succeeded'){
+              this.router.navigateByUrl('home')
+            }else
+              alert("This Email is already used")
+            
+            
             },
             error: (error: any) => {
             console.error(error);

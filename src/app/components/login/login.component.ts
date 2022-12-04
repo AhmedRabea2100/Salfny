@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit{
   login = new Login('', '');
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private router: Router, private route: ActivatedRoute,private http: HttpClient) { }
 
   ngOnInit(): void {
   }
@@ -31,46 +31,27 @@ export class LoginComponent implements OnInit{
   
   }
   
-  /*loginn() {
-    var httpOptions = {
-      headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      })
-    }
-    this.http.post('http://localhost:8080/login', JSON.stringify({
-      email: this.email,
-      password: this.pass
-    }
-    
-    ), httpOptions)
-
-    .subscribe({
-        next: (data: any) => {
-            console.log("hii")
-            console.log(data);
-            },
-            error: (error: any) => {
-            console.error(error);
-            }
-        });
-  }*/
+ 
   loginn() {
-    var httpOptions = {
-      headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      })
-    }
-    this.http.post('http://localhost:8080/login', this.login, httpOptions)
+    const headerr=new HttpHeaders({'Content-Type': 'application/json' ,'authentication': 'key' });
+    this.http.post('http://localhost:8080/login', this.login, { headers: headerr, responseType:'text'})
     .subscribe({
         next: (data: any) => {
             console.log("hii")
-            console.log(data);
+            console.log(data)
+            if(data==="Email not found"){
+              alert("Email not Found")
+            }else if(data==="Incorrect password"){
+              alert("Incorrect password")  
+            }
+            else{
+              this.router.navigateByUrl('home')
+            }                     
             },
             error: (error: any) => {
             console.error(error);
             }
         });
-
   }
 
 

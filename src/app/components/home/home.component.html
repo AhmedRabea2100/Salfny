@@ -1,49 +1,4 @@
 <body>
-    <!-- signin popup -->
-    <div id="signinPopup">
-        <div id="signinPopupContainer">
-            <div class="closeSigninPopupDiv">
-                <span id="closeSigninPopup">&times;</span>
-            </div>
-            <div class="headingDiv">
-                <span class="heading">Sign in</span>
-                <br>
-                <span>Buy &amp; sell things easily with OLX.</span>
-            </div>
-            <div id="signinWarning"></div>
-            <form id="signinForm">
-                <input type="email" placeholder="Email.." id="signinEmail" required>
-                <input type="password" placeholder="Passowrd.." id="signinPw" required>
-                <input type="submit" value="Sign in">
-            </form>
-            <p>Don't have an account? <a href="#" id="signupBtn">Sign up</a></p>
-        </div>
-    </div>
-    <!-- /signin popup -->
-
-    <!-- signup popup -->
-    <div id="signupPopup">
-        <div id="signupPopupContainer">
-            <div class="closeSignupPopupDiv">
-                <span id="closeSignupPopup">&times;</span>
-            </div>
-            <div class="headingDiv">
-                <span class="heading">Sign up</span>
-                <br>
-                <span>Buy &amp; sell things easily with OLX.</span>
-            </div>
-            <div id="signupWarning"></div>
-            <form id="signupForm">
-                <input type="text" placeholder="Name.." id="signupName" required>
-                <input type="email" placeholder="Email.." id="signupEmail" required>
-                <input type="password" placeholder="Passowrd.." id="signupPw" required>
-                <input type="submit" value="Sign up">
-            </form>
-            <p>Already have an account? <a href="#" id="signinBtn_2">Sign in</a></p>
-        </div>
-    </div>
-    <!-- /signup popup -->
-
     <!-- category popup -->
     <div id="categoryPopup">
         <div id="categoryPopupContainer">
@@ -148,9 +103,8 @@
                 <div class="container">
                     <div class="left">
                         <div class="mainLogo">
-                            <a href="./index.html">
                                 <img src="./assets/images/logo.png" alt="logo">
-                            </a>
+                            
                         </div>
                         <div class="location">
                             <!-- <i class="fas fa-globe-europe"></i> -->
@@ -169,8 +123,8 @@
                     <div class="right">
                         <div class="signinBtnDiv">
                             <div class="dropdown">
-                                <button id="signinBtn" class="showSignoutBtnHover">
-                                    <a href="/login">Login</a>
+                                <button id="signinBtn" class="showSignoutBtnHover" routerLink='/login'>
+                                    Login
                                 </button>
                             
 
@@ -211,10 +165,10 @@
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
                         <img src="/../assets/images/pr2.jpg" class="product-thumb" alt="">
-                        <button class="card-btn">add to whislist</button>
+                        <button class="card-btn" routerLink='/productview'>view product</button>
                     </div>
                     <div class="product-info">
-                        <h2 class="product-brand">Walking Machine</h2>
+                        <h2 class="product-brand">Treadmill</h2>
                         <!-- <p class="product-short-des">a short line about the cloth..</p> -->
                         <span class="price">$125</span><span class="actual-price">$250</span>
                     </div>
@@ -267,7 +221,7 @@
                     <div class="product-image">
                         <span class="discount-tag">50% off</span>
                         <img src="/../assets/images/pr7.jpg" class="product-thumb" alt="">
-                        <button class="card-btn">add to whislist</button>
+                        <button class="card-btn"><a href="/p">add to whislist</a>a></button>
                     </div>
                     <div class="product-info">
                         <h2 class="product-brand">Laptop</h2>
