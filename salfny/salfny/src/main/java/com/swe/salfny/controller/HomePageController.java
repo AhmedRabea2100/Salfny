@@ -26,7 +26,7 @@ public class HomePageController {
         if (token != null && authHandler.validateToken(token)) {
             return repo.showPreferredPosts(authHandler.getEmail());
         } else {
-            return repo.showRecentPosts();
+            return repo.showRecentPosts(0, 3);
         }
     }
 }
