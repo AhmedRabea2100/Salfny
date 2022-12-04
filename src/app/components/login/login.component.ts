@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, Observable } from 'rxjs';
 import {Login} from './login';
-import { Signup } from './../signup/signup';
+import { global } from 'src/app/global';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -45,6 +44,7 @@ export class LoginComponent implements OnInit{
               alert("Incorrect password")  
             }
             else{
+              global.tokenn=data
               this.router.navigateByUrl('home')
             }                     
             },
