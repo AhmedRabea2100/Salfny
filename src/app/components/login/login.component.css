@@ -35,44 +35,55 @@ body {
     justify-content: space-between;
     box-shadow: 0 0 20px 6px #090b6f85;
   }
+
   .box-form .left {
+    margin-top: 0;
     color: #FFFFFF;
     background-size:cover;
 	  background-position:center;
     background-repeat: no-repeat;
     background-image: url('/../assets/images/logo.png');
     overflow: hidden;
-    width: 700px;
+    width: 600px;
     height: auto;
 	
+  
   }
-  @media (max-width: 980px) {
+  
+  .box-form .left .overlay {
+    margin-top: 0;
+    padding: 700px;
+    width: 100%;
+    height: auto;
+    background-size:cover;
+    background-position:center;
+    background: #5961f9ad;
+    overflow: hidden;
+    
+  }
+  
+
+  @media (max-width: 900px) {
     .box-form {
-      flex-flow: wrap;
-      text-align: center;
-      align-content: center;
-      align-items: center;
+      width: 100%;
     }
-    
-    
+
+    .box-form .left {
+      margin-top: 0;
+      height: auto;
+    }
+
+    .box-form .left .overlay {
+      height: auto;
+      margin-top: 0;
+    }
 
   }
+ 
   .box-form div {
     height: auto;
   }
  
-  
-
-  .box-form .left .overlay {
-    padding: 30px;
-    width: 100%;
-    height: 100%;
-    background: #5961f9ad;
-    overflow: hidden;
-    box-sizing: border-box;
-  }
-  
-
 
  .box-form .right {
     padding: 10px;
