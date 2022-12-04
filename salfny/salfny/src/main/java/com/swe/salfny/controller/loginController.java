@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-public class loginController {
+public class LoginController {
 
     @Autowired
     private UserRepository repo;
@@ -20,20 +20,16 @@ public class loginController {
     private AuthHandler authHandler;
 
     @RequestMapping("/login")
-    public String login(@RequestBody Credential c){
+    public String login(@RequestBody Credential c) {
         String email = c.getEmail();
         String password = repo.authenticate(email);
 
-
-        if(password == null)
+        if (password == null)
             return "Email not found";
 
-
-        if (BCrypt.checkpw(c.getPassword(),password)){
+        if (BCrypt.checkpw(c.getPassword(), password)) {
             return authHandler.generateToken(c);
         }
-
         return "Incorrect password";
     }
-
 }

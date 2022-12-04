@@ -1,7 +1,7 @@
 package com.swe.salfny;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.swe.salfny.user.UserData;
+import com.swe.salfny.user.User;
 import com.swe.salfny.user.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import org.springframework.test.annotation.Rollback;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)
-@Rollback(true)
+@Rollback()
 //@TestPropertySource(locations="classpath:test.properties")
 public class UserRepositoryTests {
 
@@ -29,15 +29,15 @@ public class UserRepositoryTests {
     @Test
     public void testCreateUser() {
 
-        UserData user = new UserData();
+        User user = new User();
         user.setEmail("ravikumar@gmail.com");
         user.setPassword("ravi2020");
         user.setUsername("RaviKumar");
         user.setPhoneNumber("01012717483");
         System.out.println("yaraab "+repo);
-        UserData savedUser = repo.save(user);
+        User savedUser = repo.save(user);
 
-        UserData existUser = entityManager.find(UserData.class, savedUser.getId());
+        User existUser = entityManager.find(User.class, savedUser.getId());
         //System.out.println(+existUser.getEmail());
        assertThat(user.getEmail()).isEqualTo(existUser.getEmail());
 
@@ -45,15 +45,15 @@ public class UserRepositoryTests {
     @Test
     public void testCreateUserr() {
 
-        UserData user = new UserData();
+        User user = new User();
         user.setEmail("ravikumarrr@gmail.com");
         user.setPassword("ravi2020");
         user.setUsername("RaviKumar");
         user.setPhoneNumber("01012717483");
         System.out.println("yaraab "+repo);
-        UserData savedUser = repo.save(user);
+        User savedUser = repo.save(user);
 
-        UserData existUser = entityManager.find(UserData.class, savedUser.getId());
+        User existUser = entityManager.find(User.class, savedUser.getId());
         //System.out.println(+existUser.getEmail());
         assertThat(user.getEmail()).isEqualTo(existUser.getEmail());
 
@@ -61,15 +61,15 @@ public class UserRepositoryTests {
     @Test
     public void testCreateUserrr() {
 
-        UserData user = new UserData();
+        User user = new User();
         user.setEmail("ravikumarrrrrrrr@gmail.com");
         user.setPassword("ravi2020");
         user.setUsername("RaviKumar");
         user.setPhoneNumber("01012717483");
         System.out.println("yaraab "+repo);
-        UserData savedUser = repo.save(user);
+        User savedUser = repo.save(user);
 
-        UserData existUser = entityManager.find(UserData.class, savedUser.getId());
+        User existUser = entityManager.find(User.class, savedUser.getId());
         //System.out.println(+existUser.getEmail());
         assertThat(user.getEmail()).isEqualTo(existUser.getEmail());
 

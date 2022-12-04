@@ -2,17 +2,28 @@ package com.swe.salfny.user;
 
 import com.swe.salfny.post.Post;
 import jakarta.persistence.*;
-import org.hibernate.annotations.Cascade;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 
 @Entity
 @Table(name = "user")
-public class UserData {
+public class User {
+
+    public User() {}
+
+    public User(String username, String address, String email, String profilePic, LocalDateTime memberSince, String password, String phoneNumber, float rating, int noOfDoneDeals) {
+        this.username = username;
+        this.address = address;
+        this.email = email;
+        this.profilePic = profilePic;
+        this.memberSince = memberSince;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+        this.rating = rating;
+        this.noOfDoneDeals = noOfDoneDeals;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,28 +35,16 @@ public class UserData {
     @Column(name = "address", length = 100)
     private String address;
 
-    @Column(name = "email",nullable = false, unique = true, length = 45)
+    @Column(name = "email", nullable = false, unique = true, length = 45)
     private String email;
 
     @Column(name = "profile_pic", length = 200)
     private String profilePic;
 
-    @Column(name = "member_since", length = 200)
+    @Column(name = "member_since", nullable = false, length = 200)
     private LocalDateTime memberSince;
 
-    public LocalDateTime getMemberSince() {
-        return memberSince;
-    }
-
-    public void setMemberSince(LocalDateTime memberSince) {
-        this.memberSince = memberSince;
-    }
-
-    public void setRating(float rating) {
-        this.rating = rating;
-    }
-
-    @Column(name = "password",nullable = false, length = 64)
+    @Column(name = "password", nullable = false, length = 64)
     private String password;
 
     @Column(name = "phone_number", nullable = false, length = 15)
@@ -117,8 +116,16 @@ public class UserData {
         return rating;
     }
 
-    public void setRating(Float rating) {
+    public void setRating(float rating) {
         this.rating = rating;
+    }
+
+    public LocalDateTime getMemberSince() {
+        return memberSince;
+    }
+
+    public void setMemberSince(LocalDateTime memberSince) {
+        this.memberSince = memberSince;
     }
 
     public int getNoOfDoneDeals() {
@@ -129,8 +136,6 @@ public class UserData {
         this.noOfDoneDeals = noOfDoneDeals;
     }
 
-    @OneToMany(mappedBy="user", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private Set<Post> posts;
-
-
 }

@@ -1,10 +1,7 @@
 package com.swe.salfny.post;
 
-import com.swe.salfny.user.UserData;
+import com.swe.salfny.user.User;
 import jakarta.persistence.*;
-
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "post")
@@ -113,10 +110,9 @@ public class Post {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
-    private UserData user;
+    private User user;
 
     public String getUserName() {
         return user.getUsername();
     }
-
 }
