@@ -1,3 +1,4 @@
+@import "products.css";
 *{
     transition: .3s;
     box-sizing: border-box;
@@ -156,7 +157,8 @@ header .top .right{
     margin: 18px;
 }
 .mainLogo img{
-    width: 55px;
+    width: 80px;
+    
 }
 .signinBtnDiv{
     width: 65%;
