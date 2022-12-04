@@ -14,7 +14,7 @@
         <p>You have an account already? <a routerLink='/login' routerLinkActive="Active">Sign in</a></p>
         <form class="inputs" (ngSubmit)="onSubmit()" #signupForm="ngForm">
             <div class="form-group">
-                <input class="form-control" id="fullname" [(ngModel)]="signup.name" placeholder="Full Name" required
+                <input class="form-control" id="fullname" [(ngModel)]="signup.username" placeholder="Full Name" required
                     name="uName" #fullname="ngModel" />
             </div>
             <div [hidden]="fullname.valid || fullname.pristine" class="alert alert-danger" class="req">Name is required</div>
@@ -37,7 +37,7 @@
             </div>
             <div [hidden]="!passwordConfirmationFailed" class="alert alert-danger" class="req">Password did not match</div>
             <div class="form-group">
-                <input class="form-control" id="phonenumber" [(ngModel)]="signup.phonenumber" placeholder="Phone number" required
+                <input class="form-control" id="phonenumber" [(ngModel)]="signup.phoneNumber" placeholder="Phone number" required
                     name="uName" #phonenumber="ngModel" />
             </div>
             <div [hidden]="phonenumber.valid || phonenumber.pristine" class="alert alert-danger" class="req">phone number is required</div>

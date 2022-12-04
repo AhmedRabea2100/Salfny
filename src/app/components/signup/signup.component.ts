@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Signup } from './signup';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-signup',
@@ -43,39 +44,22 @@ export class SignupComponent implements OnInit {
   phone:any
 
   onSubmit() {
-    console.log('Name: ' + this.signup.name + ', Email: ' + this.signup.email + ', Password: ' + this.signup.password);
-    
-    this.email = this.signup.email;
-    this.pass = this.signup.password;
-    this.name=this.signup.name;
-    this.phone=this.signup.phonenumber;
-    console.log( JSON.stringify({
-      "email": this.email,
-      "password": this.pass,
-      "username":this.name,
-      "phoneNumber":this.phone
-
-    }))
-    this.signupp();
-  
-
+    console.log('Name: ' + this.signup.username + ', Email: ' + this.signup.email + ', Password: ' + this.signup.password);
+    /*this.signupp(this.signup).subscribe(data => {
+      console.log(data)
+      
+    }) ;*/
+    this.signupp()
   }
+
   signupp() {
     var httpOptions = {
       headers: new HttpHeaders({
       'Content-Type': 'application/json',
       'authentication': 'key' 
-      })
+      }),
     }
-    this.http.post('http://localhost:8080/signup', JSON.stringify({
-      "email": this.email,
-      "password": this.pass,
-      "username":this.name,
-      "phoneNumber":this.phone
-    }
-    
-    ), httpOptions)
-
+    this.http.post('http://localhost:8080/signup', this.signup, httpOptions)
     .subscribe({
         next: (data: any) => {
             console.log("hii")
@@ -88,6 +72,16 @@ export class SignupComponent implements OnInit {
             }
         });
   }
+  
+  
+  /*signupp(signup:Signup): Observable<Signup> {
+    const headers = { 'content-type': 'application/json'}  
+    const body=JSON.stringify(signup);
+ 
+    return this.http.post<Signup>('http://localhost:8080/signup', body,{'headers':headers, responsetype: 'text'})
+  }*/
+ 
+  
 
 
 

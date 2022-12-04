@@ -38,13 +38,7 @@ input:focus{
 ::placeholder, ::-webkit-input-placeholder{
     color: #999;
 }
-input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-input[type="number"] {
-    -moz-appearance: textfield;
-}
+
 button{
     padding: 12px 25px;
     color: #fff;

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { catchError, Observable } from 'rxjs';
 import {Login} from './login';
+import { Signup } from './../signup/signup';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -36,7 +37,7 @@ export class LoginComponent implements OnInit{
   
   }
   
-  loginn() {
+  /*loginn() {
     var httpOptions = {
       headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -58,7 +59,26 @@ export class LoginComponent implements OnInit{
             console.error(error);
             }
         });
+  }*/
+  loginn() {
+    var httpOptions = {
+      headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      })
+    }
+    this.http.post('http://localhost:8080/login', this.login, httpOptions)
+    .subscribe({
+        next: (data: any) => {
+            console.log("hii")
+            console.log(data);
+            },
+            error: (error: any) => {
+            console.error(error);
+            }
+        });
+        
   }
+
 
 
 
