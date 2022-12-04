@@ -1,4 +1,3 @@
-
 <body>
     <!-- signin popup -->
     <div id="signinPopup">
@@ -165,21 +164,16 @@
                                 <button id="searchBtn"><i class="fas fa-search"></i></button>
                             </div>
                         </div>
+                        
                     </div>
                     <div class="right">
                         <div class="signinBtnDiv">
                             <div class="dropdown">
                                 <button id="signinBtn" class="showSignoutBtnHover">
                                     <a href="/login">Login</a>
-                                    </button>
-                               <!--
-                                 <div class="dropdownContent" id="dropdownContent">
-                                    <a href="javascript:void(0)" id="myAds">My Ads</a>
-                                    <a href="javascript:void(0)" id="favorites">Favorites</a>
-                                    <a href="javascript:void(0)" id="signoutBtn">Sign out</a>
-                                </div>
-                            -->
-                                
+                                </button>
+                            
+
                             </div>
                         </div>
                         <div class="sellBtnDiv">
@@ -193,16 +187,7 @@
                     <div class="dropdown">
                         <a href="javascript:void(0)" id="browseCategories">Browse by Categories &nbsp; <i
                                 class="fas fa-angle-down"></i></a>
-                      <!--  <div class="dropdownContent">
-                            <a href="Javascript:void(0)" onclick="filter('All')">All Categories</a>
-                            <a href="Javascript:void(0)" onclick="filter('Mobiles')">Mobiles</a>
-                            <a href="Javascript:void(0)" onclick="filter('Vehicles')">Vehicles</a>
-                            <a href="Javascript:void(0)" onclick="filter('Electronics')">Electronics</a>
-                            <a href="Javascript:void(0)" onclick="filter('Bikes')">Bikes</a>
-                            <a href="Javascript:void(0)" onclick="filter('Services')">Services</a>
-                            <a href="Javascript:void(0)" onclick="filter('Furniture')">Furniture</a>
-                        </div>
-                    -->
+                    
                     </div>
                 </div>
             </div>
@@ -215,99 +200,85 @@
         </div>
         <!-- /banner -->
 
-        <!-- popular categories -->
-        <div class="popularCategories" id="popularCategories">
-            <div class="container">
-                <div class="heading">
-                    <h2>Popular Categories</h2>
-                    <hr>
-                    <p>Browse through some of our most popular categories.</p>
-                </div>
-                <div class="categories">
-                    <div class="oneThird">
-                        <div class="top">
-                            <a href="javascript:void(0)" onclick="filter('Mobiles')"><i class="fas fa-mobile-alt"></i>
-                                &nbsp; Mobiles</a>
-                        </div>
-                        <div class="bottom">
-                            <a href="javascript:void(0)">Tablets</a>
-                            <a href="javascript:void(0)">Accessories</a>
-                            <a href="javascript:void(0)">Mobile Phones</a>
-                        </div>
-                    </div>
-                    <div class="oneThird">
-                        <div class="top">
-                            <a href="javascript:void(0)" onclick="filter('Vehicles')"><i class="fas fa-car"></i> &nbsp;
-                                Vehicles</a>
-                        </div>
-                        <div class="bottom">
-                            <a href="javascript:void(0)">Cars</a>
-                            <a href="javascript:void(0)">Buses</a>
-                            <a href="javascript:void(0)">Spare parts</a>
-                        </div>
-                    </div>
-                    <div class="oneThird">
-                        <div class="top">
-                            <a href="javascript:void(0)" onclick="filter('Electronics')"><i class="fas fa-tv"></i>
-                                &nbsp; Electronics</a>
-                        </div>
-                        <div class="bottom">
-                            <a href="javascript:void(0)">Cars</a>
-                            <a href="javascript:void(0)">Buses</a>
-                            <a href="javascript:void(0)">Spare parts</a>
-                        </div>
-                    </div>
-                    <div class="oneThird">
-                        <div class="top">
-                            <a href="javascript:void(0)" onclick="filter('Bikes')"><i class="fas fa-bicycle"></i> &nbsp;
-                                Bikes</a>
-                        </div>
-                        <div class="bottom">
-                            <a href="javascript:void(0)">Cars</a>
-                            <a href="javascript:void(0)">Buses</a>
-                            <a href="javascript:void(0)">Spare parts</a>
-                        </div>
-                    </div>
-                    <div class="oneThird">
-                        <div class="top">
-                            <a href="javascript:void(0)" onclick="filter('Services')"><i class="fas fa-wrench"></i>
-                                &nbsp; Services</a>
-                        </div>
-                        <div class="bottom">
-                            <a href="javascript:void(0)">Cars</a>
-                            <a href="javascript:void(0)">Buses</a>
-                            <a href="javascript:void(0)">Spare parts</a>
-                        </div>
-                    </div>
-                    <div class="oneThird">
-                        <div class="top">
-                            <a href="javascript:void(0)" onclick="filter('Furniture')"><i class="fas fa-bed"></i> &nbsp;
-                                Furniture</a>
-                        </div>
-                        <div class="bottom">
-                            <a href="javascript:void(0)">Cars</a>
-                            <a href="javascript:void(0)">Buses</a>
-                            <a href="javascript:void(0)">Spare parts</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /popular categories -->
 
-        <!-- top picks for you -->
-        <div class="topPicks">
-            <div class="container" id="topPicksContainer">
-                <div class="heading">
-                    <h2 id="categoryHeading">Recently added</h2>
-                    <hr>
+
+        <section class="product">
+            <h2 class="product-category">best selling</h2>
+            <button class="pre-btn" disabled><img src="/../assets/images/arrow.png" alt=""></button>
+            <button class="nxt-btn"disabled><img src="/../assets/images/arrow.png" alt=""></button>
+            <div class="product-container">
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <img src="/../assets/images/card1.png" class="product-thumb" alt="">
+                        <button class="card-btn">add to whislist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">brand</h2>
+                        <p class="product-short-des">a short line about the cloth..</p>
+                        <span class="price">$20</span><span class="actual-price">$40</span>
+                    </div>
+
+
                 </div>
-                <div class="picks" id="picks">
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <img src="/../assets/images/card2.png" class="product-thumb" alt="">
+                        <button class="card-btn">add to whislist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">brand</h2>
+                        <p class="product-short-des">a short line about the cloth..</p>
+                        <span class="price">$20</span><span class="actual-price">$40</span>
+                    </div>
+
+
                 </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <img src="/../assets/images/card3.png" class="product-thumb" alt="">
+                        <button class="card-btn">add to whislist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">brand</h2>
+                        <p class="product-short-des">a short line about the cloth..</p>
+                        <span class="price">$20</span><span class="actual-price">$40</span>
+                    </div>
+
+
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <img src="/../assets/images/card4.png" class="product-thumb" alt="">
+                        <button class="card-btn">add to whislist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">brand</h2>
+                        <p class="product-short-des">a short line about the cloth..</p>
+                        <span class="price">$20</span><span class="actual-price">$40</span>
+                    </div>
+
+
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <img src="/../assets/images/card5.png" class="product-thumb" alt="">
+                        <button class="card-btn">add to whislist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">brand</h2>
+                        <p class="product-short-des">a short line about the cloth..</p>
+                        <span class="price">$20</span><span class="actual-price">$40</span>
+                    </div>
+
+
+                </div>
+                
             </div>
-        </div>
-        <!-- /top picks for you -->
+        </section>
+
     </div>
-
-
-   
