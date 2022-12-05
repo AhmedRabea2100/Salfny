@@ -62,7 +62,8 @@ export class SignupComponent implements OnInit {
             console.log("hii")
             console.log(data)
             if(data==='Registration Succeeded'){
-              this.router.navigateByUrl('home')
+              alert("Registeration Succeeded, please login")
+              this.router.navigateByUrl('login')
             }else
               alert("This Email is already used")
             
