@@ -1,0 +1,12 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+#          github:
+#            clientId: github-client-id
+#            clientSecret: github-client-secret
+          google:
+            client-id: 411894454911-eiu9aav92903kl51j2bk33g03hded2rq.apps.googleusercontent.com
+            client-secret: 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
+            redirectUri: "https://accounts.google.com/signin/oauth/"
