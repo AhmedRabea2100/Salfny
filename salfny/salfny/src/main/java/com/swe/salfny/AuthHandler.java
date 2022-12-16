@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
-import com.swe.salfny.user.Credential;
-import com.swe.salfny.user.UserRepository;
+import com.swe.salfny.Model.user.Credential;
+import com.swe.salfny.Model.user.UserRepository;
 import io.jsonwebtoken.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

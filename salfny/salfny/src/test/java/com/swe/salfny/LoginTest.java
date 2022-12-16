@@ -1,8 +1,8 @@
 package com.swe.salfny;
 
-import com.swe.salfny.user.Credential;
-import com.swe.salfny.user.User;
-import com.swe.salfny.user.UserRepository;
+import com.swe.salfny.Model.user.Credential;
+import com.swe.salfny.Model.user.User;
+import com.swe.salfny.Model.user.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;

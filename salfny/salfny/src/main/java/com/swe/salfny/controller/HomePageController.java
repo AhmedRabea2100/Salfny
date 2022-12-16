@@ -1,8 +1,8 @@
 package com.swe.salfny.controller;
 
 import com.swe.salfny.AuthHandler;
-import com.swe.salfny.post.Post;
-import com.swe.salfny.post.PostRepository;
+import com.swe.salfny.Model.post.Post;
+import com.swe.salfny.Model.post.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.CrossOrigin;

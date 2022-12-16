@@ -1,8 +1,8 @@
 package com.swe.salfny.controller;
 
 import com.swe.salfny.AuthHandler;
-import com.swe.salfny.user.Credential;
-import com.swe.salfny.user.UserRepository;
+import com.swe.salfny.Model.user.Credential;
+import com.swe.salfny.Model.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.web.bind.annotation.RequestBody;

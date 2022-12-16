@@ -1,6 +1,6 @@
-package com.swe.salfny.user;
+package com.swe.salfny.Model.user;
 
-import com.swe.salfny.post.Post;
+import com.swe.salfny.Model.post.Post;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;

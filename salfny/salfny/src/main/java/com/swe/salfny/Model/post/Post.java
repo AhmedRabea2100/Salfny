@@ -1,6 +1,6 @@
-package com.swe.salfny.post;
+package com.swe.salfny.Model.post;
 
-import com.swe.salfny.user.User;
+import com.swe.salfny.Model.user.User;
 import jakarta.persistence.*;
 
 @Entity

@@ -1,8 +1,8 @@
 package com.swe.salfny;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.swe.salfny.user.User;
-import com.swe.salfny.user.UserRepository;
+import com.swe.salfny.Model.user.User;
+import com.swe.salfny.Model.user.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
