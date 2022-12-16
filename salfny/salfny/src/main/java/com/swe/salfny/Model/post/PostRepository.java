@@ -1,4 +1,4 @@
-package com.swe.salfny.post;
+package com.swe.salfny.Model.post;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
