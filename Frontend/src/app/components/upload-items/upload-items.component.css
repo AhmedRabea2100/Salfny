@@ -9,7 +9,7 @@ body {
   margin: 0;
   padding: 0;
   font-weight: 300;
-  height:auto;
+  min-height: 100vh;
   background: linear-gradient(to top,#053777 0%, #00659b 100%);
   color: #fff;
   font-size: 16px;
