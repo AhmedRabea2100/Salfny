@@ -4,9 +4,11 @@ import com.swe.salfny.AuthHandler;
 import com.swe.salfny.Model.post.Post;
 import com.swe.salfny.Model.post.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -22,15 +24,16 @@ public class StarredController {
 
     @CrossOrigin
     @GetMapping("/starred")
-    public List<Post> starred(@CookieValue(name = "token", required = false) String token) {
-        if (token != null && authHandler.validateToken(token)) {
-            // TODO: handle token
-            return repo.showStarredPosts(authHandler.getEmail());
+    public ResponseEntity<List<Post>> starred(@RequestHeader(name = "Authorization", required = false) String token) {
+        HttpHeaders headers = new HttpHeaders();
+        if (authHandler.validateToken(token)) {
+            return ResponseEntity.ok()
+                    .headers(headers)
+                    .body(repo.showStarredPosts(authHandler.getEmail()));
         } else {
-            // TODO: redirect to homepage in front
-            return repo.showStarredPosts("e");
-            // return null;
+            return ResponseEntity.status(401)
+                    .headers(headers)
+                    .body(null);
         }
     }
 }
-

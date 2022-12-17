@@ -82,8 +82,8 @@ public class AuthHandler {
     }
 
     public Boolean validateToken(String token) {
-        token = token.substring(token.indexOf(" ")+1);
-        if (token != null) {
+        if (token != null && !token.equals("null")) {
+            token = token.substring(token.indexOf(" ")+1);
             try {
                 email = getEmailFromToken(token);
             } catch (IllegalArgumentException e) {
