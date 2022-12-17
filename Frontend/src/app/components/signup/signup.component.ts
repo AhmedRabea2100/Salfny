@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Signup } from './signup';
+import { global } from 'src/app/global';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -11,7 +12,7 @@ import { Observable } from 'rxjs';
 })
 export class SignupComponent implements OnInit {
   ngOnInit(): void {
-    
+    global.logged=false
   }
   constructor(private router: Router, private route: ActivatedRoute,private http: HttpClient) { }
   title = '';

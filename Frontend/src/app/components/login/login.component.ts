@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit{
   constructor(private router: Router, private route: ActivatedRoute,private http: HttpClient) { }
 
   ngOnInit(): void {
+    global.logged=false
   }
   email: any
   pass: any
@@ -45,6 +46,7 @@ export class LoginComponent implements OnInit{
             }
             else{
               global.tokenn=data
+              global.logged=true
               this.router.navigateByUrl('home')
             }                     
             },
