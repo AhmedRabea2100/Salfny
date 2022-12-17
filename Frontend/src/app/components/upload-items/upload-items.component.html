@@ -17,7 +17,7 @@
     </div>
     <div class="form-group">
       <label for="country"><strong>Category</strong></label>
-      <select class="form-control" id="country" required>
+      <select class="form-controll" id="country" required>
            <option  *ngFor="let category of categories"  [value]="category">{{category}}</option>
       </select>
     </div>
@@ -35,22 +35,25 @@
     <div class="form-group">
       <label for="file">File</label>
       <input 
+          name="select photo"
           formControlName="file"
           id="file" 
           type="file" 
-          class="form-control"
+          class="form-controll"
           (change)="onFileChange($event)">
       <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
           <!--<div *ngIf="f.file.errors.required">File is required.</div>-->
       </div>
+      <img [src]="imageSrc" *ngIf="imageSrc" style="height:auto">
+      
   </div>
   
-  <img [src]="imageSrc" *ngIf="imageSrc" style="height: 300px; width:500px">
-      
+  
+ 
     
-    <!--<div class="form-group">
+    <div class="form-group">
       <button type="submit" [disabled]="!uploadForm.form.valid">Upload images</button>
-    </div>-->
+    </div>
     <router-outlet></router-outlet>
   </form>
   <link href='https://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700' rel='stylesheet' type='text/css'>

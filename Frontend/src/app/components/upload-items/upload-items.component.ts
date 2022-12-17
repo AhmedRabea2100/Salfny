@@ -9,52 +9,52 @@ import { FormGroup, FormControl, Validators} from '@angular/forms';
 })
 
 export class UploadItemsComponent {
-  constructor(private http: HttpClient) { }
+  // constructor(private http: HttpClient) { }
 
   uploadItem = new UploadItem('', '', '', '');
   categories = [ 'cars','department', 'bikes','suit','dresses','electronic devices','others'];
 
-  imageSrc: string;
-  myForm = new FormGroup({
-   name: new FormControl('', [Validators.required, Validators.minLength(3)]),
-   file: new FormControl('', [Validators.required]),
-   fileSource: new FormControl('', [Validators.required])
- });
+//   imageSrc: string;
+//   myForm = new FormGroup({
+//    name: new FormControl('', [Validators.required, Validators.minLength(3)]),
+//    file: new FormControl('', [Validators.required]),
+//    fileSource: new FormControl('', [Validators.required])
+//  });
  
  
    
- get f(){
-   return this.myForm.controls;
- }
+//  get f(){
+//    return this.myForm.controls;
+//  }
   
- onFileChange(event) {
-   const reader = new FileReader();
+//  onFileChange(event) {
+//    const reader = new FileReader();
    
-   if(event.target.files && event.target.files.length) {
-     const [file] = event.target.files;
-     reader.readAsDataURL(file);
+//    if(event.target.files && event.target.files.length) {
+//      const [file] = event.target.files;
+//      reader.readAsDataURL(file);
    
-     reader.onload = () => {
+//      reader.onload = () => {
   
-       this.imageSrc = reader.result as string;
+//        this.imageSrc = reader.result as string;
     
-      /* this.myForm.patchValue({
-         fileSource: reader.result
-       });*/
+//       /* this.myForm.patchValue({
+//          fileSource: reader.result
+//        });*/
   
-     };
+//      };
   
-   }
- }
+//    }
+//  }
   
- submit(){
-   console.log(this.myForm.value);
-   this.http.post('http://localhost:8001/upload.php', this.myForm.value)
-     .subscribe(res => {
-       console.log(res);
-       alert('Uploaded Successfully.');
-     })
- }
+//  submit(){
+//    console.log(this.myForm.value);
+//    this.http.post('http://localhost:8001/upload.php', this.myForm.value)
+//      .subscribe(res => {
+//        console.log(res);
+//        alert('Uploaded Successfully.');
+//      })
+//  }
 
 
   
@@ -67,7 +67,38 @@ export class UploadItemsComponent {
   
   }
   
+imageSrc: string;
+myForm = new FormGroup({
+ name: new FormControl('', [Validators.required, Validators.minLength(3)]),
+ file: new FormControl('', [Validators.required]),
+ fileSource: new FormControl('', [Validators.required])
+});
+
+constructor(private http: HttpClient) { }
+ 
+get f(){
+ return this.myForm.controls;
+}
+
+onFileChange(event) {
+ const reader = new FileReader();
+ 
+ if(event.target.files && event.target.files.length) {
+   const [file] = event.target.files;
+   reader.readAsDataURL(file);
+ 
+   reader.onload = () => {
+
+     this.imageSrc = reader.result as string;
   
+     this.myForm.patchValue({
+      //  fileSource: reader.result
+     });
+
+   };
+
+ }
+}
 
   
 
