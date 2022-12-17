@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
+
 export class SignupComponent implements OnInit {
   ngOnInit(): void {
     global.logged=false

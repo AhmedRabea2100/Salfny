@@ -25,6 +25,7 @@ public class HomePageController {
         HttpHeaders headers = new HttpHeaders();
         if (token!=null && !token.equals("null") && authHandler.validateToken(token)) {
 
+
             return ResponseEntity.ok()
                     .headers(headers)
                     .body(repo.showPreferredPosts(authHandler.getEmail()));

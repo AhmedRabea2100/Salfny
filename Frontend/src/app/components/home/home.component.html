@@ -8,12 +8,13 @@
                     <div class="left">
                         <div class="mainLogo">
                                 <img src="./assets/images/logo.png" alt="logo">
-                            
                         </div>
+
                         <div class="location">
                             <!-- <i class="fas fa-globe-europe"></i> -->
                             <input type="text" placeholder="Location..">
                         </div>
+
                         <div class="search">
                             <div class="searchFieldDiv">
                                 <input type="text" placeholder="Search.." id="searchField">
@@ -24,18 +25,23 @@
                         </div>
                         
                     </div>
+
                     <div class="right">
+
                         <div class="signinBtnDiv">
                             <div class="dropdown">
                                 <button id="signinBtn" (click)="log(state)" class="showSignoutBtnHover" routerLink='/login'>
                                     {{state}}
                                 </button>
-                            
-
                             </div>
                         </div>
+
                         <div class="sellBtnDiv">
                             <button id="sellBtn" routerLink='/uploadItems'>sell item</button>
+                        </div>
+                        
+                        <div class="profile">
+                            <button routerLink="/profile"> <i class="far fa-id-badge">USERPROFILE</i></button>
                         </div>
                     </div>
                 </div>
@@ -65,6 +71,7 @@
             <button class="pre-btn" disabled><img src="/../assets/images/arrow.png" alt=""></button>
             <button class="nxt-btn"disabled><img src="/../assets/images/arrow.png" alt=""></button>
             <div class="product-container">
+
                 <div class="product-card">
                     <div class="product-image">
 
@@ -76,9 +83,8 @@
                         <!-- <p class="product-short-des">a short line about the cloth..</p> -->
                         <span class="price">1500 EGP</span>
                     </div>
-
-
                 </div>
+
                 <div class="product-card">
                     <div class="product-image">
 
@@ -90,9 +96,8 @@
                         <!-- <p class="product-short-des">a short line about the cloth..</p> -->
                         <span class="price">400 EGP</span>
                     </div>
-
-
                 </div>
+
                 <div class="product-card">
                     <div class="product-image">
 
@@ -104,9 +109,8 @@
                         <!-- <p class="product-short-des">a short line about the cloth..</p> -->
                         <span class="price">1000 EGP</span>
                     </div>
-
-
                 </div>
+
                 <div class="product-card">
                     <div class="product-image">
 
@@ -118,9 +122,8 @@
                         <!-- <p class="product-short-des">a short line about the cloth..</p> -->
                         <span class="price">500 EGP</span>
                     </div>
-
-
                 </div>
+
                 <div class="product-card">
                     <div class="product-image">
 
@@ -132,8 +135,6 @@
                         <!-- <p class="product-short-des">a short line about the cloth..</p> -->
                         <span class="price">4500 EGP</span>
                     </div>
-
-
                 </div>
                 
             </div>
