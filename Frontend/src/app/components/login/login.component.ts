@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {Login} from './login';
+import {Login} from '../../../types/login.type';
 import { global } from 'src/app/global';
 @Component({
   selector: 'app-login',
@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit{
   constructor(private router: Router, private route: ActivatedRoute,private http: HttpClient) { }
 
   ngOnInit(): void {
+    global.logged=false
   }
   email: any
   pass: any

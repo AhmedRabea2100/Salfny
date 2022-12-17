@@ -1,3 +1,6 @@
+@import "/../Frontend/src/app/components/home/home.component.css";
+
+
 .product-details{
     width: 100%;
     padding: 60px 10vw;
@@ -5,25 +8,18 @@
     justify-content: space-between;
 }
 
-.image-slider{
-    width: 500px;
-    height: 500px;
-    position: relative;
-    background-image: url('/../assets/images/pr2.jpg');
-    background-size: cover;
-}
 
 .product-images{
     position: absolute;
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    width: 90%;
+    width: 10%;
     background: #fff;
     border-radius: 5px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    height: 100px;
+    height: 10px;
     grid-gap: 10px;
     padding: 10px;
 }
@@ -61,10 +57,8 @@
 
 .product-actual-price{
     font-size: 30px;
-    opacity: 0.5;
-    text-decoration: line-through;
     margin: 0 20px;
-    font-weight: 300;
+   
 }
 
 .product-discount{
