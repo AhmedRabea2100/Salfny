@@ -28,6 +28,7 @@ export class UploadItemsComponent {
  }
   
  onFileChange(event) {
+  console.log(event)
    const reader = new FileReader();
    
    if(event.target.files && event.target.files.length) {
@@ -38,7 +39,7 @@ export class UploadItemsComponent {
   
        this.imageSrc = reader.result as string;
     
-      /* this.myForm.patchValue({
+     /*this.myForm.patchValue({
          fileSource: reader.result
        });*/
   

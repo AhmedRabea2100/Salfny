@@ -18,8 +18,8 @@
     </div>
     <div class="form-group">
       <label for="country"><strong>Category</strong></label>
-      <select class="form-controll" id="country" required>
-        <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+      <select class="form-controll"  [(ngModel)]="uploadItem.category" name="caption" id ="caption" required>
+        <option *ngFor="let category of categories" [value]="category">{{category}}</option>      
       </select>
     </div>
 
