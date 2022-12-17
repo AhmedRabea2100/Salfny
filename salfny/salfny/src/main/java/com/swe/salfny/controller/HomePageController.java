@@ -4,10 +4,9 @@ import com.swe.salfny.AuthHandler;
 import com.swe.salfny.Model.post.Post;
 import com.swe.salfny.Model.post.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,11 +21,17 @@ public class HomePageController {
 
     @CrossOrigin
     @GetMapping("/home")
-    public List<Post> homePage(@CookieValue(name = "token", required = false) String token) {
-        if (token != null && authHandler.validateToken(token)) {
-            return repo.showPreferredPosts(authHandler.getEmail());
+    public ResponseEntity<List<Post>> homePage(@RequestHeader(name = "Authorization", required = false) String token) {
+        HttpHeaders headers = new HttpHeaders();
+        if (!token.equals("null") && authHandler.validateToken(token)) {
+
+            return ResponseEntity.ok()
+                    .headers(headers)
+                    .body(repo.showPreferredPosts(authHandler.getEmail()));
         } else {
-            return repo.showRecentPosts(0, 3);
+            return ResponseEntity.status(401)
+                    .headers(headers)
+                    .body(repo.showRecentPosts(0, 3));
         }
     }
 }
