@@ -36,15 +36,13 @@ export class LoginComponent implements OnInit{
     this.http.post('http://localhost:8080/login', this.login, { headers: headerr, responseType:'text'})
     .subscribe({
         next: (data: any) => {
-            console.log("hii")
-            console.log(data)
             if(data==="Email not found"){
               alert("Email not Found")
             }else if(data==="Incorrect password"){
               alert("Incorrect password")  
             }
             else{
-              global.tokenn=data
+              localStorage.setItem("token",data);
               this.router.navigateByUrl('home')
             }                     
             },
