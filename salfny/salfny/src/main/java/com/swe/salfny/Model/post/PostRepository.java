@@ -13,4 +13,9 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
                     "post p JOIN preferences pre ON p.category_id = pre.category_id " +
                     "JOIN user u ON u.id = pre.user_id WHERE u.email = ?1", nativeQuery = true)
     public List<Post> showPreferredPosts(String email);
+
+    @Query(value = "SELECT p.* FROM " +
+            "post p JOIN save s ON p.id = s.post_id JOIN user u ON u.id = s.user_id " +
+            "WHERE u.email = ?1", nativeQuery = true)
+    public List<Post> showStarredPosts(String email);
 }
