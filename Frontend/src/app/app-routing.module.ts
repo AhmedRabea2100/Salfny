@@ -4,12 +4,14 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProductviewComponent } from './components/productview/productview.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { UserprofileComponent } from './components/userprofile/userprofile.component';
 const routes: Routes = [
   {path: '',   redirectTo: 'home', pathMatch: 'full' }, // redirect to `first-component`
   {path:'signup', component:SignupComponent},
   {path:'login', component:LoginComponent},
   {path:'home', component:HomeComponent},
-  {path:'productview', component:ProductviewComponent}
+  {path:'productview', component:ProductviewComponent},
+  {path:'profile', component:UserprofileComponent}
 ];
 
 @NgModule({
