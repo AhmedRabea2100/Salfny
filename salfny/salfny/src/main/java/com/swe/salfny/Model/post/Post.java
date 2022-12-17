@@ -1,7 +1,12 @@
 package com.swe.salfny.Model.post;
 
+import com.swe.salfny.Model.image.Photo;
 import com.swe.salfny.Model.user.User;
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "post")
@@ -47,6 +52,15 @@ public class Post {
 
     @Column(name = "user_id", nullable = false)
     private int user_id;
+
+    @OneToMany(mappedBy = "postt", fetch = FetchType.LAZY)
+    private Set<Photo> photos;
+
+    public List<String> getPhotos() {
+        List<String> urls = new ArrayList<>(photos.size());
+        for(Photo photo:photos) urls.add(photo.getUrl());
+        return urls;
+    }
 
     public int getId() {
         return id;

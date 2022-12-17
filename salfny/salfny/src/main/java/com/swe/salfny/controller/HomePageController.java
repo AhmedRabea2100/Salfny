@@ -23,7 +23,7 @@ public class HomePageController {
     @GetMapping("/home")
     public ResponseEntity<List<Post>> homePage(@RequestHeader(name = "Authorization", required = false) String token) {
         HttpHeaders headers = new HttpHeaders();
-        if (!token.equals("null") && authHandler.validateToken(token)) {
+        if (token!=null && !token.equals("null") && authHandler.validateToken(token)) {
 
             return ResponseEntity.ok()
                     .headers(headers)

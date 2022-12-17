@@ -137,6 +137,21 @@
                 </div>
                 
             </div>
+            <ul>
+            <li routerLinkActive="active" *ngFor="let post of posts;"  [routerLink]="[path]" (click)="view(p1,'name','description',15)">
+                <img src="{{post.date}}" alt="">
+                <div>
+                    {{post.title}}
+                </div>
+                <div>
+                    {{post.price}}$
+                </div>
+                <div>
+                    {{post.description}}
+                </div>
+            </li>
+            </ul>
         </section>
+
 
     </div>

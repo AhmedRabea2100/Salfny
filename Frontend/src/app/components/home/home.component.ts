@@ -13,6 +13,8 @@ export class HomeComponent {
   logged:any
   state:any
   p1:any
+  posts:Post[] | undefined;
+  path:string='/productview';
    ngOnInit () {
     this.p1="/../assets/images/pr2.jpg" 
     
@@ -23,11 +25,13 @@ export class HomeComponent {
     ) .subscribe({
       next: (data: any) => {
         this.state="Log Out"
+        this.posts=data;
         console.log(data);
       },
       error: (error: any) => {
         this.state="Login"
         if(error.status==401){
+          this.posts=error.error;
           console.log(error.error);
         }else{
           console.error(error);
@@ -46,7 +50,6 @@ view(ph:string,namee:any,desc:any,pricee:any){
   global.Name=namee
   global.description=desc
   global.price=pricee
-  this.router.navigateByUrl('productview')
 }
 
 
