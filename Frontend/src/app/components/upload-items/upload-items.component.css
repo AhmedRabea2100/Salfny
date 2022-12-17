@@ -82,6 +82,11 @@ button {
   margin: auto;
   margin-bottom: 30px;
 }
+.form-groupp {
+  max-width:fit-content;
+  margin: auto;
+  margin-bottom: 30px;
+}
 
 .back-to-article {
   color: #fff;
