@@ -1,5 +1,5 @@
 <body>
-  <form [formGroup]="myForm" action method="post" (ngSubmit)="onSubmit()" #uploadForm="ngForm">
+  <form  action method="post" (ngSubmit)="onSubmit()" #uploadForm="ngForm">
 
     <h1><strong>Upload item</strong> for rent</h1>
 
@@ -25,14 +25,14 @@
 
     <div class="form-groupp file-area">
       <input for="images" type="button" value="Upload Photo">
-      <input formControlName="images" id="images" type="file" class="form-control" (change)="onFileChange($event)">
+      <input  id="images" type="file" class="form-control" (change)="onFileChange($event)">
     
     </div>
     <div class="form-groupp">
       <img [src]="imageSrc" *ngIf="imageSrc" style="height:auto">
     </div>
     <div class="form-groupp">
-      <button type="submit" [disabled]="!uploadForm.form.valid">Upload Item</button>
+      <button type="submit" >Upload Item</button>
     </div>
 
 
