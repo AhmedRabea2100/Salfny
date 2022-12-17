@@ -5,6 +5,7 @@ import { Signup } from './signup';
 import { global } from 'src/app/global';
 import { Observable } from 'rxjs';
 
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
