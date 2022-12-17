@@ -22,40 +22,30 @@
       </select>
     </div>
     
-   <!-- <div class="form-group file-area">
+    <div class="form-group file-area">
           <label for="images">Images <span>Your images should be at least 400x300 wide</span></label>
-      <input type="file" name="images" id="images" required="required" multiple="multiple" />
-      <img [src]="imgURL" height="200" *ngIf="imgURL">
-      <input type="button"  value="upload">
-      <div class="file-dummy">
-        <div class="success">Great, your files are selected. Keep on.</div>
-        <div class="default">Please select some files</div>
-      </div>
-    </div>-->
-    <div class="form-group">
-      <label for="file">File</label>
-      <input 
-          name="select photo"
-          formControlName="file"
-          id="file" 
-          type="file" 
-          class="form-controll"
-          (change)="onFileChange($event)">
+      <input formControlName="images" id="images"  type="file" class="form-control" (click)="onFileChange($event)">
       <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
-          <!--<div *ngIf="f.file.errors.required">File is required.</div>-->
-      </div>
-      <img [src]="imageSrc" *ngIf="imageSrc" style="height:auto">
       
-  </div>
-  
-  
- 
+      <input type="button"  value="upload">
+      
+    </div>
+    <img [src]="imageSrc" *ngIf="imageSrc" style="height: 300px; width:500px">
+    </div>
     
+
     <div class="form-group">
       <button type="submit" [disabled]="!uploadForm.form.valid">Upload images</button>
     </div>
+   
+  
+  
+
     <router-outlet></router-outlet>
   </form>
+
+
+ 
   <link href='https://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700' rel='stylesheet' type='text/css'>
   
   <!--<a  class="back-to-article" target="_blank" routerLink="/home">back to Home</a>-->
@@ -63,6 +53,9 @@
   
   
   </body>
+  
+
+    
   
   
   
