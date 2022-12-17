@@ -39,7 +39,7 @@
                     </div>
                     <div>
                       Rating
-                      <span class="heading">5.66</span>
+                      <span class="heading">{{user.rating}}</span>
                       <!-- <span class="description">Rating</span> -->
                     </div>
                     <div>
@@ -53,12 +53,12 @@
 
               <div class="text-center">
                 <h3>
-                  Adel shakal
+                  {{user.username}}
                 </h3>
                 
 
                 <div class="h2 font-weight-600">
-                  Member Since 2011
+                  Member Since {{user.memberSince[0]}}
                 </div>
                 
                 <!-- <div class="h5 mt-4">
@@ -94,14 +94,14 @@
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-username">Username</label>
-                        <input type="text" class="form-control form-control-alternative" value="shaklola" disabled>
+                        <input type="text" class="form-control form-control-alternative" [value]=user.username disabled>
                       </div>
                     </div>
 
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-email">Email address</label>
-                        <input type="email" class="form-control form-control-alternative" value="shakhal@na7o.com" disabled>
+                        <input type="email" class="form-control form-control-alternative" [value]=user.email disabled>
                       </div>
                     </div>
                   </div>
@@ -130,7 +130,7 @@
                     <div class="col-md-12">
                       <div class="form-group focused">
                         <label class="form-control-label" >Address</label>
-                        <input id="editable-Email" class="form-control form-control-alternative" value="hadara street" disabled>
+                        <input id="editable-Email" class="form-control form-control-alternative" [value]=user.address disabled>
                       </div>
                     </div>
                   </div>
@@ -138,7 +138,7 @@
                     <div class="col-lg-4">
                       <div class="form-group focused">
                         <label class="form-control-label">Phone Number</label>
-                        <input id="editable-Phone" type="text" class="form-control form-control-alternative"  disabled value="011">
+                        <input id="editable-Phone" type="text" class="form-control form-control-alternative"  disabled [value]=user.phoneNumber>
                       </div>
                     </div>
                     <div class="col-4 text-right">
