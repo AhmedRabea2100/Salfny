@@ -27,7 +27,7 @@
                     <div class="right">
                         <div class="signinBtnDiv">
                             <div class="dropdown">
-                                <button id="signinBtn" class="showSignoutBtnHover" routerLink='/login'>
+                                <button id="signinBtn" (click)="log(state)" class="showSignoutBtnHover" routerLink='/login'>
                                     {{state}}
                                 </button>
                             
