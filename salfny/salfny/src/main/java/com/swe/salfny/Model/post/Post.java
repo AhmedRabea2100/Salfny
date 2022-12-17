@@ -14,7 +14,7 @@ public class Post {
 
     public Post() {}
 
-    public Post(String title, String description, int price, Integer payment_option, int views, String date, int category_id, int user_id) {
+    public Post(String title, String description, int price, Integer payment_option, int views, String date, int category_id, int user_id, String address) {
         this.title = title;
         this.description = description;
         this.price = price;
@@ -23,6 +23,7 @@ public class Post {
         this.date = date;
         this.category_id = category_id;
         this.user_id = user_id;
+        this.address=address;
     }
 
     @Id
@@ -31,6 +32,12 @@ public class Post {
 
     @Column(name = "title", nullable = false, length = 45)
     private String title;
+    @Column(name = "address", nullable = false, length = 100)
+    private String address;
+
+    public String getAddress() {
+        return address;
+    }
 
     @Column(name = "description", length = 2000)
     private String description;

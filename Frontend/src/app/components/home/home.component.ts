@@ -3,13 +3,15 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { global } from 'src/app/global';
 import { Post } from 'src/types/post.type';
+import {DomSanitizer} from '@angular/platform-browser';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  constructor (private router: Router,private http: HttpClient,private activatedRoute: ActivatedRoute) {}
+  constructor (private router: Router,private http: HttpClient,private activatedRoute: ActivatedRoute,private sanitizer:DomSanitizer) {}
   logged:any
   state:any
   p1:any
@@ -45,11 +47,11 @@ log(state:string){
     localStorage.removeItem("token");
   }
 }
-view(ph:string,namee:any,desc:any,pricee:any){
-  global.photo=ph
-  global.Name=namee
-  global.description=desc
-  global.price=pricee
+view(id:number){
+  localStorage.setItem("post_id",id+"")
+}
+sanitize(url:string){
+  return this.sanitizer.bypassSecurityTrustUrl(url);
 }
 
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {Login} from './login';
+import {Login} from '../../../types/login.type';
 import { global } from 'src/app/global';
 @Component({
   selector: 'app-login',

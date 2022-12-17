@@ -31,7 +31,12 @@ public class HomePageController {
         } else {
             return ResponseEntity.status(401)
                     .headers(headers)
-                    .body(repo.showRecentPosts(0, 3));
+                    .body(repo.showRecentPosts(0, 10));
         }
+    }
+    @CrossOrigin
+    @RequestMapping("/post")
+    public Post getPost(@RequestBody String id) {
+        return repo.showSpecificPost(id);
     }
 }
