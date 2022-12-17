@@ -9,7 +9,11 @@ import { FormGroup, FormControl, Validators} from '@angular/forms';
 })
 
 export class UploadItemsComponent {
+
+  //selectedFile : File = null
+
    constructor(private http: HttpClient) { }
+   
 
   uploadItem = new UploadItem('', '', '', '');
   categories = [ 'cars','department', 'bikes','suit','dresses','electronic devices','others'];
@@ -18,7 +22,7 @@ export class UploadItemsComponent {
   myForm = new FormGroup({
    name: new FormControl('', [Validators.required, Validators.minLength(3)]),
    file: new FormControl('', [Validators.required]),
-   fileSource: new FormControl('', [Validators.required])
+   fileSource: new FormControl('')
  });
  
  
@@ -28,6 +32,10 @@ export class UploadItemsComponent {
  }
   
  onFileChange(event) {
+  // this.selectedFile =<File>event.target.files[0];
+  // console.log("hhhh "+this.selectedFile)
+  
+
   console.log(event)
    const reader = new FileReader();
    
@@ -39,24 +47,40 @@ export class UploadItemsComponent {
   
        this.imageSrc = reader.result as string;
     
-     /*this.myForm.patchValue({
-         fileSource: reader.result
-       });*/
+     this.myForm.patchValue({ fileSource: reader.result as string });
+       console.log(this.myForm.value)
   
      };
   
    }
  }
   
-//  submit(){
-//    console.log(this.myForm.value);
-//    this.http.post('http://localhost:8001/upload.php', this.myForm.value)
-//      .subscribe(res => {
-//        console.log(res);
-//        alert('Uploaded Successfully.');
-//      })
-//  }
+ submit(){
+  //  console.log(this.myForm.value);
+  //  this.http.post('http://localhost:8080/htest', this.imageSrc)
+  //    .subscribe(res => {
+  //      console.log(res);
+  //      alert('Uploaded Successfully.');
+  //    })
+  const headerr=new HttpHeaders({'Content-Type': 'application/json' ,'authentication': 'key' });
+  this.http.post('http://localhost:8080/htest', this.imageSrc, { headers: headerr, responseType:'text'})
+    .subscribe({
 
+        next: (data: any) => {
+            console.log("hii")
+            console.log(data)
+            
+            },
+            error: (error: any) => {
+            console.error(error);
+            }
+        });
+ }
+// submit(){
+//   const fd =new FormData();
+//   fd.append('image',this.selectedFile,this.selectedFile.name);
+//   console.log("ff "+ this.selectedFile)
+// }
 
 
    onSubmit() {
