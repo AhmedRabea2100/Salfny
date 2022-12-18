@@ -4,5 +4,6 @@ export class UploadItem {
         public description:string,
         public price:Number,
         public category:string,
+        public photo:string
     ) {  }
   }

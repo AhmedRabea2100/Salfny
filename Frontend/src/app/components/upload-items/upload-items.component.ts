@@ -12,10 +12,10 @@ export class UploadItemsComponent {
 
   //selectedFile : File = null
 
-   constructor(private http: HttpClient, private par:HttpParams) { }
+   constructor(private http: HttpClient) { }
    
 
-  uploadItem = new UploadItem('', '', 0, '');
+  uploadItem = new UploadItem('', '', 0, '','');
   categories = [ 'cars','department', 'bikes','suit','dresses','electronic devices','others'];
 
   imageSrc: string;
@@ -46,8 +46,10 @@ export class UploadItemsComponent {
      reader.onload = () => {
   
        this.imageSrc = reader.result as string;
-    
-     this.myForm.patchValue({ fileSource: reader.result as string });
+       this.uploadItem.photo=this.imageSrc
+       console.log(this.uploadItem.photo)
+       
+      this.myForm.patchValue({ fileSource: reader.result as string });
        console.log(this.myForm.value)
   
      };
@@ -64,7 +66,7 @@ export class UploadItemsComponent {
   //    })
   const headerr=new HttpHeaders({'Content-Type': 'application/json' });
 
-  this.http.post('http://localhost:8080/upload',{"u":this.imageSrc,"p":this.uploadItem}, { headers: headerr, responseType:'text'})
+  this.http.post('http://localhost:8080/upload',this.uploadItem, { headers: headerr, responseType:'text'})
     .subscribe({
 
         next: (data: any) => {
@@ -86,7 +88,7 @@ export class UploadItemsComponent {
 
    onSubmit() {
   
-    console.log(' title: ' + this.uploadItem.title + ', description: ' + this.uploadItem.description+ 'price: '+ this.uploadItem.price + 'category '+this.uploadItem.category+"sss" );  
+    console.log(' title: ' + this.uploadItem.title + ', description: ' + this.uploadItem.description+ 'price: '+ this.uploadItem.price + 'category '+this.uploadItem.category+"sss");  
   }
   
 }
