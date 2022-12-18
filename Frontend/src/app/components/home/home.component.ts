@@ -16,6 +16,7 @@ export class HomeComponent {
   state:any
   p1:any
   posts:Post[] | undefined;
+  topPosts:Post[] | undefined;
   path:string='/productview';
    ngOnInit () {
     this.p1="/../assets/images/pr2.jpg" 
@@ -38,6 +39,18 @@ export class HomeComponent {
         }else{
           console.error(error);
         }
+      }
+      });
+
+    this.http.get<Post[]>('http://localhost:8080/topten'
+    ) .subscribe({
+      next: (data: any) => {
+        this.topPosts=data;
+        console.log(data);
+      },
+      error: (error: any) => {
+          console.error(error);
+        
       }
       });
 }
