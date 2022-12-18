@@ -19,6 +19,8 @@ export class UploadItemsComponent {
   categories = [ 'cars','department', 'bikes','suit','dresses','electronic devices','others'];
 
   imageSrc: string;
+  imageName:string;
+  imageBlob:string;
   myForm = new FormGroup({
    name: new FormControl('', [Validators.required, Validators.minLength(3)]),
    file: new FormControl('', [Validators.required]),
@@ -40,14 +42,16 @@ export class UploadItemsComponent {
    const reader = new FileReader();
    
    if(event.target.files && event.target.files.length) {
-     const [file] = event.target.files;
+    const [file] = event.target.files;
      reader.readAsDataURL(file);
    
      reader.onload = () => {
   
+       this.imageName=file.name
+       this.imageBlob=file
        this.imageSrc = reader.result as string;
        this.uploadItem.photo=this.imageSrc
-       console.log(this.uploadItem.photo)
+       console.log(reader.result)
        
       this.myForm.patchValue({ fileSource: reader.result as string });
        console.log(this.myForm.value)
@@ -56,6 +60,8 @@ export class UploadItemsComponent {
   
    }
  }
+
+ 
   
  submit(){
   //  console.log(this.myForm.value);
@@ -64,6 +70,7 @@ export class UploadItemsComponent {
   //      console.log(res);
   //      alert('Uploaded Successfully.');
   //    })
+
   const headerr=new HttpHeaders({'Content-Type': 'application/json' });
 
   this.http.post('http://localhost:8080/upload',this.uploadItem, { headers: headerr, responseType:'text'})
@@ -90,5 +97,4 @@ export class UploadItemsComponent {
   
     console.log(' title: ' + this.uploadItem.title + ', description: ' + this.uploadItem.description+ 'price: '+ this.uploadItem.price + 'category '+this.uploadItem.category+"sss");  
   }
-  
 }
