@@ -58,82 +58,25 @@
         </header>
         <!-- /header -->
 
-        <!-- banner -->
-        <div class="mainBanner" id="mainBanner">
-            <img src="./assets/images/back.png" alt="banner-image" id="mainBannerImg">
-        </div>
-        <!-- /banner -->
 
 
 
-        <section class="product">
-            <h2 class="product-category">best selling</h2>
+        <section class="product" > 
+            <h2 class="product-category">Most Viewed</h2>
             <button class="pre-btn" disabled><img src="/../assets/images/arrow.png" alt=""></button>
             <button class="nxt-btn"disabled><img src="/../assets/images/arrow.png" alt=""></button>
             <div class="product-container">
 
-                <div class="product-card">
+                <div class="product-card" routerLinkActive="active" *ngFor="let post of topPosts;"  [routerLink]="[path]" (click)="view(post.id)">
                     <div class="product-image">
 
-                        <img src={{p1}} class="product-thumb" alt="">
+                        <img src="{{post.photos[0]}}" class="product-thumb" alt="">
                         <button class="card-btn">view product</button>
                     </div>
                     <div class="product-info">
-                        <h2 class="product-brand">Treadmill</h2>
+                        <h2 class="product-brand">{{post.title}}</h2>
                         <!-- <p class="product-short-des">a short line about the cloth..</p> -->
-                        <span class="price">1500 EGP</span>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-
-                        <img src="/../assets/images/pr3.jpg" class="product-thumb" alt="">
-                        <button class="card-btn">add to whislist</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">Kitchen Table </h2>
-                        <!-- <p class="product-short-des">a short line about the cloth..</p> -->
-                        <span class="price">400 EGP</span>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-
-                        <img src="/../assets/images/pr4.jpeg" class="product-thumb" alt="">
-                        <button class="card-btn">add to whislist</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">Stroller</h2>
-                        <!-- <p class="product-short-des">a short line about the cloth..</p> -->
-                        <span class="price">1000 EGP</span>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-
-                        <img src="/../assets/images/pr6.png" class="product-thumb" alt="">
-                        <button class="card-btn" >add to whislist</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">Balacony Swing</h2>
-                        <!-- <p class="product-short-des">a short line about the cloth..</p> -->
-                        <span class="price">500 EGP</span>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-
-                        <img src="/../assets/images/pr7.jpg" class="product-thumb" alt="">
-                        <button class="card-btn" >add to whislist</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">Laptop</h2>
-                        <!-- <p class="product-short-des">a short line about the cloth..</p> -->
-                        <span class="price">4500 EGP</span>
+                        <span class="price">{{post.price}} EGP</span>
                     </div>
                 </div>
                 

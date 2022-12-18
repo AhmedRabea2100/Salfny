@@ -15,7 +15,7 @@ export class ProductviewComponent {
   constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient) { }
   ngOnInit(): void {
    
-    this.http.post<Post>('http://localhost:8080/post',localStorage.getItem("post_id")
+    this.http.post<Post>('http://localhost:8080/post',localStorage.getItem("post_id")+" "+localStorage.getItem("user_id")
     ) .subscribe({
       next: (data: Post) => {
         this.photo=data.photos[0];
