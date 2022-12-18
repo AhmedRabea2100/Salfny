@@ -9,12 +9,12 @@ public class Uplo {
 
     public Uplo() {}
 
-    public Uplo(String title, String description, int price,String category){
+    public Uplo(String title, String description, int price,String category,String photo){
         this.title = title;
         this.description = description;
         this.price = price;
-
         this.category = category;
+        this.photo=photo;
         //this.user_id = user_id;
     }
 
@@ -39,9 +39,19 @@ public class Uplo {
         this.category = category;
     }
 
-    @Column(name = "category_id", nullable = false)
+    @Column(name = "category", nullable = false)
     private String category;
 
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    @Column(name = "photo", nullable = false)
+    private String photo;
 
 
     public int getId() {
