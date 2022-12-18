@@ -85,11 +85,11 @@
 
         <div class="container">
             <div class="row">
-              <div class="col-md-3" *ngFor="let post of posts;"  [routerLink]="[path]" (click)="view(post.id)">
+              <div class="col-md-3" style="cursor: pointer;" *ngFor="let post of posts;"  [routerLink]="[path]" (click)="view(post.id)">
                 <div class="wsk-cp-product">
 
                   <div class="wsk-cp-img">
-                    <img [src] = "sanitize(post.photos[0])" alt="Product" class="img-responsive" />
+                    <img height="250px"    [src] = "sanitize(post.photos[0])" alt="Product" class="img-responsive" />
                   </div>
 
                   <div class="wsk-cp-text">
@@ -116,6 +116,10 @@
               </div>
             </div>
         </div>
+
+
+    
+
 
     </div>
     <!-- END-->
