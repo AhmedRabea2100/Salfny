@@ -83,43 +83,13 @@
             <h1 class="align-center">Products</h1>
         </div>
 
-            <!-- <div class="prod-container">
-                <div class="card" routerLinkActive="active" *ngFor="let post of posts;"  [routerLink]="[path]" (click)="view(post.id)">
-                    <div class="content">
-
-                        <div class="title">{{post.title}}</div>
-
-                        <div class="image">
-                            <img height="200rm" [src] = "sanitize(post.photos[0])"/>
-                        </div>
-
-                        <div class="text" style="width:15em;font-size: large;  overflow: hidden; text-overflow: ellipsis;height: 3em;">
-                            {{post.description}}
-                        </div>
-
-                        <div class="text" style="font-weight:bold;font-size: xx-large;">
-                            {{post.price}}
-                            <sup style="font-weight: normal;font-size:small">EGP</sup>
-                        </div>
-                    </div>
-
-                    <div class="text" style="font-size: large;color: rgb(81, 77, 77);">
-                        {{post.address}}
-                    </div>
-
-                    <div>
-                        <button  class="buy-button details">View</button>
-                    </div>
-                </div>
-            </div>     -->
-
         <div class="container">
             <div class="row">
-              <div class="col-md-3" *ngFor="let post of posts;"  [routerLink]="[path]" (click)="view(post.id)">
+              <div class="col-md-3" style="cursor: pointer;" *ngFor="let post of posts;"  [routerLink]="[path]" (click)="view(post.id)">
                 <div class="wsk-cp-product">
 
                   <div class="wsk-cp-img">
-                    <img [src] = "sanitize(post.photos[0])" alt="Product" class="img-responsive" />
+                    <img height="250px"    [src] = "sanitize(post.photos[0])" alt="Product" class="img-responsive" />
                   </div>
 
                   <div class="wsk-cp-text">
@@ -147,6 +117,11 @@
             </div>
         </div>
 
+
+    
+
+
     </div>
+    <!-- END-->
 </body>
     
