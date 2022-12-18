@@ -41,7 +41,7 @@ public class HomePageTest {
 
     @Test
     public void onePost() {
-        Post post = new Post("title", null, 15, null, 3, "2000-01-01", 1, 1);
+        Post post = new Post("title", null, 15, null, 3, "2000-01-01", 1, 1,"Kom Hamada");
         repo.save(post);
         List<Post> result = repo.showRecentPosts(0, 3);
         assertEquals("Size = 1", 1, result.size());
@@ -50,9 +50,9 @@ public class HomePageTest {
 
     @Test
     public void threePostsSameOrder() {
-        Post post1 = new Post("title1", null, 15, null, 3, "2000-01-01", 1, 1);
-        Post post2 = new Post("title2", "null", 16, null, 4, "2003-01-01", 1, 1);
-        Post post3 = new Post("title3", "f", 17, null, 1, "2005-02-01", 1, 1);
+        Post post1 = new Post("title1", null, 15, null, 3, "2000-01-01", 1, 1,"Kom Hamada");
+        Post post2 = new Post("title2", "null", 16, null, 4, "2003-01-01", 1, 1,"Kom Hamada");
+        Post post3 = new Post("title3", "f", 17, null, 1, "2005-02-01", 1, 1,"Kom Hamada");
         repo.save(post1);
         repo.save(post2);
         repo.save(post3);
@@ -65,9 +65,9 @@ public class HomePageTest {
 
     @Test
     public void threePostsDifferentOrder() {
-        Post post1 = new Post("title1", null, 15, null, 3, "2007-01-01", 1, 1);
-        Post post2 = new Post("title2", "null", 16, null, 4, "2003-01-01", 1, 1);
-        Post post3 = new Post("title3", "f", 17, null, 1, "2005-02-01", 1, 1);
+        Post post1 = new Post("title1", null, 15, null, 3, "2007-01-01", 1, 1,"Kom Hamada");
+        Post post2 = new Post("title2", "null", 16, null, 4, "2003-01-01", 1, 1,"Kom Hamada");
+        Post post3 = new Post("title3", "f", 17, null, 1, "2005-02-01", 1, 1,"Kom Hamada");
         repo.save(post1);
         repo.save(post2);
         repo.save(post3);
@@ -80,10 +80,10 @@ public class HomePageTest {
 
     @Test
     public void fourPostsDifferentOrderPageOne() {
-        Post post1 = new Post("title1", null, 15, null, 3, "2007-01-01", 1, 1);
-        Post post2 = new Post("title2", "null", 16, null, 4, "2003-01-01", 1, 1);
-        Post post3 = new Post("title3", "f", 17, null, 1, "2005-02-01", 1, 1);
-        Post post4 = new Post("title4", "", 1, 2, 1, "2000-02-01", 1, 1);
+        Post post1 = new Post("title1", null, 15, null, 3, "2007-01-01", 1, 1,"Kom Hamada");
+        Post post2 = new Post("title2", "null", 16, null, 4, "2003-01-01", 1, 1,"Kom Hamada");
+        Post post3 = new Post("title3", "f", 17, null, 1, "2005-02-01", 1, 1,"Kom Hamada");
+        Post post4 = new Post("title4", "", 1, 2, 1, "2000-02-01", 1, 1,"Kom Hamada");
         repo.save(post1);
         repo.save(post2);
         repo.save(post3);
@@ -97,10 +97,10 @@ public class HomePageTest {
 
     @Test
     public void fourPostsDifferentOrderPageTwo() {
-        Post post1 = new Post("title1", null, 15, null, 3, "2007-01-01", 1, 1);
-        Post post2 = new Post("title2", "null", 16, null, 4, "2003-01-01", 1, 1);
-        Post post3 = new Post("title3", "f", 17, null, 1, "2005-02-01", 1, 1);
-        Post post4 = new Post("title4", "", 1, 2, 1, "2000-02-01", 1, 1);
+        Post post1 = new Post("title1", null, 15, null, 3, "2007-01-01", 1, 1,"Kom Hamada");
+        Post post2 = new Post("title2", "null", 16, null, 4, "2003-01-01", 1, 1,"Kom Hamada");
+        Post post3 = new Post("title3", "f", 17, null, 1, "2005-02-01", 1, 1,"Kom Hamada");
+        Post post4 = new Post("title4", "", 1, 2, 1, "2000-02-01", 1, 1,"Kom Hamada");
         repo.save(post1);
         repo.save(post2);
         repo.save(post3);
