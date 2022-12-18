@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders,HttpParams } from '@angular/common/http';
 import { UploadItem } from './upload-item';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 @Component({
@@ -12,10 +12,10 @@ export class UploadItemsComponent {
 
   //selectedFile : File = null
 
-   constructor(private http: HttpClient) { }
+   constructor(private http: HttpClient, private par:HttpParams) { }
    
 
-  uploadItem = new UploadItem('', '', '', '');
+  uploadItem = new UploadItem('', '', 0, '');
   categories = [ 'cars','department', 'bikes','suit','dresses','electronic devices','others'];
 
   imageSrc: string;
@@ -62,8 +62,9 @@ export class UploadItemsComponent {
   //      console.log(res);
   //      alert('Uploaded Successfully.');
   //    })
-  const headerr=new HttpHeaders({'Content-Type': 'application/json' ,'authentication': 'key' });
-  this.http.post('http://localhost:8080/htest', this.imageSrc, { headers: headerr, responseType:'text'})
+  const headerr=new HttpHeaders({'Content-Type': 'application/json' });
+
+  this.http.post('http://localhost:8080/upload',{"u":this.imageSrc,"p":this.uploadItem}, { headers: headerr, responseType:'text'})
     .subscribe({
 
         next: (data: any) => {
@@ -86,7 +87,6 @@ export class UploadItemsComponent {
    onSubmit() {
   
     console.log(' title: ' + this.uploadItem.title + ', description: ' + this.uploadItem.description+ 'price: '+ this.uploadItem.price + 'category '+this.uploadItem.category+"sss" );  
-  
   }
   
 }
