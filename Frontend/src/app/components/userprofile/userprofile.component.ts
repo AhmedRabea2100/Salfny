@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { User } from 'src/app/models/user';
+import { User } from 'src/app/models/User';
 
 @Component({
   selector: 'app-userprofile',
@@ -33,11 +33,36 @@ export class UserprofileComponent {
     x?.removeAttribute('disabled');
     const y = document.getElementById('editable-Phone');
     y?.removeAttribute('disabled');
+    const z = document.getElementById('saveBtn');
+    z?.removeAttribute('disabled');
   }
   editValue() {
     const x = document.getElementById('editable-Email');
     x?.setAttribute('disabled', 'true');
     const y = document.getElementById('editable-Phone');
     y?.setAttribute('disabled', 'true');
+    const z = document.getElementById('saveBtn');
+    z?.setAttribute('disabled', 'true');
+    this.save();
+  }
+
+  save() {
+    const header = new HttpHeaders({
+      'Content-Type': 'application/json',
+      authentication: 'key',
+    });
+    this.http.post('http://localhost:8080/profile', this.user, {
+        headers: header,
+        responseType: 'text',
+      })
+      .subscribe({
+        next: (data: any) => {
+          console.log(data);
+          if (data === 'Saved') alert('Saved');
+        },
+        error: (error: any) => {
+          console.error(error);
+        },
+      });
   }
 }

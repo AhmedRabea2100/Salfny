@@ -16,8 +16,9 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     @Query("SELECT u FROM User u WHERE u.email = ?1")
     public User getProfile(String email);
+
     @Modifying
     @Transactional
     @Query(value = "INSERT INTO view (user_id,post_id) VALUES (?1,?2)", nativeQuery = true)
-    public void addView(int userid,int postid);
+    public void addView(int userid, int postid);
 }
