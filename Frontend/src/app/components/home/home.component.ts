@@ -36,6 +36,15 @@ export class HomeComponent {
       });
 }
 
+sell(){
+if(this.state=="Login"){
+  alert("Please, login first!!")
+  this.router.navigateByUrl('login')
+}else{
+  this.router.navigateByUrl('uploadItems')
+}
+}
+
 log(state:string){
   if(state=="Log Out"){
     localStorage.removeItem("token");
