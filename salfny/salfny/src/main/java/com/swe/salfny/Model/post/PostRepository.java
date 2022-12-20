@@ -13,4 +13,7 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
                     "post p JOIN preferences pre ON p.category_id = pre.category_id " +
                     "JOIN user u ON u.id = pre.user_id WHERE u.email = ?1", nativeQuery = true)
     public List<Post> showPreferredPosts(String email);
+
+    @Query("SELECT MAX(id) FROM Post")
+    public Long findMaxId();
 }
