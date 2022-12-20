@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {Login} from './login';
+import {Login} from '../../../types/login.type';
 import { global } from 'src/app/global';
 import Swal from 'sweetalert2';
 @Component({
@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit{
     const headerr=new HttpHeaders({'Content-Type': 'application/json' ,'authentication': 'key' });
     this.http.post('http://localhost:8080/login', this.login, { headers: headerr, responseType:'text'})
     .subscribe({
-        next: (data: any) => {
+        next: (data: string) => {
             if(data==="Email not found"){
               Swal.fire({
                 position: 'center',
@@ -58,7 +58,8 @@ export class LoginComponent implements OnInit{
               
             }
             else{
-              localStorage.setItem("token",data);
+              localStorage.setItem("token",data.split(" ")[0]);
+              localStorage.setItem("user_id",data.split(" ")[1]);
               this.router.navigateByUrl('home')
             }                     
             },

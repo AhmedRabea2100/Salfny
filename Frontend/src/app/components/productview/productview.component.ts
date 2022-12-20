@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { global } from 'src/app/global';
+import { Post } from 'src/types/post.type';
 @Component({
   selector: 'app-productview',
   templateUrl: './productview.component.html',
@@ -14,10 +14,21 @@ export class ProductviewComponent {
   price:any
   constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient) { }
   ngOnInit(): void {
-    this.photo = global.photo
-    this.Name=global.Name
-    this.description=global.description
-    this.price=global.price
+   
+    this.http.post<Post>('http://localhost:8080/post',localStorage.getItem("post_id")+" "+localStorage.getItem("user_id")
+    ) .subscribe({
+      next: (data: Post) => {
+        this.photo=data.photos[0];
+        this.Name=data.title;
+        this.description=data.description
+        this.price=data.price
+      },
+      error: (error: any) => {
+        
+          console.error(error);
+
+      }
+      });
   }
  
 }

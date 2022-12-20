@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
+
 export class SignupComponent implements OnInit {
   ngOnInit(): void {
     global.logged=false

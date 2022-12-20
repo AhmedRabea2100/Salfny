@@ -11,9 +11,9 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProductviewComponent } from './components/productview/productview.component';
 import { UploadItemsComponent } from './components/upload-items/upload-items.component';
-
-//for forms
+import { UserprofileComponent } from './components/userprofile/userprofile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,9 +22,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     ProductviewComponent,
     UploadItemsComponent,
-  
-    
-    
+    UserprofileComponent
   ],
   imports: [
     BrowserModule,

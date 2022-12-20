@@ -8,12 +8,13 @@
                     <div class="left">
                         <div class="mainLogo">
                                 <img src="./assets/images/logo.png" alt="logo">
-                            
                         </div>
+
                         <div class="location">
                             <!-- <i class="fas fa-globe-europe"></i> -->
                             <input type="text" placeholder="Location..">
                         </div>
+
                         <div class="search">
                             <div class="searchFieldDiv">
                                 <input type="text" placeholder="Search.." id="searchField">
@@ -24,18 +25,23 @@
                         </div>
                         
                     </div>
+
                     <div class="right">
+
                         <div class="signinBtnDiv">
                             <div class="dropdown">
                                 <button id="signinBtn" (click)="log(state)" class="showSignoutBtnHover" routerLink='/login'>
                                     {{state}}
                                 </button>
-                            
-
                             </div>
                         </div>
+
                         <div class="sellBtnDiv">
                             <button id="sellBtn" (click)="sell()">sell item</button>
+                        </div>
+                        
+                        <div class="profile">
+                            <button routerLink="/profile"> <i class="far fa-id-badge">USERPROFILE</i></button>
                         </div>
                     </div>
                 </div>
@@ -52,91 +58,97 @@
         </header>
         <!-- /header -->
 
-        <!-- banner -->
-        <div class="mainBanner" id="mainBanner">
-            <img src="./assets/images/back.png" alt="banner-image" id="mainBannerImg">
-        </div>
-        <!-- /banner -->
 
 
 
-        <section class="product">
-            <h2 class="product-category">best selling</h2>
+        <section class="product" > 
+            <h2 class="product-category">Most Viewed</h2>
             <button class="pre-btn" disabled><img src="/../assets/images/arrow.png" alt=""></button>
             <button class="nxt-btn"disabled><img src="/../assets/images/arrow.png" alt=""></button>
             <div class="product-container">
-                <div class="product-card">
+
+                <div class="product-card" routerLinkActive="active" *ngFor="let post of topPosts;"  [routerLink]="[path]" (click)="view(post.id)">
                     <div class="product-image">
 
-                        <img src={{p1}} class="product-thumb" alt="">
-                        <button class="card-btn" (click)="view(p1,'Treadmill','Treadmill for rent', 1500 )">view product</button>
+                        <img src="{{post.photos[0]}}" class="product-thumb" alt="">
+                        <button class="card-btn">view product</button>
                     </div>
                     <div class="product-info">
-                        <h2 class="product-brand">Treadmill</h2>
+                        <h2 class="product-brand">{{post.title}}</h2>
                         <!-- <p class="product-short-des">a short line about the cloth..</p> -->
-                        <span class="price">1500 EGP</span>
+                        <span class="price">{{post.price}} EGP</span>
                     </div>
-
-
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-
-                        <img src="/../assets/images/pr3.jpg" class="product-thumb" alt="">
-                        <button class="card-btn" (click)="view('/../assets/images/pr3.jpg','Kitchen Table','Kitchen Table for rent', 400)">add to whislist</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">Kitchen Table </h2>
-                        <!-- <p class="product-short-des">a short line about the cloth..</p> -->
-                        <span class="price">400 EGP</span>
-                    </div>
-
-
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-
-                        <img src="/../assets/images/pr4.jpeg" class="product-thumb" alt="">
-                        <button class="card-btn" (click)="view('/../assets/images/pr4.jpeg','Stroller','Stroller for rent', 1000)">add to whislist</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">Stroller</h2>
-                        <!-- <p class="product-short-des">a short line about the cloth..</p> -->
-                        <span class="price">1000 EGP</span>
-                    </div>
-
-
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-
-                        <img src="/../assets/images/pr6.png" class="product-thumb" alt="">
-                        <button class="card-btn" (click)="view('/../assets/images/pr6.png','Balancony Swing','Swing for rent', 500)">add to whislist</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">Balacony Swing</h2>
-                        <!-- <p class="product-short-des">a short line about the cloth..</p> -->
-                        <span class="price">500 EGP</span>
-                    </div>
-
-
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-
-                        <img src="/../assets/images/pr7.jpg" class="product-thumb" alt="">
-                        <button class="card-btn" (click)="view('/../assets/images/pr7.jpg','Laptop','Laptop for rent', 4500)">add to whislist</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">Laptop</h2>
-                        <!-- <p class="product-short-des">a short line about the cloth..</p> -->
-                        <span class="price">4500 EGP</span>
-                    </div>
-
-
                 </div>
                 
             </div>
         </section>
+
+
+
+
+
+        <section class="prod-list ">
+            <div>
+              <h1 class="align-center">
+                Products
+              </h1>
+            </div>
+            
+            <!-- <li >
+                <img src="{{post.date}}" alt="">
+                <div>
+                    {{post.title}}
+                </div>
+                <div>
+                    {{post.price}}$
+                </div>
+                <div>
+                    {{post.description}}
+                </div>
+            </li>
+       -->
+            <div class="prod-container">
+              
+      
+            <div class="card" routerLinkActive="active" *ngFor="let post of posts;"  [routerLink]="[path]" (click)="view(post.id)">
+
+              <div class="content">
+                         
+              <div class="title">{{post.title}}</div>
+              <div class="image">
+                <img height="200rm"
+                [src] = "sanitize(post.photos[0])"
+                />
+              </div>
+              <div class="text" style="width:15em;font-size: large;  overflow: hidden;
+;              text-overflow: ellipsis;height: 3em;">
+                
+                {{post.description}}
+              </div>
+              <div class="text" style="font-weight:bold;font-size: xx-large;">
+                
+                {{post.price}}<sup style="font-weight: normal;font-size:small">EGP</sup>
+              </div>
+               </div>
+               <div class="text" style="font-size: large;color: rgb(81, 77, 77);">
+                
+                {{post.address}}
+              </div>
+            <div>
+                <button  class="buy-button details">
+                  View 
+                </button>
+            </div>
+           
+            </div>
+      
+      
+               </div>
+            
+            
+            
+          </section>
+
+
 
     </div>
