@@ -8,5 +8,5 @@ public interface UploRepository extends JpaRepository<Uplo, Integer> {
     public String findByEmail(String email);
 
     @Query("SELECT MAX(id) FROM Uplo")
-    public long findMaxId();
+    public Long findMaxId();
 }

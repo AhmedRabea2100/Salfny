@@ -14,21 +14,25 @@ import java.io.*;
 import java.time.LocalDateTime;
 
 @RestController
-public class UploadController {
+public class UploadPostController {
     @Autowired
     private UploRepository repo;
 
     //@CrossOrigin
     @RequestMapping("/upload")
-    public String upload(@RequestBody Uplo p ) {
-       // System.out.println(p.getTitle()+" "+ p.getDescription()+" "+p.getCategory()+" el sora "+p.getPhoto());
-        p.setPhoto(conv(p.getPhoto(),repo.findMaxId()+1));
+    public String upload(@RequestBody Uplo p) {
+        // System.out.println(p.getTitle()+" "+ p.getDescription()+" "+p.getCategory()+" el sora "+p.getPhoto());
+
+        if (repo.findMaxId() == null)
+            p.setPhoto(conv(p.getPhoto(), 1L));
+        else
+            p.setPhoto(conv(p.getPhoto(), repo.findMaxId() + 1));
         repo.save(p);
-        return "back  " ;
+        return "back  ";
 
     }
 
-    public String conv(String photo,long i) {
+    public String conv(String photo, Long i) {
         String base64String = photo;
         String[] strings = base64String.split(",");
         String extension;
@@ -46,11 +50,11 @@ public class UploadController {
         //convert base64 string to binary data
         byte[] data = DatatypeConverter.parseBase64Binary(strings[1]);
         System.out.println(System.getProperty("user.dir"));
-        String[] s1=System.getProperty("user.dir").split("salfny");
+        String[] s1 = System.getProperty("user.dir").split("salfny");
         String out;
-        if(s1[0].contains("/")) {
+        if (s1[0].contains("/")) {
             out = s1[0] + "Frontend/src/assets/images/" + i + "." + extension;//for Linux Users
-        }else{
+        } else {
             out = s1[0] + "Frontend\\src\\assets\\images\\" + i + "." + extension;//for Windows Users
         }
         try (OutputStream outputStream = new BufferedOutputStream(new FileOutputStream(out))) {
@@ -58,5 +62,6 @@ public class UploadController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return i+"."+extension;
-    }}
+        return i + "." + extension;
+    }
+}
