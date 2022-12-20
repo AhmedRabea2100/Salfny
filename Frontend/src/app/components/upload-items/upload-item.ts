@@ -3,7 +3,8 @@ export class UploadItem {
         public title:string,
         public description:string,
         public price:Number,
-        public category:number,
-        public photo:string
+        public category:Number,
+        public photo:string,
+        public user_id:Number
     ) {  }
   }

@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Signup } from './signup';
 import { global } from 'src/app/global';
 import { Observable } from 'rxjs';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -64,11 +65,25 @@ export class SignupComponent implements OnInit {
             console.log("hii")
             console.log(data)
             if(data==='Registration Succeeded'){
+              Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Registeration Succeeded, please login',
+                showConfirmButton: false,
+                timer: 1500
+              })
               alert("Registeration Succeeded, please login")
               this.router.navigateByUrl('login')
-            }else
-              alert("This Email is already used")
-            
+            }else{
+              Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'his Email is already used',
+                showConfirmButton: false,
+                timer: 1500
+              })
+              
+            }
             
             },
             error: (error: any) => {

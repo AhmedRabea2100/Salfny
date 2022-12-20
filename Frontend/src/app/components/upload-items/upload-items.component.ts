@@ -15,9 +15,9 @@ export class UploadItemsComponent {
   constructor(private http: HttpClient) { }
 
 
-  uploadItem = new UploadItem('', '', 0, 0, '');
+  uploadItem = new UploadItem('', '', 0, 0, '',0);
   categories = ['cars', 'department', 'bikes', 'suit', 'dresses', 'electronic devices', 'others'];
-  categoryName:string
+  categoryName:string;
   
   imageSrc: string;
   imageName: string;
@@ -62,6 +62,7 @@ export class UploadItemsComponent {
 
   submit() {
     this.uploadItem.category =this.categories.indexOf(this.categoryName)
+    this.uploadItem.user_id=1;
     const headerr = new HttpHeaders({ 'Content-Type': 'application/json' });
     this.http.post('http://localhost:8080/upload', this.uploadItem, { headers: headerr, responseType: 'text' })
       .subscribe({

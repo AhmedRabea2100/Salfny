@@ -32,7 +32,7 @@
       <img [src]="imageSrc" *ngIf="imageSrc" style="height:auto">
     </div>
     <div class="form-groupp">
-      <button type="submit" >Upload Item</button>
+      <button type="submit" class="btn btn-success" [disabled]="!uploadForm.form.valid">Upload Item</button>
     </div>
 
 
