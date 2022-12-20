@@ -72,7 +72,6 @@ export class SignupComponent implements OnInit {
                 showConfirmButton: false,
                 timer: 1500
               })
-              alert("Registeration Succeeded, please login")
               this.router.navigateByUrl('login')
             }else{
               Swal.fire({
