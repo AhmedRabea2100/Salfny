@@ -143,6 +143,7 @@ public class Post {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
     private User user;
+    
 
     public String getUserName() {
         return user.getUsername();

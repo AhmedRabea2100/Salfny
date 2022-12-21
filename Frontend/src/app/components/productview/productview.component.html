@@ -3,7 +3,7 @@
 
     <div class="image_discription">
         <div class="swiper">
-                <img src="/../assets/images/pr2.jpg"> 
+                <img src="../../../assets/db/{{photo}}"> 
         </div>
     
        
@@ -12,26 +12,23 @@
     <div class="product_details">
         <div class="box">
             <div class="price">
-                <h3> 150</h3>
+                <h3> {{price}}<sup style="font-weight: normal;font-size:small">EGP</sup></h3>
             </div>
-            <span> Mi TV Stick </span>
+            <span> {{Name}} </span>
             <div class="location">
-                <p>Ghatkopar West, Mumbai, Maharashtra</p>
-                <p>Today</p>
+                <p>{{address}}</p>
+                <p>{{date}}</p>
             </div>
 
             
                 <button id="first" class="both">Add to Cart</button>
-                <button id="second" class="both">Add to Favourite</button>
+                <button id="second" class="both" (click)="addToFav()">Add to Favourite</button>
               
         </div>
 
         <div class="descriptiopn">
             <h3> Descriptiopn </h3>
-            <p>Convert your TV into smart TV using HDMI of your TV. All online platform available downloaded. <br>
-                Include MI stick, Bluetooth remote, Power adapter. <br>
-                Condition new. <br>
-                MRP 3,500</p>
+            <p>{{this.description}}</p>
         </div>
 
 
@@ -40,14 +37,14 @@
             <div class="seller_detail">
                 <img src="/../assets/images/2.png">
                 <div>
-                    <h2> AsKAki </h2>
-                    <p>Member since Nov 2021</p>
+                    <h2> {{username}} </h2>
+                    <p>Member since {{memberSince}}</p>
                 </div>
             </div>
         <!-- /banner -->
 <section class="product-details">
     <div class="image-slider" >
-        <div class="product-image" style="width: 500px;height: 500px;background-size: cover;position: relative;background-image: url(../../../assets/db/{{photo}});">
+        <div class="product-image" style="width: 500px;height: 500px;background-size: cover;position: relative;background-image: url();">
             <!-- '/../assets/images/pr2.jpg' -->
            
 

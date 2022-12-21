@@ -20,6 +20,11 @@ export class HomeComponent {
   topPosts:Post[] | undefined;
   path:string='/productview';
    ngOnInit () {
+    if(localStorage.getItem("user_login")==null){
+      document.getElementById("userbtn").style.visibility="visible"
+    }else{
+      document.getElementById("userbtn").style.visibility="visible"
+    }
     this.p1="/../assets/images/pr2.jpg" 
     
 
@@ -74,6 +79,7 @@ if(this.state=="Login"){
 log(state:string){
   if(state=="Log Out"){
     localStorage.removeItem("token");
+    localStorage.removeItem("user_id");
   }
 }
 view(id:number){

@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { User } from 'src/app/models/User';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-userprofile',
@@ -58,7 +59,15 @@ export class UserprofileComponent {
       .subscribe({
         next: (data: any) => {
           console.log(data);
-          if (data === 'Saved') alert('Saved');
+          if (data === 'Saved') {
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: "Saved",
+              showConfirmButton: false,
+              timer: 1500
+            })
+          }
         },
         error: (error: any) => {
           console.error(error);
