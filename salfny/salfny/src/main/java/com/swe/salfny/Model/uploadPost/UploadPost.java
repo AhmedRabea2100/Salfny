@@ -5,8 +5,20 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
-public class UploadPost {
+public class    UploadPost {
     public UploadPost() {
+    }
+
+    @Override
+    public String toString() {
+        return "UploadPost{" +
+                "title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", category_id=" + category_id +
+                ", user_id=" + user_id +
+                ", photo='" + photo + '\'' +
+                '}';
     }
 
     String title;

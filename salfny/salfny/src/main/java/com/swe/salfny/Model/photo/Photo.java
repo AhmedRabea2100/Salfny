@@ -1,7 +1,6 @@
 package com.swe.salfny.Model.photo;
 
 import com.swe.salfny.Model.post.Post;
-import com.swe.salfny.Model.user.User;
 import jakarta.persistence.*;
 
 @Entity
@@ -10,22 +9,29 @@ public class Photo {
     public Photo() {
     }
 
-    public Photo(String photo) {
+    public Photo(int id,String photo) {
+        this.id = id;
         this.photo = photo;
     }
 
+    public int getId() {
+        return id;
+    }
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     @Column(name = "url", nullable = false)
     private String photo;
 
-    public String getPhoto() {
+    public String getUrl() {
         return photo;
     }
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id", insertable = false, updatable = false)
+    private Post postt;
 
-    public void setPhoto(String photo) {
+    public void setUrl(String photo) {
         this.photo = photo;
     }
 

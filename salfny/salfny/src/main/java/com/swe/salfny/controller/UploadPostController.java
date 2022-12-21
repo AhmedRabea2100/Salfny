@@ -21,16 +21,15 @@ public class UploadPostController {
 
     @RequestMapping("/upload")
     public String upload(@RequestBody UploadPost uploadedPost) {
-        System.out.println("rg3t ya wlad");
         Post post = new Post(uploadedPost.getTitle(),uploadedPost.getDescription(),uploadedPost.getPrice(), uploadedPost.getCategory_id(), uploadedPost.getUser_id(),LocalDateTime.now());
-        Photo photo =new Photo(StorePhotoInPath(uploadedPost.getPhoto(), repo.findMaxId()));
         repo.save(post);
+        Photo photo =new Photo(repo.findMaxId(),StorePhotoInPath(uploadedPost.getPhoto(), repo.findMaxId()));
         image.save(photo);
         return "back ";
 
     }
 
-    public String StorePhotoInPath(String photo, Long i) {
+    public String StorePhotoInPath(String photo, int i) {
         String base64String = photo;
         String[] strings = base64String.split(",");
         String extension = switch (strings[0]) {//check image's extension
@@ -45,9 +44,9 @@ public class UploadPostController {
         String[] s1 = System.getProperty("user.dir").split("salfny");
         String out;
         if (s1[0].contains("/")) {
-            out = s1[0] + "Frontend/src/assets/images/" + i + "." + extension;//for Linux Users
+            out = s1[0] + "Frontend/src/assets/db/" + i + "." + extension;//for Linux Users
         } else {
-            out = s1[0] + "Frontend\\src\\assets\\images\\" + i + "." + extension;//for Windows Users
+            out = s1[0] + "Frontend\\src\\assets\\db\\" + i + "." + extension;//for Windows Users
         }
         try (OutputStream outputStream = new BufferedOutputStream(new FileOutputStream(out))) {
             outputStream.write(data);

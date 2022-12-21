@@ -18,7 +18,7 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
 
 
     @Query("SELECT MAX(id) FROM Post")
-    public Long findMaxId();
+    public int findMaxId();
 
     @Query(value = "SELECT p.* FROM post p ORDER BY p.views DESC LIMIT 10", nativeQuery = true)
     public List<Post> showTopTenViewedPosts();

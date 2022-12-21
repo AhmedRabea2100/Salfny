@@ -1,6 +1,6 @@
 package com.swe.salfny.Model.post;
 
-import com.swe.salfny.Model.image.Photo;
+import com.swe.salfny.Model.photo.Photo;
 import com.swe.salfny.Model.user.User;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
@@ -40,7 +40,7 @@ public class Post {
 
     @Column(name = "title", nullable = false, length = 45)
     private String title;
-    @Column(name = "address", nullable = false, length = 100)
+    @Column(name = "address", length = 100)
     private String address;
 
     public String getAddress() {
