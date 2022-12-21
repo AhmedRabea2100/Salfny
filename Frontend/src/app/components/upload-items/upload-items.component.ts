@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { UploadItem } from './upload-item';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-upload-items',
   templateUrl: './upload-items.component.html',
@@ -12,10 +14,10 @@ export class UploadItemsComponent {
 
   //selectedFile : File = null
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private router: Router) { }
 
 
-  uploadItem = new UploadItem('', '', 0, 0, '',1);
+  uploadItem = new UploadItem('', '', 0, 0, '',Number(localStorage.getItem("user_id")));
   categories = ['cars', 'department', 'bikes', 'suit', 'dresses', 'electronic devices', 'others'];
   categoryName:string;
   
@@ -61,15 +63,21 @@ export class UploadItemsComponent {
 
 
   submit() {
-    this.uploadItem.category =this.categories.indexOf(this.categoryName)
+    this.uploadItem.category_id =this.categories.indexOf(this.categoryName)
     
     const headerr = new HttpHeaders({ 'Content-Type': 'application/json' });
     this.http.post('http://localhost:8080/upload', this.uploadItem, { headers: headerr, responseType: 'text' })
       .subscribe({
 
         next: (data: any) => {
-          console.log("hii")
-          console.log(data)
+              Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Post has been added',
+                showConfirmButton: false,
+                timer: 1500
+              })
+              this.router.navigateByUrl('home')
         },
         error: (error: any) => {
           console.error(error);
@@ -79,8 +87,8 @@ export class UploadItemsComponent {
   
 
 
-  onSubmit() {this.uploadItem.category =this.categories.indexOf(this.categoryName)
+  onSubmit() {this.uploadItem.category_id =this.categories.indexOf(this.categoryName)
 
-    console.log(' title: ' + this.uploadItem.title + ', description: ' + this.uploadItem.description + 'price: ' + this.uploadItem.price + 'category ' + this.uploadItem.category + "sss");
+    console.log(' title: ' + this.uploadItem.title + ', description: ' + this.uploadItem.description + 'price: ' + this.uploadItem.price + 'category ' + this.uploadItem.category_id + "sss");
   }
 }
