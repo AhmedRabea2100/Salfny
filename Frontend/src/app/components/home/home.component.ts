@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { global } from 'src/app/global';
 import { Post } from 'src/types/post.type';
+import Swal from 'sweetalert2';
 import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
@@ -53,6 +54,21 @@ export class HomeComponent {
         
       }
       });
+}
+
+sell(){
+if(this.state=="Login"){
+  Swal.fire({
+    position: 'center',
+    icon: 'warning',
+    title: 'Please, login first!',
+    showConfirmButton: false,
+    timer: 1500
+  })
+  this.router.navigateByUrl('login')
+}else{
+  this.router.navigateByUrl('uploadItems')
+}
 }
 
 log(state:string){

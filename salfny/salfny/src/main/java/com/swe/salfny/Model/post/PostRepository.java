@@ -5,7 +5,6 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 
 public interface PostRepository extends JpaRepository<Post, Integer> {
@@ -17,6 +16,10 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
                     "JOIN user u ON u.id = pre.user_id WHERE u.email = ?1", nativeQuery = true)
     public List<Post> showPreferredPosts(String email);
 
+
+    @Query("SELECT MAX(id) FROM Post")
+    public int findMaxId();
+
     @Query(value = "SELECT p.* FROM post p ORDER BY p.views DESC LIMIT 10", nativeQuery = true)
     public List<Post> showTopTenViewedPosts();
 
@@ -26,4 +29,5 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
     @Transactional
     @Query(value = "UPDATE post SET views = views+1 WHERE id = ?1", nativeQuery = true)
     public void incrementViews(int id);
+
 }
