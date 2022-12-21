@@ -130,7 +130,7 @@
                     <div class="col-md-12">
                       <div class="form-group focused">
                         <label class="form-control-label" >Address</label>
-                        <input id="editable-Email" class="form-control form-control-alternative" [value]=user.address disabled>
+                        <input id="editable-Email" class="form-control form-control-alternative" [(ngModel)]=user.address name="address" disabled>
                       </div>
                     </div>
                   </div>
@@ -138,11 +138,11 @@
                     <div class="col-lg-4">
                       <div class="form-group focused">
                         <label class="form-control-label">Phone Number</label>
-                        <input id="editable-Phone" type="text" class="form-control form-control-alternative"  disabled [value]=user.phoneNumber>
+                        <input id="editable-Phone" type="text" class="form-control form-control-alternative"  disabled [(ngModel)]="user.phoneNumber" name="ph">
                       </div>
                     </div>
                     <div class="col-4 text-right">
-                      <button  href="#!" class="btn btn-sm btn-primary save-btn" (click)="editValue()">Save</button>
+                      <button id="saveBtn" href="#!" class="btn btn-sm btn-primary save-btn" (click)="editValue()" disabled>Save</button>
                     </div>
                     <!-- <div class="col-lg-4">
                       <div class="form-group focused">

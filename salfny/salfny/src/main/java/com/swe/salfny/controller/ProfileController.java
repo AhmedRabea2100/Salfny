@@ -8,11 +8,9 @@ import com.swe.salfny.Model.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -24,7 +22,6 @@ public class ProfileController {
     @Autowired
     private AuthHandler authHandler;
 
-    @CrossOrigin
     @GetMapping("/profile")
     public ResponseEntity<User> profile(@RequestHeader(name = "Authorization", required = false) String token) {
         HttpHeaders headers = new HttpHeaders();
@@ -37,5 +34,22 @@ public class ProfileController {
                     .headers(headers)
                     .body(null);
         }
+    }
+
+
+    @RequestMapping("/profile")
+    public String createAccount(@RequestBody User u) {
+
+        User user = repo.getProfile(u.getEmail());
+        user.setAddress(u.getAddress());
+        user.setPhoneNumber(u.getPhoneNumber());
+
+        // try to store to database
+        try {
+            repo.save(user);
+        } catch (Exception e) {
+            return e.getMessage();
+        }
+        return "Saved";
     }
 }

@@ -1,16 +1,19 @@
 package com.swe.salfny;
 
+import com.swe.salfny.Model.user.Credential;
+import com.swe.salfny.Model.user.UserRepository;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
-
-import com.swe.salfny.Model.user.Credential;
-import com.swe.salfny.Model.user.UserRepository;
-import io.jsonwebtoken.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
 @Component
 public class AuthHandler {
@@ -41,12 +44,7 @@ public class AuthHandler {
     }
 
     private Claims getAllClaimsFromToken(String token) {
-        Claims claims = null;
-        try {
-            claims = Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
-        } catch (Exception e) {
-            throw e;
-        }
+        Claims claims = Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
         return claims;
     }
 
@@ -82,8 +80,8 @@ public class AuthHandler {
     }
 
     public Boolean validateToken(String token) {
-        token = token.substring(token.indexOf(" ")+1);
         if (token != null) {
+            token = token.substring(token.indexOf(" ") + 1);
             try {
                 email = getEmailFromToken(token);
             } catch (IllegalArgumentException e) {
