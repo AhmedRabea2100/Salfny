@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.springframework.test.util.AssertionErrors.assertEquals;
 
 
 @DataJpaTest
@@ -65,9 +66,9 @@ public class UploadPostTest {
         Photo existPhoto1 = entityManager.find(Photo.class, savedPhoto1.getId());
         Post existPost2 = entityManager.find(Post.class, savedPost2.getId());
         Photo existPhoto2 = entityManager.find(Photo.class, savedPhoto2.getId());
+        assertEquals("Two posts have id incremental", existPost1.getId() + 1,existPost2.getId());
 
-        assertEquals(existPost1.getId() + 1, (existPost2.getId()));
-        assertEquals(existPhoto1.getId() + 1, (existPhoto2.getId()));
+        assertEquals("Two posts have id incremental",existPhoto1.getId() + 1, (existPhoto2.getId()));
     }
     @Test
     public void testUploadingPosts() {
@@ -85,7 +86,7 @@ public class UploadPostTest {
         Post existPost2 = entityManager.find(Post.class, savedPost2.getId());
         Photo existPhoto2 = entityManager.find(Photo.class, savedPhoto2.getId());
 
-        assertNotEquals((savedPost1.getTitle()), existPost2.getTitle());
+        assertNotEquals(savedPost1.getTitle(), existPost2.getTitle());
         assertNotEquals((savedPhoto1.getId()), existPhoto2.getId());
 
     }
