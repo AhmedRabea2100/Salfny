@@ -28,7 +28,7 @@ public class LoginTest {
 
     @BeforeEach
     public void createUser() {
-        User user = new User("Usef Ashraf", null, "usef@gmail.com", null, LocalDateTime.now(), "123456", "01150161459", 3, 3);
+        User user = new User("Usef Ashraf", null, "usef@gmail.com", null, LocalDateTime.now(), "123456789", "01150161459", 3, 3);
         repo.save(user);
     }
 
@@ -37,9 +37,9 @@ public class LoginTest {
     public void correctLoginTest() {
         Credential c = new Credential();
         c.setEmail("usef@gmail.com");
-        c.setPassword("123456");
+        c.setPassword("123456789");
         String password = repo.authenticate(c.getEmail());
-        assertEquals("Pass is correct", c.getPassword(), password);
+        assertEquals("Pass is correct", c.getPassword().substring(c.getPassword().indexOf(',')+1), password.substring(password.indexOf(',')+1));
     }
 
     @Test
@@ -47,7 +47,7 @@ public class LoginTest {
     public void wrongPassLoginTest() {
         Credential c = new Credential();
         c.setEmail("usef@gmail.com");
-        c.setPassword("1234569");
+        c.setPassword("1234555697");
         String password = repo.authenticate(c.getEmail());
         assertNotEquals("Pass is not correct", c.getPassword(), password);
     }
@@ -57,8 +57,19 @@ public class LoginTest {
     public void wrongUserNameLoginTest() {
         Credential c = new Credential();
         c.setEmail("j@gmail.com");
-        c.setPassword("1234569");
+        c.setPassword("123456789");
         String password = repo.authenticate(c.getEmail());
         assertEquals("Email not found", password, null);
+    }
+
+    @Test
+    @Order(4)
+
+    public void wrongPassFormat(){
+        Credential c = new Credential();
+        c.setEmail("usef@gmail.com");
+        c.setPassword("1234569");
+        assertEquals("Length of password is less than 8",c.getPassword().length()>=8,false);
+
     }
 }

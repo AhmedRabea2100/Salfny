@@ -1,7 +1,12 @@
 package com.swe.salfny.Model.post;
 
+import com.swe.salfny.Model.photo.Photo;
 import com.swe.salfny.Model.user.User;
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "post")
@@ -9,7 +14,7 @@ public class Post {
 
     public Post() {}
 
-    public Post(String title, String description, int price, Integer payment_option, int views, String date, int category_id, int user_id) {
+    public Post(String title, String description, int price, Integer payment_option, int views,  LocalDateTime date, int category_id, int user_id) {
         this.title = title;
         this.description = description;
         this.price = price;
@@ -18,6 +23,15 @@ public class Post {
         this.date = date;
         this.category_id = category_id;
         this.user_id = user_id;
+        this.address=address;
+    }
+    public Post(String title, String description, int price, int category_id, int user_id,LocalDateTime date) {
+        this.title = title;
+        this.description = description;
+        this.price = price;
+        this.category_id = category_id;
+        this.user_id = user_id;
+        this.date=date;
     }
 
     @Id
@@ -26,6 +40,12 @@ public class Post {
 
     @Column(name = "title", nullable = false, length = 45)
     private String title;
+    @Column(name = "address", length = 100)
+    private String address;
+
+    public String getAddress() {
+        return address;
+    }
 
     @Column(name = "description", length = 2000)
     private String description;
@@ -40,13 +60,22 @@ public class Post {
     private int views;
 
     @Column(name = "date", nullable = false)
-    private String date;
+    private LocalDateTime date;
 
     @Column(name = "category_id", nullable = false)
     private int category_id;
 
     @Column(name = "user_id", nullable = false)
     private int user_id;
+
+    @OneToMany(mappedBy = "postt", fetch = FetchType.LAZY)
+    private Set<Photo> photos;
+
+    public List<String> getPhotos() {
+        List<String> urls = new ArrayList<>(photos.size());
+        for(Photo photo:photos) urls.add(photo.getUrl());
+        return urls;
+    }
 
     public int getId() {
         return id;
@@ -92,8 +121,11 @@ public class Post {
         this.views++;
     }
 
-    public String getDate() {
+    public  LocalDateTime getDate() {
         return date;
+    }
+    public void setMemberSince(LocalDateTime memberSince) {
+        this.date = date;
     }
 
     public int getCategory_id() {
