@@ -1,82 +1,67 @@
-<!-- <head>
-    <link rel="stylesheet" href="/../home/home.css">
-    <link rel="stylesheet" href="/../home/products.css">
-</head> -->
-<body>
-    <div id="main">
-        <!-- header -->
-        <header>
-            <div class="top">
-                <div class="container">
-                    <div class="left">
-                        <div class="mainLogo">
-                                <img src="./assets/images/logo.png" alt="logo">
-                            
-                        </div>
-                        <div class="location">
-                            <!-- <i class="fas fa-globe-europe"></i> -->
-                            <input type="text" placeholder="Location..">
-                        </div>
-                        <div class="search">
-                            <div class="searchFieldDiv">
-                                <input type="text" placeholder="Search.." id="searchField">
-                            </div>
-                            <div class="searchBtnDiv">
-                                <button id="searchBtn"><i class="fas fa-search"></i></button>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <div class="right">
-                        <div class="signinBtnDiv">
-                            <div class="dropdown">
-                                <button id="signinBtn" class="showSignoutBtnHover" routerLink='/login'>
-                                    Login
-                                </button>
-                            
+<div class="product_img">
 
-                            </div>
-                        </div>
-                        <div class="sellBtnDiv">
-                            <button id="sellBtn">upload item</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="bottom">
-                <div class="container">
-                    <div class="dropdown">
-                        <a href="javascript:void(0)" id="browseCategories">Browse by Categories &nbsp; <i
-                                class="fas fa-angle-down"></i></a>
-                    
-                    </div>
-                </div>
-            </div>
-        </header>
-        <!-- /header -->
 
-        <!-- banner -->
-        <div class="mainBanner" id="mainBanner">
-            <img  alt="banner-image" id="mainBannerImg">
+    <div class="image_discription">
+        <div class="swiper">
+                <img src="/../assets/images/pr2.jpg"> 
         </div>
+    
+       
+    </div>
+
+    <div class="product_details">
+        <div class="box">
+            <div class="price">
+                <h3> 150</h3>
+            </div>
+            <span> Mi TV Stick </span>
+            <div class="location">
+                <p>Ghatkopar West, Mumbai, Maharashtra</p>
+                <p>Today</p>
+            </div>
+
+            
+                <button id="first" class="both">Add to Cart</button>
+                <button id="second" class="both">Add to Favourite</button>
+              
+        </div>
+
+        <div class="descriptiopn">
+            <h3> Descriptiopn </h3>
+            <p>Convert your TV into smart TV using HDMI of your TV. All online platform available downloaded. <br>
+                Include MI stick, Bluetooth remote, Power adapter. <br>
+                Condition new. <br>
+                MRP 3,500</p>
+        </div>
+
+
+        <div class="box" id="box2">
+            <p class="Seller_description"> Seller Description </p>
+            <div class="seller_detail">
+                <img src="/../assets/images/2.png">
+                <div>
+                    <h2> AsKAki </h2>
+                    <p>Member since Nov 2021</p>
+                </div>
+            </div>
         <!-- /banner -->
 <section class="product-details">
     <div class="image-slider" >
         <div class="product-image" style="width: 500px;height: 500px;background-size: cover;position: relative;background-image: url(../../../assets/db/{{photo}});">
             <!-- '/../assets/images/pr2.jpg' -->
            
+
         </div>
+
+
+      
+
+
     </div>
-    <section>
-        <div class="details">
-             <h2 class="product-brand">{{Name}}</h2>
-             <p class="product-short-des">{{description}}</p>
-             <span class="product-price">Price</span>
-             <span class="product-actual-price">{{price}}</span>
-             <span class="product-discount">(EGP)</span> 
-             <button class="btn cart-btn">add to cart</button>
-             <button class="btn">add to Favourites</button>
-         </div>
-     </section>
-</section>
-<footer></footer>
+
+
+
+</div>
+
+
+

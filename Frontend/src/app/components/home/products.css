@@ -143,8 +143,6 @@
 
 
 
-
-
 .prod-list {
     background-color: #dfe6e9;
     padding: 3em;
@@ -170,7 +168,7 @@
   
   .card .text {
     text-align: left;
-    margin-left: 2em;
+    /* margin-left: 2em; */
     margin-bottom: 0.5em;
     font-size: 12px;
   }
@@ -251,7 +249,7 @@
   
   .text,
   .title {
-    opacitiy: 1;
+    opacity: 1;
     transition: 0.5s ease;
   }
   

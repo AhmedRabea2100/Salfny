@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { User } from 'src/app/models/user';
+import { User } from 'src/app/models/User';
 
 @Component({
   selector: 'app-userprofile',

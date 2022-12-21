@@ -1,5 +1,4 @@
 <body>
-
     <div id="main">
         <!-- header -->
         <header>
@@ -58,9 +57,6 @@
         </header>
         <!-- /header -->
 
-
-
-
         <section class="product" > 
             <h2 class="product-category">Most Viewed</h2>
             <button class="pre-btn" disabled><img src="/../assets/images/arrow.png" alt=""></button>
@@ -83,30 +79,41 @@
             </div>
         </section>
 
+        <div>
+            <h1 class="align-center">Products</h1>
+        </div>
 
+        <div class="container">
+            <div class="row">
+              <div class="col-md-3" style="cursor: pointer;" *ngFor="let post of posts;"  [routerLink]="[path]" (click)="view(post.id)">
+                <div class="wsk-cp-product">
 
+                  <div class="wsk-cp-img">
+                    <img height="250px"    [src] = "sanitize(post.photos[0])" alt="Product" class="img-responsive" />
+                  </div>
 
+                  <div class="wsk-cp-text">
 
-        <section class="prod-list ">
-            <div>
-              <h1 class="align-center">
-                Products
-              </h1>
-            </div>
-            
-            <!-- <li >
-                <img src="{{post.date}}" alt="">
-                <div>
-                    {{post.title}}
-                </div>
-                <div>
-                    {{post.price}}$
-                </div>
-                <div>
-                    {{post.description}}
+                    <div class="category">
+                      <span>View</span>
+                    </div>
+
+                    <div class="title-product">
+                      <h3>{{post.title}}</h3>
+                    </div>
+
+                    <div class="description-prod">
+                      <p>{{post.description}}</p>
+                    </div>
+
+                    <div class="card-footer">
+                      <div class="wcf-left"><span class="price">{{post.price}}EGP</span></div>
+                      <div class="wcf-right">{{post.views}} Views</div>
+                    </div>
+                  </div>
+
                 </div>
             </li>
-       -->
             <div class="prod-container">
               
       
@@ -120,35 +127,14 @@
                 src = "../../../assets/db/{{post.photos[0]}}"
                 />
               </div>
-              <div class="text" style="width:15em;font-size: large;  overflow: hidden;
-;              text-overflow: ellipsis;height: 3em;">
-                
-                {{post.description}}
-              </div>
-              <div class="text" style="font-weight:bold;font-size: xx-large;">
-                
-                {{post.price}}<sup style="font-weight: normal;font-size:small">EGP</sup>
-              </div>
-               </div>
-               <div class="text" style="font-size: large;color: rgb(81, 77, 77);">
-                
-                {{post.address}}
-              </div>
-            <div>
-                <button  class="buy-button details">
-                  View 
-                </button>
             </div>
-           
-            </div>
-      
-      
-               </div>
-            
-            
-            
-          </section>
+        </div>
 
+
+    
 
 
     </div>
+    <!-- END-->
+</body>
+    
