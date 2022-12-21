@@ -1,66 +1,94 @@
 import { Component } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { UploadItem } from './upload-item';
-import { __values } from 'tslib';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-upload-items',
   templateUrl: './upload-items.component.html',
   styleUrls: ['./upload-items.component.css']
 })
+
 export class UploadItemsComponent {
-  constructor(private httpClient: HttpClient) { }
-   
 
-  title = 'ImageUploaderFrontEnd';
+  //selectedFile : File = null
 
-  //public selectedFile;
-  //public event1;
-  imgURL: any;
-  receivedImageData: any;
-  base64Data: any;
-  convertedImage: any;
+  constructor(private http: HttpClient,private router: Router) { }
 
-  uploadItem = new UploadItem('', '', '', '');
-   categories = [ 'cars','department', 'bikes','suit','dresses','electronic devices','others'];
 
-   onSubmit() {
+  uploadItem = new UploadItem('', '', 0, 0, '',Number(localStorage.getItem("user_id")));
+  categories = ['cars', 'department', 'bikes', 'suit', 'dresses', 'electronic devices', 'others'];
+  categoryName:string;
   
-    console.log(' title: ' + this.uploadItem.title + ', description: ' + this.uploadItem.description+ 'price: '+ this.uploadItem.price + 'category '+this.uploadItem.category+"sss" );
+  imageSrc: string;
+  imageName: string;
+  imageBlob: string;
+  myForm = new FormGroup({
+    name: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    file: new FormControl('', [Validators.required]),
+    fileSource: new FormControl('')
+  });
 
+
+
+  get f() {
+    return this.myForm.controls;
+  }
+
+  onFileChange(event) {
+    console.log(event)
+    const reader = new FileReader();
+
+    if (event.target.files && event.target.files.length) {
+      const [file] = event.target.files;
+      reader.readAsDataURL(file);
+
+      reader.onload = () => {
+
+        this.imageName = file.name
+        this.imageBlob = file
+        this.imageSrc = reader.result as string;
+        this.uploadItem.photo = this.imageSrc
+        console.log(reader.result)
+
+        this.myForm.patchValue({ fileSource: reader.result as string });
+        console.log(this.myForm.value)
+
+      };
+
+    }
+  }
+
+
+
+  submit() {
+    this.uploadItem.category_id =this.categories.indexOf(this.categoryName)
     
-  
+    const headerr = new HttpHeaders({ 'Content-Type': 'application/json' });
+    this.http.post('http://localhost:8080/upload', this.uploadItem, { headers: headerr, responseType: 'text' })
+      .subscribe({
+
+        next: (data: any) => {
+              Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Post has been added',
+                showConfirmButton: false,
+                timer: 1500
+              })
+              this.router.navigateByUrl('home')
+        },
+        error: (error: any) => {
+          console.error(error);
+        }
+      });
   }
   
 
-  /*public  onFileChanged(event) {
-    console.log(event);
-    this.selectedFile = event.target.files[0];
 
-    // Below part is used to display the selected image
-    let reader = new FileReader();
-    reader.readAsDataURL(event.target.files[0]);
-    reader.onload = (event2) => {
-      this.imgURL = reader.result;
-  };*/
+  onSubmit() {this.uploadItem.category_id =this.categories.indexOf(this.categoryName)
 
+    console.log(' title: ' + this.uploadItem.title + ', description: ' + this.uploadItem.description + 'price: ' + this.uploadItem.price + 'category ' + this.uploadItem.category_id + "sss");
+  }
 }
- // This part is for uploading
- /*onUpload() {
-
-
-  const uploadData = new FormData();
-  uploadData.append('myFile', this.selectedFile, this.selectedFile.name);
-
-
-  this.httpClient.post('http://localhost:8080/check/upload', uploadData)
-  .subscribe(
-               res => {console.log(res);
-                       this.receivedImageData = res;
-                       this.base64Data = this.receivedImageData.pic;
-                       this.convertedImage = 'data:image/jpeg;base64,' + this.base64Data; },
-               err => console.log('Error Occured duringng saving: ' + err)
-            );
-
-
- }
-}*/

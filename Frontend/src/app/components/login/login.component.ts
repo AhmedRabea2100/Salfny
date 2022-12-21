@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Login} from '../../../types/login.type';
 import { global } from 'src/app/global';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -38,9 +39,23 @@ export class LoginComponent implements OnInit{
     .subscribe({
         next: (data: string) => {
             if(data==="Email not found"){
-              alert("Email not Found")
+              Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Email not Found',
+                showConfirmButton: false,
+                timer: 1500
+              })
+             
             }else if(data==="Incorrect password"){
-              alert("Incorrect password")  
+              Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Incorrect password',
+                showConfirmButton: false,
+                timer: 1500
+              })
+              
             }
             else{
               localStorage.setItem("token",data.split(" ")[0]);

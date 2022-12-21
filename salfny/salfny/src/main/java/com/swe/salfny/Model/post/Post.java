@@ -1,9 +1,9 @@
 package com.swe.salfny.Model.post;
 
-import com.swe.salfny.Model.image.Photo;
+import com.swe.salfny.Model.photo.Photo;
 import com.swe.salfny.Model.user.User;
 import jakarta.persistence.*;
-
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -14,7 +14,7 @@ public class Post {
 
     public Post() {}
 
-    public Post(String title, String description, int price, Integer payment_option, int views, String date, int category_id, int user_id, String address) {
+    public Post(String title, String description, int price, Integer payment_option, int views,  LocalDateTime date, int category_id, int user_id) {
         this.title = title;
         this.description = description;
         this.price = price;
@@ -25,6 +25,14 @@ public class Post {
         this.user_id = user_id;
         this.address=address;
     }
+    public Post(String title, String description, int price, int category_id, int user_id,LocalDateTime date) {
+        this.title = title;
+        this.description = description;
+        this.price = price;
+        this.category_id = category_id;
+        this.user_id = user_id;
+        this.date=date;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +40,7 @@ public class Post {
 
     @Column(name = "title", nullable = false, length = 45)
     private String title;
-    @Column(name = "address", nullable = false, length = 100)
+    @Column(name = "address", length = 100)
     private String address;
 
     public String getAddress() {
@@ -52,7 +60,7 @@ public class Post {
     private int views;
 
     @Column(name = "date", nullable = false)
-    private String date;
+    private LocalDateTime date;
 
     @Column(name = "category_id", nullable = false)
     private int category_id;
@@ -113,8 +121,11 @@ public class Post {
         this.views++;
     }
 
-    public String getDate() {
+    public  LocalDateTime getDate() {
         return date;
+    }
+    public void setMemberSince(LocalDateTime memberSince) {
+        this.date = date;
     }
 
     public int getCategory_id() {
