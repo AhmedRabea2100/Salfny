@@ -61,15 +61,20 @@ public class LoginTest {
         String password = repo.authenticate(c.getEmail());
         assertEquals("Email not found", password, null);
     }
-
     @Test
     @Order(4)
+    public void passwordIsNullTest(){
+        Credential c = new Credential();
+        c.setEmail("usef@gmail.com");
+        assertEquals("Password is not allow to be null",c.getPassword(),null);
+    }
 
+    @Test
+    @Order(5)
     public void wrongPassFormat(){
         Credential c = new Credential();
         c.setEmail("usef@gmail.com");
         c.setPassword("1234569");
         assertEquals("Length of password is less than 8",c.getPassword().length()>=8,false);
-
     }
 }

@@ -1,8 +1,10 @@
+
 package com.swe.salfny;
 
 import com.swe.salfny.Model.post.Post;
 import com.swe.salfny.Model.post.PostRepository;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -35,14 +37,16 @@ public class HomePageTest {
     }
 
     @Test
+    @Order(1)
     public void zeroPosts() {
         List<Post> result = repo.showRecentPosts(0, 3);
         assertEquals("Size = 0", 0, result.size());
     }
 
     @Test
+    @Order(2)
     public void onePost() {
-        Post post = new Post("title", null, 15, null, 3, LocalDateTime.now(), 1, 1);
+        Post post = new Post("title", "null", 15, 1, 1, LocalDateTime.now());
         repo.save(post);
         List<Post> result = repo.showRecentPosts(0, 3);
         assertEquals("Size = 1", 1, result.size());
@@ -50,10 +54,11 @@ public class HomePageTest {
     }
 
     @Test
+    @Order(3)
     public void threePostsSameOrder() {
-        Post post1 = new Post("title1", null, 15, null, 3, LocalDateTime.now(), 1, 1);
-        Post post2 = new Post("title2", "null", 16, null, 4, LocalDateTime.now(), 1, 1);
-        Post post3 = new Post("title3", "f", 17, null, 1, LocalDateTime.now(), 1, 1);
+        Post post1 =  new Post("title", "null", 15, 1, 1, LocalDateTime.now());
+        Post post2 = new Post("title", "null", 20, 1, 1, LocalDateTime.now());
+        Post post3 =  new Post("title", "null", 25, 1, 1, LocalDateTime.now());
         repo.save(post1);
         repo.save(post2);
         repo.save(post3);
@@ -65,51 +70,52 @@ public class HomePageTest {
     }
 
     @Test
+    @Order(4)
     public void threePostsDifferentOrder() {
-        Post post1 = new Post("title1", null, 15, null, 3, LocalDateTime.now(), 1, 1);
-        Post post2 = new Post("title2", "null", 16, null, 4, LocalDateTime.now(), 1, 1);
-        Post post3 = new Post("title3", "f", 17, null, 1, LocalDateTime.now(), 1, 1);
+        Post post1 =  new Post("title", null, 15, 0, 1, LocalDateTime.now());
+        Post post2 = new Post("title", null, 20, 1, 1, LocalDateTime.now());
+        Post post3 =  new Post("title", null, 25, 2, 1, LocalDateTime.now());
         repo.save(post1);
         repo.save(post2);
         repo.save(post3);
         List<Post> result = repo.showRecentPosts(0, 3);
         assertEquals("Size = 3", 3, result.size());
-        assertTrue("1st", samePost(post2, result.get(0)));
-        assertTrue("2nd", samePost(post3, result.get(1)));
-        assertTrue("3rd", samePost(post1, result.get(2)));
-    }
-
-    @Test
-    public void fourPostsDifferentOrderPageOne() {
-        Post post1 = new Post("title1", null, 15, null, 3, LocalDateTime.now(), 1, 1);
-        Post post2 = new Post("title2", "null", 16, null, 4,LocalDateTime.now(), 1, 1);
-        Post post3 = new Post("title3", "f", 17, null, 1, LocalDateTime.now(), 1, 1);
-        Post post4 = new Post("title4", "", 1, 2, 1, LocalDateTime.now(), 1, 1);
-        repo.save(post1);
-        repo.save(post2);
-        repo.save(post3);
-        repo.save(post4);
-        List<Post> result = repo.showRecentPosts(0, 3);
-        assertEquals("Size = 3", 3, result.size());
-        assertTrue("1st", samePost(post4, result.get(0)));
+        assertTrue("1st", samePost(post1, result.get(0)));
         assertTrue("2nd", samePost(post2, result.get(1)));
         assertTrue("3rd", samePost(post3, result.get(2)));
     }
 
     @Test
-    public void fourPostsDifferentOrderPageTwo() {
-        Post post1 = new Post("title1", null, 15, null, 3, LocalDateTime.now(), 1, 1);
-        Post post2 = new Post("title2", "null", 16, null, 4, LocalDateTime.now(), 1, 1);
-        Post post3 = new Post("title3", "f", 17, null, 1, LocalDateTime.now(), 1, 1);
-        Post post4 = new Post("title4", "", 1, 2, 1, LocalDateTime.now(), 1, 1);
+    @Order(5)
+    public void fourPostsDifferentOrderPageOne() {
+        Post post1 =  new Post("a", null, 15, 0, 1, LocalDateTime.now());
+        Post post2 = new Post("b", null, 20, 1, 1, LocalDateTime.now());
+        Post post3 =  new Post("c", null, 25, 2, 1, LocalDateTime.now());
+        Post post4 =  new Post("d", null, 30, 4, 1, LocalDateTime.now());
         repo.save(post1);
         repo.save(post2);
         repo.save(post3);
         repo.save(post4);
-        List<Post> result = repo.showRecentPosts(3, 3);
-        assertEquals("Size = 1", 1, result.size());
-        assertTrue("4th", samePost(post1, result.get(0)));
+        List<Post> result = repo.showRecentPosts(0, 3);
+        assertEquals("Size = 3", 3, result.size());
+        assertTrue("1st", !samePost(post4, result.get(0)));
+        assertTrue("2nd",samePost(post2, result.get(1)));
+        assertTrue("3rd", samePost(post3, result.get(2)));
     }
+
+    @Test
+    @Order(6)
+    public void showTopTenTest() {
+        for(int i = 1;i<=12;i++)
+        {
+            Post post =  new Post("title" + i, null, 5*i,null, i, LocalDateTime.now(),1,1);
+            repo.save(post);
+        }
+        List<Post> result = repo.showTopTenViewedPosts();
+        assertEquals("Size = 10", 10, result.size());
+        assertEquals("top View",12,result.get(0).getViews());
+    }
+
 
     private boolean samePost(Post post1, Post post2) {
         return post1.getTitle().equals(post2.getTitle()) &&
@@ -122,3 +128,6 @@ public class HomePageTest {
                 post1.getUser_id() == post2.getUser_id();
     }
 }
+
+
+

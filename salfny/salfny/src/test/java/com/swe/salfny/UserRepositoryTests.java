@@ -45,11 +45,8 @@ public class UserRepositoryTests {
     @Order(1)
     public void createAccountTest() {
 
-        User user = new User();
-        user.setEmail("ahmed@gmail.com");
-        user.setPassword("123456789");
-        user.setUsername("ahmed");
-        user.setPhoneNumber("01071748312");
+        User  user = new User("Usef Ashraf", null, "usef1@gmail.com", null, LocalDateTime.now(), "123456789", "01150161459", 3, 3);
+
         User savedUser = repo.save(user);
         User existUser = entityManager.find(User.class, savedUser.getId());
         assertEquals("Registration Succeeded",user.getEmail(),existUser.getEmail());
