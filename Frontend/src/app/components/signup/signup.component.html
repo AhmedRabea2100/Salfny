@@ -1,15 +1,14 @@
+<body>
 <div class="box-form">
     <div class="left">
         <div class="overlay">
-            <span>
-            </span>
+
         </div>
 
-        <hr />
     </div>
 
     <div class="right">
-        <h2>Signup</h2>
+        <label>Signup</label>
 
         <p>You have an account already? <a routerLink='/login' routerLinkActive="Active">Sign in</a></p>
         <form class="inputs" (ngSubmit)="onSubmit()" #signupForm="ngForm">
@@ -53,3 +52,4 @@
     </div>
     <router-outlet></router-outlet>
 </div>
+</body>

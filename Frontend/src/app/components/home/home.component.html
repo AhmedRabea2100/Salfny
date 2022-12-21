@@ -37,7 +37,7 @@
                         </div>
 
                         <div class="sellBtnDiv">
-                            <button id="sellBtn" routerLink='/uploadItems'>sell item</button>
+                            <button id="sellBtn" (click)="sell()">sell item</button>
                         </div>
                         
                         <div class="profile">
@@ -70,7 +70,7 @@
                 <div class="product-card" routerLinkActive="active" *ngFor="let post of topPosts;"  [routerLink]="[path]" (click)="view(post.id)">
                     <div class="product-image">
 
-                        <img src="{{post.photos[0]}}" class="product-thumb" alt="">
+                        <img src="../../../assets/db/{{post.photos[0]}}" class="product-thumb" alt="">
                         <button class="card-btn">view product</button>
                     </div>
                     <div class="product-info">
@@ -117,7 +117,7 @@
               <div class="title">{{post.title}}</div>
               <div class="image">
                 <img height="200rm"
-                [src] = "sanitize(post.photos[0])"
+                src = "../../../assets/db/{{post.photos[0]}}"
                 />
               </div>
               <div class="text" style="width:15em;font-size: large;  overflow: hidden;
