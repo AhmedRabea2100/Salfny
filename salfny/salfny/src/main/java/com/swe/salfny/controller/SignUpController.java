@@ -1,10 +1,11 @@
 package com.swe.salfny.controller;
 
-import com.swe.salfny.user.User;
-import com.swe.salfny.user.UserRepository;
+import com.swe.salfny.Model.user.User;
+import com.swe.salfny.Model.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
 
@@ -15,7 +16,6 @@ public class SignUpController {
     private UserRepository repo;
     private final int LOG_ROUNDS = 12;
 
-    //@CrossOrigin
     @RequestMapping("/signup")
     public String createAccount(@RequestBody User u) {
 
@@ -26,7 +26,7 @@ public class SignUpController {
             return "This Email is already used";
 
         u.setMemberSince(LocalDateTime.now());
-        u.setPassword(BCrypt.hashpw(u.getPassword(), BCrypt.gensalt(LOG_ROUNDS)));
+        u.hashPassword(LOG_ROUNDS);
 
         // try to store to database
         try {

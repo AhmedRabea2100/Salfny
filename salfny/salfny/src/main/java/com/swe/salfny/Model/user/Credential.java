@@ -1,4 +1,4 @@
-package com.swe.salfny.user;
+package com.swe.salfny.Model.user;
 
 public class Credential {
     private String email;

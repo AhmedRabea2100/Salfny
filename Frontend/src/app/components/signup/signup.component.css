@@ -7,21 +7,27 @@
 	
   }
   /*//////////////////////////////*/
-  @media (max-width: 980px) {
+
   body {
-    background-image: linear-gradient(135deg, #FAB2FF 10%, #1904E5 100%);
+    min-height: 100vh;
+    background: linear-gradient(to top, #053777 0%, #00659b 100%);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
     font-family: "Open Sans", sans-serif;
     color: #333333;
+
   }
-}
-  h2{
-		font-size: 6vmax;
-		line-height: 0;
-		top:50px
-	  
+
+
+.box-form .right label{
+			font-size: 6vmax;
+      color: #053777;
+      font-weight:600;
+    display: block;
+    position: relative;
+    margin-top: 30px;
+	margin-bottom: 0;
   }
   
   .box-form {
@@ -80,12 +86,15 @@
   }
   
   .box-form .left .overlay {
-    padding: 30px;
+    margin-top: 0;
+    padding: 700px;
     width: 100%;
-    height: 100%;
-    background: #5961f9ad;
+    height: auto;
+    background-size: cover;
+    background-position: center;
+    background:  linear-gradient(to top, #053777 0%, #00659b60 100%);
+  
     overflow: hidden;
-    box-sizing: border-box;
   }
   
   
@@ -97,9 +106,9 @@
   }
   .right .req{
     background-color:#ffcccc;
-     font-weight: 100;
-    font-size: 20px;
-    
+     font-weight:100;
+    font-size: 15px;
+    width: auto;
   }
   @media (max-width: 980px) {
     .right {
@@ -138,7 +147,7 @@
     border-bottom: 2px solid #B0B3B9;
   }*/
  
-   .right button { 
+   .box-form .right button { 
     font-size: 16px;
     padding: 12px 35px;
     border-radius: 50px;
@@ -146,7 +155,7 @@
     border: 0;
     outline: 0;
     cursor: pointer;
-    background-color:cornflowerblue;
+    background-color: cornflowerblue;
    
   }
  

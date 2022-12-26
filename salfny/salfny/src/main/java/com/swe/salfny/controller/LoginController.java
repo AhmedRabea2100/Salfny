@@ -1,8 +1,8 @@
 package com.swe.salfny.controller;
 
 import com.swe.salfny.AuthHandler;
-import com.swe.salfny.user.Credential;
-import com.swe.salfny.user.UserRepository;
+import com.swe.salfny.Model.user.Credential;
+import com.swe.salfny.Model.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,13 +22,13 @@ public class LoginController {
     @RequestMapping("/login")
     public String login(@RequestBody Credential c) {
         String email = c.getEmail();
-        String password = repo.authenticate(email);
+        String c2 = repo.authenticate(email);
 
-        if (password == null)
+        if (c2 == null)
             return "Email not found";
 
-        if (BCrypt.checkpw(c.getPassword(), password)) {
-            return authHandler.generateToken(c);
+        if (BCrypt.checkpw(c.getPassword(), c2.substring(c2.indexOf(',') + 1))) {
+            return authHandler.generateToken(c) + " " + c2.substring(0, c2.indexOf(','));
         }
         return "Incorrect password";
     }

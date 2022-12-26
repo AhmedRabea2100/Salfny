@@ -1,12 +1,13 @@
+<body>
 <div class="box-form">
 	<div class="left">
 		<div class="overlay">
 		</div>
 	</div>
 	<div class="right">
-		<h5>Login</h5>
+		<label>Login</label>
 		<nav>
-			<p>Don't have an account? <a routerLink='/signup' routerLinkActive="Active">Create Your Account</a> it takes
+			<p>Don't have an account? <a routerLink='/signup' routerLinkActive="Active">Create Your Account</a> <br>it takes
 				less than a minute</p>
 		</nav>
 		<form class="inputs" (ngSubmit)="onSubmit()"  #loginForm="ngForm">
@@ -22,9 +23,10 @@
             </div>
 			<div [hidden]="pswd.valid || pswd.pristine" class="alert alert-danger" class="req" >Password is required</div>
 			<br><br>
-		<button  type="submit" [disabled]="!loginForm.form.valid">Login</button>
+		<button  type="submit"  class="btn btn-success"   [disabled]="!loginForm.form.valid">Login</button>
 		</form>
 		
 	</div>
 	<router-outlet></router-outlet>
 </div>
+</body>

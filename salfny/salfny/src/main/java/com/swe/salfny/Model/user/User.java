@@ -1,7 +1,8 @@
-package com.swe.salfny.user;
+package com.swe.salfny.Model.user;
 
-import com.swe.salfny.post.Post;
+import com.swe.salfny.Model.post.Post;
 import jakarta.persistence.*;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import java.time.LocalDateTime;
 import java.util.Set;
@@ -96,12 +97,12 @@ public class User {
         this.profilePic = profilePic;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void hashPassword(int LOG_ROUNDS) {
+        password = BCrypt.hashpw(password, BCrypt.gensalt(LOG_ROUNDS));
     }
 
     public String getPhoneNumber() {
@@ -138,4 +139,5 @@ public class User {
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private Set<Post> posts;
+
 }
