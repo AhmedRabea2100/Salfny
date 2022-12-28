@@ -41,8 +41,27 @@
     box-sizing: border-box;
   }
   
-  .edit-btn{
+  .edit-btn,
+  .user-posts-btn,
+  .user-fav-posts-btn{
     font-size: 20px !important;
+  }
+
+  .user-posts-btn,
+  .user-fav-posts-btn{
+    margin-bottom: 15px;
+  }
+
+  .user-posts-btn{
+    background-color:#2dce89 !important;
+    border: none !important;
+    width: 100%;
+  }
+
+  .user-fav-posts-btn{
+    width: 100%;
+    background-color:yellow !important;
+    border: none !important;
   }
 
   .save-btn{
