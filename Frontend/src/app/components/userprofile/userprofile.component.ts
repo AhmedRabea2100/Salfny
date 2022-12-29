@@ -12,6 +12,9 @@ export class UserprofileComponent {
   constructor(private http: HttpClient) {}
 
   user!: User;
+  changePassword: boolean = false;
+  samePassword: boolean = false;
+  confirmPassword: string = "";
   ngOnInit() {
     const header = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -30,21 +33,46 @@ export class UserprofileComponent {
   }
 
   setEnable() {
-    const x = document.getElementById('editable-Email');
+    const u = document.getElementById('editable-username');
+    u?.removeAttribute('disabled');
+    const x = document.getElementById('editable-address');
     x?.removeAttribute('disabled');
     const y = document.getElementById('editable-Phone');
     y?.removeAttribute('disabled');
     const z = document.getElementById('saveBtn');
     z?.removeAttribute('disabled');
+    const c = document.getElementById('changePass');
+    c?.removeAttribute('hidden');
+    this.samePassword = true;
   }
   editValue() {
-    const x = document.getElementById('editable-Email');
+    const u = document.getElementById('editable-username');
+    u?.setAttribute('disabled', 'true');
+    const x = document.getElementById('editable-address');
     x?.setAttribute('disabled', 'true');
     const y = document.getElementById('editable-Phone');
     y?.setAttribute('disabled', 'true');
     const z = document.getElementById('saveBtn');
     z?.setAttribute('disabled', 'true');
+    const c = document.getElementById('changePass');
+    c?.setAttribute('hidden', 'true');
+    this.changePassword = false;
     this.save();
+  }
+
+  changePass() {
+    this.changePassword = true;
+    const c = document.getElementById('changePass');
+    c?.setAttribute('hidden', 'true');
+    this.samePassword = false;
+  }
+
+  isSamePassword() {
+    if (this.user.password === this.confirmPassword) {
+      this.samePassword = true;
+    } else {
+      this.samePassword = false;
+    }
   }
 
   save() {

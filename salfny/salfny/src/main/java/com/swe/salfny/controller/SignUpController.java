@@ -26,7 +26,7 @@ public class SignUpController {
             return "This Email is already used";
 
         u.setMemberSince(LocalDateTime.now());
-        u.hashPassword(LOG_ROUNDS);
+        u.hashPassword();
 
         // try to store to database
         try {

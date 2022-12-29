@@ -41,8 +41,7 @@ public class ProfileController {
     public String createAccount(@RequestBody User u) {
 
         User user = repo.getProfile(u.getEmail());
-        user.setAddress(u.getAddress());
-        user.setPhoneNumber(u.getPhoneNumber());
+        user.update(u);
 
         // try to store to database
         try {
