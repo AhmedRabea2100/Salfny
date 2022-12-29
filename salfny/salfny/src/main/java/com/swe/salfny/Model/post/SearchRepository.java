@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface SearchRepository extends JpaRepository<Post, Integer> {
     @Query(value =  "SELECT * FROM post p WHERE p.title LIKE %:word% OR p.description LIKE %:word%",nativeQuery = true)
-    public List<Post> searchLike(@Param("word") String word);
+    public List<Post> searchLike( String word);
 
 
 
