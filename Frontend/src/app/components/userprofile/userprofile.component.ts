@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./userprofile.component.css'],
 })
 export class UserprofileComponent {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   user!: User;
   changePassword: boolean = false;
@@ -81,9 +81,9 @@ export class UserprofileComponent {
       authentication: 'key',
     });
     this.http.post('http://localhost:8080/profile', this.user, {
-        headers: header,
-        responseType: 'text',
-      })
+      headers: header,
+      responseType: 'text',
+    })
       .subscribe({
         next: (data: any) => {
           console.log(data);
@@ -102,4 +102,35 @@ export class UserprofileComponent {
         },
       });
   }
+
+
+  onFileChange(event: any) {
+    // console.log(event)
+    // const reader = new FileReader();
+
+    // if (event.target.files && event.target.files.length) {
+    //   const [file] = event.target.files;
+    //   reader.readAsDataURL(file);
+
+    //   reader.onload = () => {
+
+    //     this.imageName = file.name
+    //     this.imageBlob = file
+    //     this.imageSrc = reader.result as string;
+    //     this.uploadItem.photo = this.imageSrc
+    //     console.log(reader.result)
+
+    //     this.myForm.patchValue({ fileSource: reader.result as string });
+    //     console.log(this.myForm.value)
+
+    //   };
+
+    // }
+  }
+  fun() {
+    document.getElementById("images").click();
+  }
+
+
+
 }

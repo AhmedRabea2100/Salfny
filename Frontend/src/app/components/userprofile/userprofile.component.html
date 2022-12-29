@@ -3,7 +3,8 @@
 <body>
   <div class="main-content">
     <!-- Header -->
-    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 650px; background-image: url(https://raw.githubusercontent.com/creativetimofficial/argon-dashboard/gh-pages/assets-old/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
+      style="min-height: 650px; background-image: url(https://raw.githubusercontent.com/creativetimofficial/argon-dashboard/gh-pages/assets-old/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
       <!-- Mask -->
       <span class="mask bg-gradient-default opacity-8"></span>
     </div>
@@ -16,8 +17,9 @@
             <div class="row justify-content-center">
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
-                  <a href="#">
-                    <img [src]=user.profilePic class="rounded-circle">
+                  <a (click)="fun()" style="cursor: pointer;">
+                    <input id="images" type="file" (change)="onFileChange($event)" style="display: none;">
+                    <img src="../../../assets/images/222.png" class="rounded-circle">
                   </a>
                 </div>
               </div>
@@ -50,10 +52,11 @@
 
                   </div>
                   <div class="col-1">
-                    <button  class="btn btn-sm btn-primary user-posts-btn" routerLink="/userPosts">My Posts</button>
+                    <button class="btn btn-sm btn-primary user-posts-btn" routerLink="/userPosts">My Posts</button>
                   </div>
                   <div class="col-1">
-                    <button class="btn btn-sm btn-primary user-fav-posts-btn" routerLink="/userFavPosts">Favourite Posts</button>
+                    <button class="btn btn-sm btn-primary user-fav-posts-btn" routerLink="/userFavPosts">Favourite
+                      Posts</button>
                   </div>
                 </div>
               </div>
@@ -62,12 +65,12 @@
                 <h3>
                   {{user.username}}
                 </h3>
-                
+
 
                 <div class="h2 font-weight-600">
                   Member Since {{user.memberSince[0]}}
                 </div>
-                
+
                 <!-- <div class="h5 mt-4">
                   <i class="ni business_briefcase-24 mr-2"></i>Solution Manager - Creative Tim Officer
                 </div>
@@ -88,7 +91,7 @@
                   <h3 class="mb-0">My account</h3>
                 </div>
                 <div class="col-4 text-right">
-                  <button  href="#!" class="btn btn-sm btn-primary edit-btn" (click)="setEnable()">Edit</button>
+                  <button href="#!" class="btn btn-sm btn-primary edit-btn" (click)="setEnable()">Edit</button>
                 </div>
               </div>
             </div>
@@ -101,7 +104,8 @@
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-username">Username</label>
-                        <input id="editable-username" type="text" class="form-control form-control-alternative" [(ngModel)]=user.username name=username disabled>
+                        <input id="editable-username" type="text" class="form-control form-control-alternative"
+                          [(ngModel)]=user.username name=username disabled>
                       </div>
                     </div>
 
@@ -117,15 +121,18 @@
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label">New password</label>
-                        <input type="password" class="form-control form-control-alternative" [(ngModel)]=user.password name="pass" (keyup)="isSamePassword()" #pswd="ngModel" required minlength="8">
-                        <div [hidden]="pswd.valid || pswd.pristine" class="alert alert-danger">Password is required(minlength required= 8)</div>
+                        <input type="password" class="form-control form-control-alternative" [(ngModel)]=user.password
+                          name="pass" (keyup)="isSamePassword()" #pswd="ngModel" required minlength="8">
+                        <div [hidden]="pswd.valid || pswd.pristine" class="alert alert-danger">Password is
+                          required(minlength required= 8)</div>
                       </div>
                     </div>
 
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label">Confirm password</label>
-                        <input type="password" (keyup)="isSamePassword()" class="form-control form-control-alternative" [(ngModel)]=confirmPassword name="cnfpass">
+                        <input type="password" (keyup)="isSamePassword()" class="form-control form-control-alternative"
+                          [(ngModel)]=confirmPassword name="cnfpass">
                         <div [hidden]="samePassword" class="alert alert-danger">Password did not match</div>
                       </div>
                     </div>
@@ -135,8 +142,9 @@
 
 
 
-                  <label class="form-control-label" id="changePass"(click)="changePass()" hidden="true" >Change password ?</label>
-<!-- 
+                  <label class="form-control-label" id="changePass" (click)="changePass()" hidden="true">Change password
+                    ?</label>
+                  <!-- 
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group focused">
@@ -160,8 +168,9 @@
                   <div class="row">
                     <div class="col-md-12">
                       <div class="form-group focused">
-                        <label class="form-control-label" >Address</label>
-                        <input id="editable-address" class="form-control form-control-alternative" [(ngModel)]=user.address name="address" disabled>
+                        <label class="form-control-label">Address</label>
+                        <input id="editable-address" class="form-control form-control-alternative"
+                          [(ngModel)]=user.address name="address" disabled>
                       </div>
                     </div>
                   </div>
@@ -169,11 +178,13 @@
                     <div class="col-lg-4">
                       <div class="form-group focused">
                         <label class="form-control-label">Phone Number</label>
-                        <input id="editable-Phone" type="text" class="form-control form-control-alternative" disabled [(ngModel)]="user.phoneNumber" name="ph">
+                        <input id="editable-Phone" type="text" class="form-control form-control-alternative" disabled
+                          [(ngModel)]="user.phoneNumber" name="ph">
                       </div>
                     </div>
                     <div class="col-4 text-right">
-                      <button id="saveBtn" href="#!" class="btn btn-sm btn-primary save-btn" (click)="editValue()" [disabled]="!samePassword || (confirmPassword.length > 0 && confirmPassword.length < 8)">Save</button>
+                      <button id="saveBtn" href="#!" class="btn btn-sm btn-primary save-btn" (click)="editValue()"
+                        [disabled]="!samePassword || (confirmPassword.length > 0 && confirmPassword.length < 8)">Save</button>
                     </div>
                     <!-- <div class="col-lg-4">
                       <div class="form-group focused">
