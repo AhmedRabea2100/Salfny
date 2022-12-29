@@ -22,6 +22,7 @@ export class SearchComponent {
   categories = ['All','cars', 'department', 'bikes', 'suit', 'dresses', 'electronic devices', 'others'];
   categoryName=localStorage.getItem('category')
   searchWord:string
+  categoryWord:string
   products='Products'
   logged:any
   state:any
@@ -75,6 +76,8 @@ category(){
 searchh(){
 
   this.searchWord = (<HTMLInputElement>document.getElementById("searchField")).value||" ";
+  this.categoryWord = localStorage.getItem('category');
+  this.searchWord += "@" + this.categoryWord;
 
   const headerr=new HttpHeaders({'Content-Type': 'application/json' ,'authentication': 'key' });
   this.http.post<Post[]>('http://localhost:8080/search',this.searchWord,{ headers: headerr}
