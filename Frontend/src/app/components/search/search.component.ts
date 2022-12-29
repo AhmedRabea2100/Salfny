@@ -20,7 +20,7 @@ export class SearchComponent {
 
   constructor (private router: Router,private http: HttpClient,private activatedRoute: ActivatedRoute,private sanitizer:DomSanitizer) {}
   categories = ['All','cars', 'department', 'bikes', 'suit', 'dresses', 'electronic devices', 'others'];
-  categoryName=localStorage.getItem('category')
+  categoryName='All'
   searchWord:string
   categoryWord:string
   products='Products'
@@ -52,7 +52,7 @@ export class SearchComponent {
    
 }
 category(){
-  
+  this.categoryName=localStorage.getItem('category')
   localStorage.setItem("category",this.categoryName + "")
   this.products=this.categoryName
   const headerr=new HttpHeaders({'Content-Type': 'application/json' ,'authentication': 'key' });
