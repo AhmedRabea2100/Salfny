@@ -1,1 +1,108 @@
-<p>user-fav-posts works!</p>
+<body>
+    <div id="main">
+      
+      <header>
+        <div class="top">
+          <div class="container">
+            <div class="left">
+              <div class="mainLogo">
+                <img src="./assets/images/logo.png" alt="logo" />
+              </div>
+  
+              <div class="location">
+                <!-- <i class="fas fa-globe-europe"></i> -->
+                <input type="text" placeholder="Location.." />
+              </div>
+  
+              <div class="search">
+                <div class="searchFieldDiv">
+                  <input type="text" placeholder="Search.." id="searchField" />
+                </div>
+                <div class="searchBtnDiv">
+                  <button id="searchBtn"><i class="fas fa-search"></i></button>
+                </div>
+              </div>
+            </div>
+  
+            <div class="right">
+              <div class="signinBtnDiv">
+                <div class="dropdown">
+                  <button
+                    id="signinBtn"
+                    (click)="log(state)"
+                    class="showSignoutBtnHover"
+                    routerLink="/login"
+                  >
+                    {{ state }}
+                  </button>
+                </div>
+              </div>
+  
+              <div class="sellBtnDiv">
+                <button id="sellBtn" (click)="sell()">sell item</button>
+              </div>
+  
+              <div class="profile" id="userbtn">
+                <button routerLink="/profile" style="color: #2a65ea">
+                  <i class="far fa-id-badge">USERPROFILE</i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bottom">
+          <div class="container">
+            <div class="dropdown">
+              <a href="javascript:void(0)" id="browseCategories"
+                >Browse by Categories &nbsp; <i class="fas fa-angle-down"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </header>
+      <div>
+        <h1 class="align-center">Products</h1>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div
+            class="col-md-3"
+            style="cursor: pointer"
+            *ngFor="let post of posts"
+            [routerLink]="[path]"
+            (click)="view(post.id)"
+          >
+            <div class="wsk-cp-product">
+              <div class="wsk-cp-img">
+                <img
+                  height="250px"
+                  src="../../../assets/db/{{ post.photos[0] }}"
+                  alt="Product"
+                  class="img-responsive"
+                />
+              </div>
+  
+              <div class="wsk-cp-text">
+                <div class="title-product">
+                  <h3>{{ post.title }}</h3>
+                </div>
+  
+                <div class="description-prod">
+                  <p>{{ post.description }}</p>
+                </div>
+  
+                <div class="card-footer">
+                  <div class="wcf-left">
+                    <span class="price">{{ post.price }}EGP</span>
+                  </div>
+                  <div class="wcf-right">{{ post.views }} Views</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END-->
+  </body>
+  

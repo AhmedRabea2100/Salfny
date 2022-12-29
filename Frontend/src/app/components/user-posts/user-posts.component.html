@@ -1,9 +1,68 @@
 <body>
   <div id="main">
+    
+    <header>
+      <div class="top">
+        <div class="container">
+          <div class="left">
+            <div class="mainLogo">
+              <img src="./assets/images/logo.png" alt="logo" />
+            </div>
+
+            <div class="location">
+              <!-- <i class="fas fa-globe-europe"></i> -->
+              <input type="text" placeholder="Location.." />
+            </div>
+
+            <div class="search">
+              <div class="searchFieldDiv">
+                <input type="text" placeholder="Search.." id="searchField" />
+              </div>
+              <div class="searchBtnDiv">
+                <button id="searchBtn"><i class="fas fa-search"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="right">
+            <div class="signinBtnDiv">
+              <div class="dropdown">
+                <button
+                  id="signinBtn"
+                  (click)="log(state)"
+                  class="showSignoutBtnHover"
+                  routerLink="/login"
+                >
+                  {{ state }}
+                </button>
+              </div>
+            </div>
+
+            <div class="sellBtnDiv">
+              <button id="sellBtn" (click)="sell()">sell item</button>
+            </div>
+
+            <div class="profile" id="userbtn">
+              <button routerLink="/profile" style="color: #2a65ea">
+                <i class="far fa-id-badge">USERPROFILE</i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bottom">
+        <div class="container">
+          <div class="dropdown">
+            <a href="javascript:void(0)" id="browseCategories"
+              >Browse by Categories &nbsp; <i class="fas fa-angle-down"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </header>
     <div>
       <h1 class="align-center">Products</h1>
     </div>
-
     <div class="container">
       <div class="row">
         <div

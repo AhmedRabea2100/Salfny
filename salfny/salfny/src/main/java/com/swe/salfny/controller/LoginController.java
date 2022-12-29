@@ -5,12 +5,14 @@ import com.swe.salfny.Model.user.Credential;
 import com.swe.salfny.Model.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
+@CrossOrigin
 public class LoginController {
 
     @Autowired

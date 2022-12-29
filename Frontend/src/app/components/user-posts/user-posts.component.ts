@@ -20,7 +20,10 @@ export class UserPostsComponent {
   ) {}
   
   posts: Post[] | undefined;
+  logged: any;
+  state: any;
   path: string = '/productview';
+
   ngOnInit() {
     const headerr = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -28,13 +31,15 @@ export class UserPostsComponent {
     });
 
     this.http
-      .get<Post[]>('http://localhost:8080/userProducts', { headers: headerr })
+      .get<Post[]>('http://localhost:8080/userPosts', { headers: headerr })
       .subscribe({
         next: (data: any) => {
+          this.state = 'Log Out';
           this.posts = data;
           console.log(data);
         },
         error: (error: any) => {
+          this.state = 'Login';
           if (error.status == 401) {
             this.posts = error.error;
             console.log(error.error);
@@ -45,8 +50,31 @@ export class UserPostsComponent {
       });
   }
   
+  sell() {
+    if (this.state == 'Login') {
+      Swal.fire({
+        position: 'center',
+        icon: 'warning',
+        title: 'Please, login first!',
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      this.router.navigateByUrl('login');
+    } else {
+      this.router.navigateByUrl('uploadItems');
+    }
+  }
+
+  log(state: string) {
+    if (state == 'Log Out') {
+      localStorage.removeItem('token');
+      localStorage.removeItem('user_id');
+    }
+  }
   view(id: number) {
     localStorage.setItem('post_id', id + '');
   }
-
+  sanitize(url: string) {
+    return this.sanitizer.bypassSecurityTrustUrl(url);
+  }
 }
