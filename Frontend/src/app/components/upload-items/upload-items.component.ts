@@ -36,7 +36,7 @@ export class UploadItemsComponent {
     return this.myForm.controls;
   }
 
-  onFileChange(event) {
+  onFileChange(event: any) {
     console.log(event)
     const reader = new FileReader();
 

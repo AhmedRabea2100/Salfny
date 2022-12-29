@@ -17,7 +17,7 @@
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
                   <a href="#">
-                    <img src="https://i1.sndcdn.com/artworks-OuRHse7Yfco352TM-M7A3ag-t500x500.jpg" class="rounded-circle">
+                    <img [src]=user.profilePic class="rounded-circle">
                   </a>
                 </div>
               </div>
@@ -34,7 +34,7 @@
                   <div class="card-profile-stats d-flex justify-content-center mt-md-5">
                     <div>
                       Rented Items
-                      <span class="heading">15</span>
+                      <span class="heading">{{user.noOfDoneDeals}}</span>
                       <!-- <span class="description">Rented Items</span> -->
                     </div>
                     <div>
@@ -44,7 +44,7 @@
                     </div>
                     <div>
                       Offered Items
-                      <span class="heading">12</span>
+                      <span class="heading">{{user.numPosts}}</span>
                       <!-- <span class="description">Offered Items</span> -->
                     </div>
 
@@ -101,7 +101,7 @@
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-username">Username</label>
-                        <input type="text" class="form-control form-control-alternative" [value]=user.username disabled>
+                        <input id="editable-username" type="text" class="form-control form-control-alternative" [(ngModel)]=user.username name=username disabled>
                       </div>
                     </div>
 
@@ -112,6 +112,30 @@
                       </div>
                     </div>
                   </div>
+
+                  <div class="row" *ngIf="changePassword">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label">New password</label>
+                        <input type="password" class="form-control form-control-alternative" [(ngModel)]=user.password name="pass" (keyup)="isSamePassword()" #pswd="ngModel" required minlength="8">
+                        <div [hidden]="pswd.valid || pswd.pristine" class="alert alert-danger">Password is required(minlength required= 8)</div>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label">Confirm password</label>
+                        <input type="password" (keyup)="isSamePassword()" class="form-control form-control-alternative" [(ngModel)]=confirmPassword name="cnfpass">
+                        <div [hidden]="samePassword" class="alert alert-danger">Password did not match</div>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+
+
+                  <label class="form-control-label" id="changePass"(click)="changePass()" hidden="true" >Change password ?</label>
 <!-- 
                   <div class="row">
                     <div class="col-lg-6">
@@ -137,7 +161,7 @@
                     <div class="col-md-12">
                       <div class="form-group focused">
                         <label class="form-control-label" >Address</label>
-                        <input id="editable-Email" class="form-control form-control-alternative" [(ngModel)]=user.address name="address" disabled>
+                        <input id="editable-address" class="form-control form-control-alternative" [(ngModel)]=user.address name="address" disabled>
                       </div>
                     </div>
                   </div>
@@ -145,11 +169,11 @@
                     <div class="col-lg-4">
                       <div class="form-group focused">
                         <label class="form-control-label">Phone Number</label>
-                        <input id="editable-Phone" type="text" class="form-control form-control-alternative"  disabled [(ngModel)]="user.phoneNumber" name="ph">
+                        <input id="editable-Phone" type="text" class="form-control form-control-alternative" disabled [(ngModel)]="user.phoneNumber" name="ph">
                       </div>
                     </div>
                     <div class="col-4 text-right">
-                      <button id="saveBtn" href="#!" class="btn btn-sm btn-primary save-btn" (click)="editValue()" disabled>Save</button>
+                      <button id="saveBtn" href="#!" class="btn btn-sm btn-primary save-btn" (click)="editValue()" [disabled]="!samePassword || (confirmPassword.length > 0 && confirmPassword.length < 8)">Save</button>
                     </div>
                     <!-- <div class="col-lg-4">
                       <div class="form-group focused">

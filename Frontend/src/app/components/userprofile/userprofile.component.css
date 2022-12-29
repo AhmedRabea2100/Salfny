@@ -2060,3 +2060,12 @@
   #navbar .navbar {
     margin-bottom: 20px;
   }
+
+  #changePass{
+    color: #324cdd;
+    cursor:pointer;
+  }
+  #changePass:hover{
+    text-decoration: underline;
+    color: #233dd2;
+  }
