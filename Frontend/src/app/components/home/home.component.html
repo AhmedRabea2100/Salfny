@@ -65,11 +65,9 @@
                         <div class="dropdown-content">
                             <option *ngFor="let category of categories" [value]="category">{{category}}</option>
                         </div> -->
-                        <div class="form-group" class="dro">
-
+                        <div class="form-group" class="custom-select" style="width:200px;">
                             <label for="category"><strong>Category</strong></label>
-                            <select (click)="category()" class="dropbtn" class="form-controll"  [(ngModel)]="categoryName"  required>
-                        
+                            <select (click)="category()" class="dropbtn" class="form-controll"  [(ngModel)]="categoryName"  required>      
                               <option class="dropdown-content" *ngFor="let category of categories" [value]="category">{{category}}</option>      
                             </select>
                           </div>

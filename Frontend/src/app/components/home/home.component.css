@@ -1091,3 +1091,52 @@ a.buy-btn{
 }
 /*//////////////////////////Drop////////////////////////////////*/
 
+.form-controll {
+    display: block;
+    padding: 8px 16px;
+    width: 100%;
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    /*color: #fff;*/
+    color:black;
+    background-color: #fff;
+    border-color:#8ca6e2;
+    font-weight: 200;
+    border-radius: 10px;
+  
+  }
+  
+  .form-controll:focus {
+    outline: 2px solid rgba(255, 255, 255, 0.5);
+    outline: -webkit-focus-ring-color auto 5px;
+  }
+  
+  .form-group {
+    max-width: 500px;
+    margin: auto;
+    margin-bottom: 30px;
+  }
+ 
+  .form-groupp {
+    max-width:fit-content;
+    margin: auto;
+    margin-bottom: 30px;
+  }
+  /*//////////////////*/
+  .select-selected:after {
+    position: absolute;
+    content: "";
+    top: 14px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #fff transparent transparent transparent;
+  }
+  /* Point the arrow upwards when the select box is open (active): */
+select-selected.select-arrow-active:after {
+    border-color: transparent transparent #fff transparent;
+    top: 7px;
+  }
+  
