@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Post } from 'src/types/post.type';
 import Swal from 'sweetalert2';
@@ -11,6 +11,13 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent {
+  @ViewChild('input', { static: false }) 
+   set input(element: ElementRef<HTMLInputElement>) {
+     if(element) {
+       element.nativeElement.focus()
+     }
+  }
+
   constructor (private router: Router,private http: HttpClient,private activatedRoute: ActivatedRoute,private sanitizer:DomSanitizer) {}
   searchWord=localStorage.getItem("searchWord");
   logged:any
@@ -25,30 +32,20 @@ export class SearchComponent {
     }else{
       document.getElementById("userbtn").style.visibility="visible"
     }
-  
+    (<HTMLInputElement>document.getElementById("searchField")).value=this.searchWord
+
   this.searchh();
    
 }
 searchh(){
+
+  this.searchWord = (<HTMLInputElement>document.getElementById("searchField")).value||" ";
+
   const headerr=new HttpHeaders({'Content-Type': 'application/json' ,'authentication': 'key' });
-  this.http.post<Post[]>('http://localhost:8080/search',localStorage.getItem("searchWord"),{ headers: headerr}
+  this.http.post<Post[]>('http://localhost:8080/search',this.searchWord,{ headers: headerr}
     ) .subscribe({
       next: (data: Post[]) => { 
-        if(data.length===0){
-          Swal.fire({
-            position: 'center',
-            icon: 'error',
-            title: 'Cannot find your search word',
-            showConfirmButton: false,
-            timer: 1500
-          })
-          this.router.navigateByUrl('home')
-        }else{
-          this.posts=data;
-        console.log(data);
-        }
-           
-        
+          this.posts=data;     
       },
       error: (error: any) => {
         if(error.status==401){
@@ -59,6 +56,9 @@ searchh(){
         }
       }
       });
+      localStorage.setItem("searchWord", this.searchWord + "")
+      this.router.navigateByUrl('search')
+        
 
 }
 

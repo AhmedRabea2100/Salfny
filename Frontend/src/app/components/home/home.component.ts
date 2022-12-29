@@ -95,10 +95,8 @@ export class HomeComponent {
    
     if ((<HTMLInputElement>document.getElementById("searchField")).value !== ""){
       this.searchWord = (<HTMLInputElement>document.getElementById("searchField")).value
-      console.log("hello " + this.searchWord)
       localStorage.setItem("searchWord", this.searchWord + "")
       this.router.navigateByUrl('search')
-      
     }
       
    

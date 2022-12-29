@@ -16,10 +16,11 @@
 
                         <div class="search">
                             <div class="searchFieldDiv">
-                                <input type="text" placeholder={{searchWord}} id="searchField">
+                                <input type="text" placeholder={{searchWord}} id="searchField" (keyup)="searchh()"
+                                    autofocus #input>
                             </div>
-                            <div class="searchBtnDiv">
-                                <button id="searchBtn" (click)="search()" ><i class="fas fa-search"></i></button>
+                            <div class=" searchBtnDiv">
+                                <button id="searchBtn" (click)="search()"><i class="fas fa-search"></i></button>
                             </div>
                         </div>
 
