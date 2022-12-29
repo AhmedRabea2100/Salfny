@@ -16,7 +16,7 @@ public class SignUpController {
 
     @Autowired
     private UserRepository repo;
-    private final String defaultProfilePic = "https://i1.sndcdn.com/artworks-OuRHse7Yfco352TM-M7A3ag-t500x500.jpg";
+    private final String defaultProfilePic = "za3ama.jpg";
 
     @RequestMapping("/signup")
     public String createAccount(@RequestBody User u) {
