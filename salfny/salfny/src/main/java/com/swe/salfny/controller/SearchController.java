@@ -3,7 +3,6 @@ package com.swe.salfny.controller;
 
 import com.swe.salfny.Model.post.Post;
 import com.swe.salfny.Model.post.SearchRepository;
-import com.swe.salfny.Model.user.Credential;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,17 +16,30 @@ import java.util.List;
 public class SearchController {
 
     @Autowired
-    private SearchRepository repo;
+    private SearchRepository searchRepository;
 
     @RequestMapping("/search")
     public List <Post> search(@RequestBody String word) {
-        return repo.searchLike(word);
+
+        int index = word.lastIndexOf("@");
+        String category = word.substring(index+1);
+        word = word.substring(0,index);
+        if(word.equals(" ")) word = "";
+        if(category.equals("All"))
+            return searchRepository.searchLike(word);
+        else
+            return searchRepository.searchByCategoryLike(category,word);
     }
 
     @RequestMapping("/category")
     public List <Post> category(@RequestBody String word) {
-        return repo.searchByCategoryLike(word);
+        if(word.equals("All"))
+            return searchRepository.allCategory();
+        return searchRepository.searchByCategoryLike(word,"");
     }
 
 
 }
+
+
+

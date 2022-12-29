@@ -46,7 +46,7 @@ public class SearchTest {
         Post post2 = new Post("b", "a", 20, 1, 1, LocalDateTime.now());
         postRepository.save(post1);
         postRepository.save(post2);
-        List<Post> res = searchRepository.searchByCategoryLike("cars");
+        List<Post> res = searchRepository.searchByCategoryLike("cars","a");
         assertEquals("true",3,res.size());
     }
 }
