@@ -814,31 +814,46 @@ footer .bottom .right{
     header .top .left {
         width: auto;
     }
-    .location{
-        display: none;
-    }
-    /* #signinBtn{
-         display: none;
-    } */
     header .top .right{
         position: fixed;
+        z-index: 10000;
         bottom: 20px;
         width: 89%;
     }
     .signinBtnDiv .dropdown{
-        position: fixed;
         top: 77px;
         right: 38px;
         background: #fff;
+        display: block;
+
     }
     .signinBtnDiv #signinBtn {
         padding: 5px !important;
         margin: 0 !important;
     }
+    .sellBtnDiv  .signinBtnDiv{
+        /* width: 100%; */
+        display: block;
+    }
     .sellBtnDiv{
-        width: 100%;
-        float: none;
-        display: flex;
+        position: fixed;
+        left: calc(50% - 10px);
+        bottom: 95px;
+    }
+    .signinBtnDiv{
+        position: fixed;
+        width: fit-content;
+        left: calc(50%);
+        bottom: 20px;
+    }
+    #signinBtn{
+        position: relative;
+        font-size: 2.5rem;
+        left: -3rem;
+        width: 12rem;
+        border-radius: 1.5rem;
+        background-color: white;
+        padding: 0 30rem !important;
     }
     #sellBtn{
         margin: auto;
