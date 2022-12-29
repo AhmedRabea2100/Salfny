@@ -95,6 +95,7 @@ export class UserprofileComponent {
               showConfirmButton: false,
               timer: 1500
             })
+            this.ngOnInit();
           }
         },
         error: (error: any) => {
@@ -105,32 +106,19 @@ export class UserprofileComponent {
 
 
   onFileChange(event: any) {
-    // console.log(event)
-    // const reader = new FileReader();
+    const reader = new FileReader();
 
-    // if (event.target.files && event.target.files.length) {
-    //   const [file] = event.target.files;
-    //   reader.readAsDataURL(file);
+    if (event.target.files && event.target.files.length) {
+      const [file] = event.target.files;
+      reader.readAsDataURL(file);
 
-    //   reader.onload = () => {
-
-    //     this.imageName = file.name
-    //     this.imageBlob = file
-    //     this.imageSrc = reader.result as string;
-    //     this.uploadItem.photo = this.imageSrc
-    //     console.log(reader.result)
-
-    //     this.myForm.patchValue({ fileSource: reader.result as string });
-    //     console.log(this.myForm.value)
-
-    //   };
-
-    // }
+      reader.onload = () => {
+        this.user.profilePic = reader.result as string;
+        this.save();
+      };
+    }
   }
   fun() {
     document.getElementById("images").click();
   }
-
-
-
 }

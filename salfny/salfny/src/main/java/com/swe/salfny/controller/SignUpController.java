@@ -16,7 +16,7 @@ public class SignUpController {
 
     @Autowired
     private UserRepository repo;
-    private final int LOG_ROUNDS = 12;
+    private final String defaultProfilePic = "https://i1.sndcdn.com/artworks-OuRHse7Yfco352TM-M7A3ag-t500x500.jpg";
 
     @RequestMapping("/signup")
     public String createAccount(@RequestBody User u) {
@@ -28,6 +28,7 @@ public class SignUpController {
             return "This Email is already used";
 
         u.setMemberSince(LocalDateTime.now());
+        u.setProfilePic(defaultProfilePic);
         u.hashPassword();
 
         // try to store to database
