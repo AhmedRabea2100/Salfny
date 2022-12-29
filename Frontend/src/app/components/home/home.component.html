@@ -1,5 +1,4 @@
 <body>
-
     <div id="main">
         <!-- header -->
         <header>
@@ -7,7 +6,7 @@
                 <div class="container">
                     <div class="left">
                         <div class="mainLogo">
-                                <img src="./assets/images/logo.png" alt="logo">
+                            <img src="./assets/images/logo.png" alt="logo">
                         </div>
 
                         <div class="location">
@@ -23,14 +22,15 @@
                                 <button id="searchBtn"><i class="fas fa-search"></i></button>
                             </div>
                         </div>
-                        
+
                     </div>
 
                     <div class="right">
 
                         <div class="signinBtnDiv">
                             <div class="dropdown">
-                                <button id="signinBtn" (click)="log(state)" class="showSignoutBtnHover" routerLink='/login'>
+                                <button id="signinBtn" (click)="log(state)" class="showSignoutBtnHover"
+                                    routerLink='/login'>
                                     {{state}}
                                 </button>
                             </div>
@@ -39,9 +39,11 @@
                         <div class="sellBtnDiv">
                             <button id="sellBtn" (click)="sell()">sell item</button>
                         </div>
-                        
+
+
                         <div class="profile" id="userbtn">
-                            <button routerLink="/profile" style="color: #2A65EA;"> <i class="far fa-id-badge">USERPROFILE</i></button>
+                            <button routerLink="/profile" style="color: #2A65EA;"> <i
+                                    class="far fa-id-badge">USERPROFILE</i></button>
                         </div>
                     </div>
                 </div>
@@ -51,23 +53,21 @@
                     <div class="dropdown">
                         <a href="javascript:void(0)" id="browseCategories">Browse by Categories &nbsp; <i
                                 class="fas fa-angle-down"></i></a>
-                    
+
                     </div>
                 </div>
             </div>
         </header>
         <!-- /header -->
 
-
-
-
-        <section class="product" > 
+        <section class="product">
             <h2 class="product-category">Most Viewed</h2>
             <button class="pre-btn" disabled><img src="/../assets/images/arrow.png" alt=""></button>
-            <button class="nxt-btn"disabled><img src="/../assets/images/arrow.png" alt=""></button>
+            <button class="nxt-btn" disabled><img src="/../assets/images/arrow.png" alt=""></button>
             <div class="product-container">
 
-                <div class="product-card" routerLinkActive="active" *ngFor="let post of topPosts;"  [routerLink]="[path]" (click)="view(post.id)">
+                <div class="product-card" routerLinkActive="active" *ngFor="let post of topPosts;" [routerLink]="[path]"
+                    (click)="view(post.id)">
                     <div class="product-image">
 
                         <img src="../../../assets/db/{{post.photos[0]}}" class="product-thumb" alt="">
@@ -79,76 +79,49 @@
                         <span class="price">{{post.price}} EGP</span>
                     </div>
                 </div>
-                
+
             </div>
         </section>
 
+        <div>
+            <h1 class="align-center">Products</h1>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3" style="cursor: pointer;" *ngFor="let post of posts;" [routerLink]="[path]"
+                    (click)="view(post.id)">
+                    <div class="wsk-cp-product">
+
+                        <div class="wsk-cp-img">
+                            <img height="250px" src="../../../assets/db/{{post.photos[0]}}" alt="Product"
+                                class="img-responsive" />
+                        </div>
+
+                        <div class="wsk-cp-text">
 
 
 
+                            <div class="title-product">
+                                <h3>{{post.title}}</h3>
+                            </div>
 
-        <section class="prod-list ">
-            <div>
-              <h1 class="align-center">
-                Products
-              </h1>
-            </div>
-            
-            <!-- <li >
-                <img src="{{post.date}}" alt="">
-                <div>
-                    {{post.title}}
+                            <div class="description-prod">
+                                <p>{{post.description}}</p>
+                            </div>
+
+                            <div class="card-footer">
+                                <div class="wcf-left"><span class="price">{{post.price}}EGP</span></div>
+                                <div class="wcf-right">{{post.views}} Views</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
                 </div>
-                <div>
-                    {{post.price}}$
-                </div>
-                <div>
-                    {{post.description}}
-                </div>
-            </li>
-       -->
-            <div class="prod-container">
-              
-      
-            <div class="card" routerLinkActive="active" *ngFor="let post of posts;"  [routerLink]="[path]" (click)="view(post.id)">
-
-              <div class="content">
-                         
-              <div class="title">{{post.title}}</div>
-              <div class="image">
-                <img height="200rm"
-                src = "../../../assets/db/{{post.photos[0]}}"
-                />
-              </div>
-              <div class="text" style="width:15em;font-size: large;  overflow: hidden;
-;              text-overflow: ellipsis;height: 3em;">
-                
-                {{post.description}}
-              </div>
-              <div class="text" style="font-weight:bold;font-size: xx-large;">
-                
-                {{post.price}}<sup style="font-weight: normal;font-size:small">EGP</sup>
-              </div>
-               </div>
-               <div class="text" style="font-size: large;color: rgb(81, 77, 77);">
-                
-                {{post.address}}
-              </div>
-            <div>
-                <button  class="buy-button details">
-                  View 
-                </button>
             </div>
-           
-            </div>
-      
-      
-               </div>
-            
-            
-            
-          </section>
-
-
-
+        </div>
     </div>
+    <!-- END-->
+</body>
