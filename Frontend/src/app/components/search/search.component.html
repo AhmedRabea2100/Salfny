@@ -16,10 +16,10 @@
 
                         <div class="search">
                             <div class="searchFieldDiv">
-                                <input type="text" placeholder="Search.." id="searchField">
+                                <input type="text" placeholder={{searchWord}} id="searchField">
                             </div>
                             <div class="searchBtnDiv">
-                                <button id="searchBtn" (click)="search()" routerLink="/search"><i class="fas fa-search"></i></button>
+                                <button id="searchBtn" ><i class="fas fa-search"></i></button>
                             </div>
                         </div>
 
@@ -60,7 +60,7 @@
         </header>
         <!-- /header -->
 
-        <section class="product">
+        <!-- <section class="product">
             <h2 class="product-category">Most Viewed</h2>
             <button class="pre-btn" disabled><img src="/../assets/images/arrow.png" alt=""></button>
             <button class="nxt-btn" disabled><img src="/../assets/images/arrow.png" alt=""></button>
@@ -75,13 +75,13 @@
                     </div>
                     <div class="product-info">
                         <h2 class="product-brand">{{post.title}}</h2>
-                        <!-- <p class="product-short-des">a short line about the cloth..</p> -->
+                       
                         <span class="price">{{post.price}} EGP</span>
                     </div>
                 </div>
 
             </div>
-        </section>
+        </section> -->
 
         <div>
             <h1 class="align-center">Products</h1>
