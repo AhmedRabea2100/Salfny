@@ -23,4 +23,11 @@ public class SearchController {
     public List <Post> search(@RequestBody String word) {
         return repo.searchLike(word);
     }
+
+    @RequestMapping("/category")
+    public List <Post> category(@RequestBody String word) {
+        return repo.searchByCategoryLike(word);
+    }
+
+
 }
