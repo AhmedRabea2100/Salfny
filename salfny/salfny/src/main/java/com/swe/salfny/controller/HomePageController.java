@@ -50,6 +50,14 @@ public class HomePageController {
         postRepo.incrementViews(postId);
         return postRepo.showSpecificPost(postId);
     }
+
+    @RequestMapping("/isfav")
+    public String isFav(@RequestBody String id) {
+        int postId = Integer.parseInt(id.split(" ")[0]);
+        int userId = Integer.parseInt(id.split(" ")[1]);
+        return postRepo.checkFavorite(userId,postId);
+    }
+
     @RequestMapping("/user")
     public User getUser(@RequestBody int id) {
            return userRepo.getUser(id);

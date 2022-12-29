@@ -21,23 +21,60 @@ body{
 
 
 .product_img{
-    width: 1200px;
+    width: fit-content;
     display: flex;
     margin: auto;
-    margin-bottom: 100px;
-    margin-top: 50px;
+
 }
 .mySlides {
     display: none;
   }
 .image_discription{
-    width: 650px;
+    width: 40vw;
 }
 .image_discription img{
-    width: 650px;
+    width: 40vw;
     border-radius: 5px;
 }.cursor {
   cursor: pointer;
+}
+@media only screen and (max-width: 1200px) {
+  .image_discription img{
+    width: 50vw;
+  }
+  .image_discription{
+    width: 30vw;
+}
+
+}
+
+@media only screen and (max-width: 1200px) {
+  .image_discription img{
+    width: 45vw;
+  }
+  .image_discription{
+    width: 40vw;
+}
+
+
+}
+
+@media only screen and (max-width: 800px) {
+  .image_discription img{
+    width: 80vw;
+
+
+  }
+  .image_discription{
+    width: 80vw;
+    padding-top: 100vh;
+    position: absolute;
+    display: block;
+}
+.product_details{
+  width: 100%;
+  margin-left: 5vw;
+}
 }
 
 
@@ -48,19 +85,18 @@ body{
 
 
 .descriptiopn{
- padding-left: 20px;
  border: 1px solid rgb(179,178,178);
  border-radius: 5px;
  background-color: white;
- padding-bottom: 15px;
- margin-top:10px ;
+ margin: 1vw 0;
 }
 .descriptiopn h3{
- padding: 10px 10px 10px 0;
+ padding: 3% 3% 10px 0;
  font-size: 20px;
 }
 .descriptiopn p{
     line-height: 20px;
+    padding: 1vw;
     color: rgb(51,51,51);
 }
 
@@ -71,8 +107,8 @@ body{
 /* <!-- =============================== *  product_details *============================================ --> */
 
 .product_details{
-    width: 400px;
-    margin-left: 20px;
+    width: 40%;
+    margin-left: 5vw;
 }
 
 
@@ -91,14 +127,14 @@ body{
 .price h3{
     font-size: 30px;
     font-weight: bold;
-    padding: 10px;
+    padding: 1vw  ;
 }
 .price p{
   font-size: 25px;
   font-weight: normal;
   float: left;
-  margin-right: 10px;
-  padding: 10px 0 10px 10px;
+  margin-right: 1vw;
+  padding: 1vw 0 1vw 10px;
   cursor: pointer;
 }
 .box span{
@@ -115,14 +151,14 @@ body{
 /*  */
 
 .both {
-    width: 48%;
+    width: 100%;
     text-transform: uppercase;
     padding: 10px 15px;
     font-size: 16px;
     letter-spacing: 1px;
     font-family: "Poppins", san-serif;
     border-radius: 10px;
-    margin: 15px 0;
+    margin: 1vw 0;
     outline: none;
     border: none;
     transition: all ease 0.5s;
@@ -197,3 +233,120 @@ body{
 
 
 
+
+
+
+
+
+
+
+
+
+#star {
+    width: fit-content;
+    position: relative;
+    margin-left: 50%;
+    display: block;
+    fill: #CDCDCD;
+    transition: fill 200ms;
+    z-index: 1;
+  }
+  
+  #star.active {
+    fill: #FFA600;
+    animation: fav 600ms ease;
+    width: fit-content;
+    position: relative;
+    margin-left: 50%;
+    display: block;
+    transition: fill 50ms;
+    z-index: 1;
+  }
+  
+  @keyframes fav {
+    70% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
