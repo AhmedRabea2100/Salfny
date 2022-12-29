@@ -27,7 +27,7 @@ export class SearchComponent {
     }
   
   const headerr=new HttpHeaders({'Content-Type': 'application/json' ,'authentication': 'key' });
-
+    console.log("tesssttt"+ localStorage.getItem("searchWord")+"b")
   this.http.post<Post[]>('http://localhost:8080/search',localStorage.getItem("searchWord"),{ headers: headerr}
     ) .subscribe({
       next: (data: any) => {     
