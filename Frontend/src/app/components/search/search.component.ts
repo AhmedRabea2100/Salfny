@@ -26,13 +26,29 @@ export class SearchComponent {
       document.getElementById("userbtn").style.visibility="visible"
     }
   
+  this.searchh();
+   
+}
+searchh(){
   const headerr=new HttpHeaders({'Content-Type': 'application/json' ,'authentication': 'key' });
-    console.log("tesssttt"+ localStorage.getItem("searchWord")+"b")
   this.http.post<Post[]>('http://localhost:8080/search',localStorage.getItem("searchWord"),{ headers: headerr}
     ) .subscribe({
-      next: (data: any) => {     
-        this.posts=data;
+      next: (data: Post[]) => { 
+        if(data.length===0){
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Cannot find your search word',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          this.router.navigateByUrl('home')
+        }else{
+          this.posts=data;
         console.log(data);
+        }
+           
+        
       },
       error: (error: any) => {
         if(error.status==401){
@@ -44,7 +60,6 @@ export class SearchComponent {
       }
       });
 
-   
 }
 
 sell(){
@@ -73,5 +88,15 @@ view(id:number){
 }
 sanitize(url:string){
   return this.sanitizer.bypassSecurityTrustUrl(url);
+}
+search(){
+
+ 
+    this.searchWord = (<HTMLInputElement>document.getElementById("searchField")).value
+    console.log("hello " + this.searchWord)
+    localStorage.setItem("searchWord", this.searchWord + "")
+    this.searchh()
+     
+    
 }
 }
