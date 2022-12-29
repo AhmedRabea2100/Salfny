@@ -17,10 +17,10 @@ import java.util.List;
 public class SearchController {
 
     @Autowired
-    private SearchRepository searchRepository;
+    private SearchRepository repo;
 
     @RequestMapping("/search")
-    public String login(@RequestBody String word) {
-        return "Hello World";
+    public List <Post> search(@RequestBody String word) {
+        return repo.searchLike(word);
     }
 }
