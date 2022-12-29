@@ -19,7 +19,10 @@ export class SearchComponent {
   }
 
   constructor (private router: Router,private http: HttpClient,private activatedRoute: ActivatedRoute,private sanitizer:DomSanitizer) {}
-  searchWord=localStorage.getItem("searchWord");
+  categories = ['All','cars', 'department', 'bikes', 'suit', 'dresses', 'electronic devices', 'others'];
+  categoryName=localStorage.getItem('category')
+  searchWord:string
+  products='Products'
   logged:any
   state:any
   p1:any
@@ -32,10 +35,42 @@ export class SearchComponent {
     }else{
       document.getElementById("userbtn").style.visibility="visible"
     }
-    (<HTMLInputElement>document.getElementById("searchField")).value=this.searchWord
-
-  this.searchh();
+    
+    if(localStorage.getItem('isCategory')==='true'){
+      
+      this.category();
+      localStorage.setItem("isCategory",false + "")
+      
+    }else{
+      this.searchWord=localStorage.getItem("searchWord");
+      (<HTMLInputElement>document.getElementById("searchField")).value=this.searchWord
+      this.searchh();
+    }
+    
+  
    
+}
+category(){
+  
+  localStorage.setItem("category",this.categoryName + "")
+  this.products=this.categoryName
+  const headerr=new HttpHeaders({'Content-Type': 'application/json' ,'authentication': 'key' });
+  this.http.post<Post[]>('http://localhost:8080/category',localStorage.getItem('category'),{ headers: headerr}
+    ) .subscribe({
+      next: (data: Post[]) => { 
+          this.posts=data;     
+      },
+      error: (error: any) => {
+        if(error.status==401){
+          this.posts=error.error;
+          console.log(error.error);
+        }else{
+          console.error(error);
+        }
+      }
+      });
+      
+      
 }
 searchh(){
 
@@ -56,8 +91,8 @@ searchh(){
         }
       }
       });
-      localStorage.setItem("searchWord", this.searchWord + "")
-      this.router.navigateByUrl('search')
+     // localStorage.setItem("searchWord", this.searchWord + "")
+      //this.router.navigateByUrl('search')
         
 
 }

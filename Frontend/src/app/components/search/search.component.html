@@ -52,9 +52,15 @@
             <div class="bottom">
                 <div class="container">
                     <div class="dropdown">
-                        <a href="javascript:void(0)" id="browseCategories">Browse by Categories &nbsp; <i
-                                class="fas fa-angle-down"></i></a>
+                       
+                        <div class="form-group" class="dro">
 
+                            <label for="category"><strong>Category</strong></label>
+                            <select (click)="category()" class="dropbtn" class="form-controll"  [(ngModel)]="categoryName"  required>
+                        
+                              <option class="dropdown-content" *ngFor="let category of categories" [value]="category">{{category}}</option>      
+                            </select>
+                          </div>
                     </div>
                 </div>
             </div>
@@ -85,7 +91,7 @@
         </section> -->
 
         <div>
-            <h1 class="align-center">Products</h1>
+            <h1 class="align-center">{{products}}</h1>
         </div>
 
         <div class="container">

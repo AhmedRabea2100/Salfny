@@ -13,7 +13,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class HomeComponent {
   constructor(private router: Router, private http: HttpClient, private activatedRoute: ActivatedRoute, private sanitizer: DomSanitizer) { }
   searchWord: string;
-
+  categories = ['All','cars', 'department', 'bikes', 'suit', 'dresses', 'electronic devices', 'others'];
+  categoryName: string=this.categories[0]
   logged: any
   state: any
   p1: any
@@ -92,36 +93,24 @@ export class HomeComponent {
 
   /*********************************************Search****************************************/
   search() {
-   
-    if ((<HTMLInputElement>document.getElementById("searchField")).value !== ""){
+
+    if ((<HTMLInputElement>document.getElementById("searchField")).value !== "") {
       this.searchWord = (<HTMLInputElement>document.getElementById("searchField")).value
       localStorage.setItem("searchWord", this.searchWord + "")
       this.router.navigateByUrl('search')
     }
-      
-   
-
-
-    // const headerr=new HttpHeaders({'Content-Type': 'application/json' ,'authentication': 'key' });
-
-    // this.http.post<Post[]>('http://localhost:8080/search',this.searchWord,{ headers: headerr}
-    //   ) .subscribe({
-    //     next: (data: any) => {     
-    //       this.posts=data;
-    //       console.log(data);
-    //     },
-    //     error: (error: any) => {
-    //       if(error.status==401){
-    //         this.posts=error.error;
-    //         console.log(error.error);
-    //       }else{
-    //         console.error(error);
-    //       }
-    //     }
-    //     });
-
-
   }
+  /**************************************category********************************/
+  category(){
+    if(this.categoryName!='All'){
+      localStorage.setItem("category",this.categoryName + "")
+      localStorage.setItem("isCategory",true + "")
+      this.router.navigateByUrl('search')
+    }
+    console.log(this.categoryName);
+  }
+  
+  
 
 
 
