@@ -22,7 +22,6 @@ export class HomeComponent {
   
   logged: any;
   state: any;
-  p1: any;
   posts: Post[] | undefined;
   topPosts: Post[] | undefined;
   path: string = '/productview';
@@ -32,7 +31,6 @@ export class HomeComponent {
     } else {
       document.getElementById('userbtn').style.visibility = 'visible';
     }
-    this.p1 = '/../assets/images/pr2.jpg';
 
     const headerr = new HttpHeaders({
       'Content-Type': 'application/json',

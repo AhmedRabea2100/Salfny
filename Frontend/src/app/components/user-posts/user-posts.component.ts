@@ -9,7 +9,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 @Component({
   selector: 'app-user-posts',
   templateUrl: './user-posts.component.html',
-  styleUrls: ['./user-posts.component.css']
+  styleUrls: ['./user-posts.component.css', '../home/home.component.css']
 })
 export class UserPostsComponent {
   constructor(
@@ -19,37 +19,22 @@ export class UserPostsComponent {
     private sanitizer: DomSanitizer
   ) {}
   
-  logged: any;
-  state: any;
-  p1: any;
   posts: Post[] | undefined;
-  topPosts: Post[] | undefined;
   path: string = '/productview';
   ngOnInit() {
-    if (localStorage.getItem('user_login') == null) {
-      document.getElementById('userbtn').style.visibility = 'visible';
-    } 
-    else {
-      document.getElementById('userbtn').style.visibility = 'visible';
-    }
-
-    this.p1 = '/../assets/images/pr2.jpg';
-
     const headerr = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: localStorage.getItem('token') + '',
     });
 
     this.http
-      .get<Post[]>('http://localhost:8080/home', { headers: headerr })
+      .get<Post[]>('http://localhost:8080/userProducts', { headers: headerr })
       .subscribe({
         next: (data: any) => {
-          this.state = 'Log Out';
           this.posts = data;
           console.log(data);
         },
         error: (error: any) => {
-          this.state = 'Login';
           if (error.status == 401) {
             this.posts = error.error;
             console.log(error.error);
@@ -58,13 +43,6 @@ export class UserPostsComponent {
           }
         },
       });
-  }
-
-  log(state: string) {
-    if (state == 'Log Out') {
-      localStorage.removeItem('token');
-      localStorage.removeItem('user_id');
-    }
   }
   
   view(id: number) {
