@@ -20,23 +20,24 @@ public class SearchController {
 
     @RequestMapping("/search")
     public List <Post> search(@RequestBody String word) {
-
         int index = word.lastIndexOf("@");
         String category = word.substring(index+1);
         word = word.substring(0,index);
         if(word.equals(" ")) word = "";
-        if(category.equals("All"))
-            return searchRepository.searchLike(word);
-        else
-            return searchRepository.searchByCategoryLike(category,word);
+        if(category.equals("All")){
+            if(word.equals("")) return searchRepository.allCategory();
+            else return searchRepository.searchLike(word);
+        }
+        return searchRepository.searchByCategoryLike(category,word);
+        
     }
 
-    @RequestMapping("/category")
-    public List <Post> category(@RequestBody String word) {
-        if(word.equals("All"))
-            return searchRepository.allCategory();
-        return searchRepository.searchByCategoryLike(word,"");
-    }
+//    @RequestMapping("/category")
+//    public List <Post> category(@RequestBody String word) {
+//        if(word.equals("All"))
+//            return searchRepository.allCategory();
+//        return searchRepository.searchByCategoryLike(word,"");
+//    }
 
 
 }

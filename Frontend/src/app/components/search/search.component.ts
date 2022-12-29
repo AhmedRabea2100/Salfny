@@ -24,6 +24,7 @@ export class SearchComponent {
   searchWord:string
   categoryWord:string
   products='Products'
+  word : String
   logged:any
   state:any
   p1:any
@@ -38,17 +39,18 @@ export class SearchComponent {
     }
     
     if(localStorage.getItem('isCategory')==='true'){
-      this.category();
+      this.searchh(2);
       localStorage.setItem("isCategory",false + "")
       
     }else{
-      this.categoryName='All'
+      // this.categoryName='All'
       this.searchWord=localStorage.getItem("searchWord");
       (<HTMLInputElement>document.getElementById("searchField")).value=this.searchWord
-      this.searchh();
+      this.categoryWord = localStorage.getItem('category');
+      this.searchh(1);
+      
     }
     
-  
    
 }
 category(){
@@ -70,17 +72,16 @@ category(){
         }
       }
       });
-      
-      
-}
-searchh(){
+    }
+searchh(id : number){
 
+  localStorage.setItem("category",this.categoryName + "")
   this.searchWord = (<HTMLInputElement>document.getElementById("searchField")).value||" ";
-  this.categoryWord = localStorage.getItem('category');
-  this.searchWord += "@" + this.categoryWord;
+  if(id == 1) this.word = this.searchWord+"@" + localStorage.getItem('category');
+  else this.word = " @"+localStorage.getItem('category');
 
   const headerr=new HttpHeaders({'Content-Type': 'application/json' ,'authentication': 'key' });
-  this.http.post<Post[]>('http://localhost:8080/search',this.searchWord,{ headers: headerr}
+  this.http.post<Post[]>('http://localhost:8080/search',this.word,{ headers: headerr}
     ) .subscribe({
       next: (data: Post[]) => { 
           this.posts=data;     
@@ -94,6 +95,8 @@ searchh(){
         }
       }
       });
+            localStorage.setItem("searchWord", this.searchWord + "")
+
      // localStorage.setItem("searchWord", this.searchWord + "")
       //this.router.navigateByUrl('search')
         
@@ -133,7 +136,7 @@ search(){
     this.searchWord = (<HTMLInputElement>document.getElementById("searchField")).value
     console.log("hello " + this.searchWord)
     localStorage.setItem("searchWord", this.searchWord + "")
-    this.searchh()
+    this.searchh(1)
      
     
 }

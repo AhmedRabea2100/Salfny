@@ -95,6 +95,7 @@ export class HomeComponent {
   search() {
 
     if ((<HTMLInputElement>document.getElementById("searchField")).value !== "") {
+      localStorage.setItem("category", this.categoryName + "")
       this.searchWord = (<HTMLInputElement>document.getElementById("searchField")).value
       localStorage.setItem("searchWord", this.searchWord + "")
       this.router.navigateByUrl('search')
