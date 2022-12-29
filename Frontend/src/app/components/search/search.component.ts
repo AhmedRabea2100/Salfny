@@ -20,7 +20,7 @@ export class SearchComponent {
 
   constructor (private router: Router,private http: HttpClient,private activatedRoute: ActivatedRoute,private sanitizer:DomSanitizer) {}
   categories = ['All','cars', 'department', 'bikes', 'suit', 'dresses', 'electronic devices', 'others'];
-  categoryName='All'
+  categoryName=localStorage.getItem('category')
   searchWord:string
   categoryWord:string
   products='Products'
@@ -38,11 +38,11 @@ export class SearchComponent {
     }
     
     if(localStorage.getItem('isCategory')==='true'){
-      
       this.category();
       localStorage.setItem("isCategory",false + "")
       
     }else{
+      this.categoryName='All'
       this.searchWord=localStorage.getItem("searchWord");
       (<HTMLInputElement>document.getElementById("searchField")).value=this.searchWord
       this.searchh();
@@ -52,7 +52,7 @@ export class SearchComponent {
    
 }
 category(){
-  this.categoryName=localStorage.getItem('category')
+ 
   localStorage.setItem("category",this.categoryName + "")
   this.products=this.categoryName
   const headerr=new HttpHeaders({'Content-Type': 'application/json' ,'authentication': 'key' });
