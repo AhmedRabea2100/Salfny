@@ -116,6 +116,7 @@ onDeSelectAll(items: any) {
             console.log("hii")
             console.log(data)
             if(data==='Registration Succeeded'){
+            
               Swal.fire({
                 position: 'center',
                 icon: 'success',
@@ -123,7 +124,9 @@ onDeSelectAll(items: any) {
                 showConfirmButton: false,
                 timer: 1500
               })
+
               this.router.navigateByUrl('login')
+              this.sendPreferences()
             }else{
               Swal.fire({
                 position: 'center',
@@ -150,6 +153,26 @@ onDeSelectAll(items: any) {
     return this.http.post<Signup>('http://localhost:8080/signup', body,{'headers':headers, responsetype: 'text'})
   }*/
  
+  sendPreferences(){
+    console.log("hii 222")
+    const headerr=new HttpHeaders({'Content-Type': 'application/text' });
+    this.selectedItems.push({ "user_email": this.signup.email})
+    this.http.post('http://localhost:8080/preferences', JSON.stringify(this.selectedItems), { headers: headerr, responseType:'text'})
+    .subscribe({
+
+        next: (data: any) => {
+            console.log("hii")
+            console.log(data)
+            if(data==='Registration Succeeded'){
+             console.log(data)
+            }
+            
+            },
+            error: (error: any) => {
+            console.error(error);
+            }
+        });
+  }
   
 
 
