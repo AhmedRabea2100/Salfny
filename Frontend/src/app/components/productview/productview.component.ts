@@ -29,6 +29,7 @@ export class ProductviewComponent {
   phone: any;
   path: string = '/productview';
   topPosts: Post[];
+  userPhoto: any
 
   constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient) { }
   ngOnInit(): void {
@@ -97,6 +98,7 @@ export class ProductviewComponent {
             this.userPic = data.profilePic
             this.memberSince = data.memberSince[0] + "/" + data.memberSince[1] + "/" + data.memberSince[2]
             this.phone = data.phoneNumber
+            this.userPhoto = data.profilePic
           },
           error: (error: any) => {
 
