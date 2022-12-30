@@ -14,19 +14,19 @@ export class UploadItemsComponent {
 
   //selectedFile : File = null
 
-  constructor(private http: HttpClient,private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
 
-  uploadItem = new UploadItem('', '', 0, 0, '',Number(localStorage.getItem("user_id")));
+  uploadItem = new UploadItem('', '', 0, 0, '', Number(localStorage.getItem("user_id")));
   categories = ['cars', 'department', 'bikes', 'suit', 'dresses', 'electronic devices', 'others'];
-  categoryName:string;
-  
+  categoryName: string;
+
   imageSrc: string;
   imageName: string;
   imageBlob: string;
   myForm = new FormGroup({
-    name: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    file: new FormControl('', [Validators.required]),
+    name: new FormControl(''),
+    file: new FormControl(''),
     fileSource: new FormControl('')
   });
 
@@ -53,7 +53,6 @@ export class UploadItemsComponent {
         console.log(reader.result)
 
         this.myForm.patchValue({ fileSource: reader.result as string });
-        console.log(this.myForm.value)
 
       };
 
@@ -63,31 +62,85 @@ export class UploadItemsComponent {
 
 
   submit() {
-    this.uploadItem.category_id =this.categories.indexOf(this.categoryName)
-    
+
+    this.uploadItem.category_id = this.categories.indexOf(this.categoryName)
+    if (this.uploadItem.title.length < 3) {
+      Swal.fire({
+        position: 'center',
+        icon: 'warning',
+        title: 'Title must be at least 3 characters',
+        showConfirmButton: false,
+        timer: 2000
+      })
+      return;
+    }
+    if (this.uploadItem.description == "") {
+      Swal.fire({
+        position: 'center',
+        icon: 'warning',
+        title: 'Please provide a detailed description about your product!',
+        showConfirmButton: false,
+        timer: 2000
+      })
+      return;
+    }
+    if (this.uploadItem.price == 0) {
+      Swal.fire({
+        position: 'center',
+        icon: 'warning',
+        title: 'Price can not be zero',
+        showConfirmButton: false,
+        timer: 2000
+      })
+      return;
+    }
+    if (this.uploadItem.category_id == -1) {
+      Swal.fire({
+        position: 'center',
+        icon: 'warning',
+        title: 'You must choose a category',
+        showConfirmButton: false,
+        timer: 2000
+      })
+      return;
+    }
+    if (this.uploadItem.photo == "") {
+      Swal.fire({
+        position: 'center',
+        icon: 'warning',
+        title: 'You must provide a photo for your product',
+        showConfirmButton: false,
+        timer: 2000
+      })
+      return;
+    }
+
+
+
     const headerr = new HttpHeaders({ 'Content-Type': 'application/json' });
     this.http.post('http://localhost:8080/upload', this.uploadItem, { headers: headerr, responseType: 'text' })
       .subscribe({
 
         next: (data: any) => {
-              Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Post has been added',
-                showConfirmButton: false,
-                timer: 1500
-              })
-              this.router.navigateByUrl('home')
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Post has been added',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          this.router.navigateByUrl('home')
         },
         error: (error: any) => {
           console.error(error);
         }
       });
   }
-  
 
 
-  onSubmit() {this.uploadItem.category_id =this.categories.indexOf(this.categoryName)
+
+  onSubmit() {
+    this.uploadItem.category_id = this.categories.indexOf(this.categoryName)
 
     console.log(' title: ' + this.uploadItem.title + ', description: ' + this.uploadItem.description + 'price: ' + this.uploadItem.price + 'category ' + this.uploadItem.category_id + "sss");
   }
