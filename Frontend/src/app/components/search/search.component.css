@@ -1,4 +1,4 @@
-@import "products.css";
+@import "product.css";
 
 *{
     transition: .3s;
@@ -1089,8 +1089,8 @@ a.buy-btn{
   margin-right: 2rem !important;
   margin-left: 2rem !important;
 }
-/*//////////////////////////Drop////////////////////////////////*/
 
+/*////////////////////////////*/
 .form-controll {
     display: block;
     padding: 8px 16px;
@@ -1139,4 +1139,3 @@ select-selected.select-arrow-active:after {
     border-color: transparent transparent #fff transparent;
     top: 7px;
   }
-  

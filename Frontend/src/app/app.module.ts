@@ -13,7 +13,9 @@ import { ProductviewComponent } from './components/productview/productview.compo
 import { UploadItemsComponent } from './components/upload-items/upload-items.component';
 import { UserprofileComponent } from './components/userprofile/userprofile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SearchComponent } from './components/search/search.component';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
     HomeComponent,
     ProductviewComponent,
     UploadItemsComponent,
-    UserprofileComponent
+    UserprofileComponent,
+    SearchComponent,
     
   ],
   imports: [
