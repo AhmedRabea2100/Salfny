@@ -133,7 +133,7 @@
         <button class="nxt-btn" disabled><img src="/../assets/images/arrow.png" alt=""></button>
         <div class="product-container">
 
-            <div class="product-card" routerLinkActive="active" *ngFor="let post of topPosts;" [routerLink]="[path]"
+            <div class="product-card" routerLinkActive="active" *ngFor="let post of topPosts;" style="cursor: pointer;"
                 (click)="view(post.id)">
                 <div class="product-image">
 

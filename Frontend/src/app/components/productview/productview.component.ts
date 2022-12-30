@@ -142,9 +142,6 @@ export class ProductviewComponent {
       ).subscribe({
         next: (data) => {
           console.log(data)
-
-
-
         },
         error: (error: any) => {
           console.error(error);
@@ -176,7 +173,9 @@ export class ProductviewComponent {
     }
   }
   view(id: number) {
+    console.log(id);
     localStorage.setItem("post_id", id + "")
+    location.reload();
   }
 
   /*********************************************Search****************************************/

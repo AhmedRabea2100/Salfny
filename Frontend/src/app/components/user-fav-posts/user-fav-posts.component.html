@@ -74,6 +74,8 @@
                   <span class="price">{{ post.price }}EGP</span>
                 </div>
                 <div class="wcf-right">{{ post.views }} Views</div>
+                <div style="text-align: center ; font-size: 2rem; color: #FFA600;"><i class="fa fa-star"
+                    (click)="unfav(post.id,$event)"></i></div>
               </div>
             </div>
           </div>

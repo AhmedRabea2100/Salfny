@@ -98,4 +98,40 @@ export class UserFavPostsComponent {
       this.router.navigateByUrl('search')
     }
   }
+  unfav(id: Number, e: Event) {
+    e.stopPropagation();
+    Swal.fire({
+      title: 'Are you sure?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, Unsave it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.http.post('http://localhost:8080/addfav', id + " " + localStorage.getItem("user_id"), { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), responseType: 'text' }
+        ).subscribe({
+          next: (data: any) => {
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Unsaved',
+              text: 'Your post has been unsaved',
+              showConfirmButton: false,
+              timer: 1500
+            }).then(() => {
+              this.ngOnInit();
+            })
+
+          },
+          error: (error: any) => {
+            console.error(error);
+          }
+        });
+
+      }
+    })
+
+
+  }
 }
