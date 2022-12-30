@@ -15,7 +15,9 @@ import { UserprofileComponent } from './components/userprofile/userprofile.compo
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserPostsComponent } from './components/user-posts/user-posts.component';
 import { UserFavPostsComponent } from './components/user-fav-posts/user-fav-posts.component';
+import { SearchComponent } from './components/search/search.component';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
+
 
 @NgModule({
   declarations: [
@@ -28,8 +30,9 @@ import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
     UserprofileComponent,
     UserPostsComponent,
     UserFavPostsComponent,
-    UserprofileComponent
-      ],
+    UserprofileComponent,
+    SearchComponent
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,

@@ -8,7 +8,7 @@ import { UploadItemsComponent } from './components/upload-items/upload-items.com
 import { UserprofileComponent } from './components/userprofile/userprofile.component';
 import { UserPostsComponent } from './components/user-posts/user-posts.component';
 import { UserFavPostsComponent } from './components/user-fav-posts/user-fav-posts.component';
-
+import { SearchComponent } from './components/search/search.component';
 const routes: Routes = [
   {path: '',   redirectTo: 'home', pathMatch: 'full' }, // redirect to `first-component`
   {path:'signup', component:SignupComponent},
@@ -18,7 +18,8 @@ const routes: Routes = [
   {path:'uploadItems', component:UploadItemsComponent},
   {path:'profile', component:UserprofileComponent},
   {path:'userPosts', component:UserPostsComponent},
-  {path:'userFavPosts', component:UserFavPostsComponent}
+  {path:'userFavPosts', component:UserFavPostsComponent},
+  {path:'search', component:SearchComponent},
 ];
 
 @NgModule({

@@ -16,7 +16,8 @@
 
                         <div class="search">
                             <div class="searchFieldDiv">
-                                <input type="text" placeholder="Search.." id="searchField" (keyup)="search()">
+                                <input type="text" placeholder={{searchWord}} id="searchField" (keyup)="searchh(1)"
+                                    autofocus #input>
                             </div>
                             <div class=" searchBtnDiv">
                                 <button id="searchBtn" (click)="search()"><i class="fas fa-search"></i></button>
@@ -49,13 +50,13 @@
                 </div>
             </div>
 
-
             <div class="bottom">
                 <div class="container">
                     <div class="dropdown">
+
                         <div class="form-group" class="custom-select" style="width:200px;">
-                            <label for="category"><strong>Choose Category</strong></label>
-                            <select (click)="category()" class="dropbtn" class="form-controll"
+                            <label for="category"><strong> Choose Category</strong></label>
+                            <select (change)="category()" class="dropbtn" class="form-controll"
                                 [(ngModel)]="categoryName" required>
                                 <option class="dropdown-content" *ngFor="let category of categories" [value]="category">
                                     {{category}}</option>
@@ -65,35 +66,11 @@
                 </div>
             </div>
 
-
         </header>
         <!-- /header -->
 
-        <section class="product">
-            <h2 class="product-category">Most Viewed</h2>
-            <button class="pre-btn" disabled><img src="/../assets/images/arrow.png" alt=""></button>
-            <button class="nxt-btn" disabled><img src="/../assets/images/arrow.png" alt=""></button>
-            <div class="product-container">
-
-                <div class="product-card" routerLinkActive="active" *ngFor="let post of topPosts;" [routerLink]="[path]"
-                    (click)="view(post.id)">
-                    <div class="product-image">
-
-                        <img src="../../../assets/db/{{post.photos[0]}}" class="product-thumb" alt="">
-                        <button class="card-btn">view product</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">{{post.title}}</h2>
-                        <!-- <p class="product-short-des">a short line about the cloth..</p> -->
-                        <span class="price">{{post.price}} EGP</span>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
         <div>
-            <h1 class="align-center">Products</h1>
+            <h1 class="align-center">{{products}}</h1>
         </div>
 
         <div class="container">
@@ -114,7 +91,6 @@
                             <div class="title-product">
                                 <h3>{{post.title}}</h3>
                             </div>
-
 
                             <div class="description-prod">
                                 <p>{{post.description}}</p>
