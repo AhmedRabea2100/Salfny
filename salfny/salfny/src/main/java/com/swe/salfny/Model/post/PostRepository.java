@@ -44,5 +44,11 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
     @Transactional
     @Query(value = "UPDATE post SET views = views+1 WHERE id = ?1", nativeQuery = true)
     public void incrementViews(int id);
+    @Query(value = "SELECT user_id FROM post WHERE id= ?1", nativeQuery = true)
+    public String getOwner(String postid);
+    @Modifying
+    @Transactional
+    @Query(value = "DELETE FROM post WHERE id= ?1", nativeQuery = true)
+    public void remove(String postid);
 
 }

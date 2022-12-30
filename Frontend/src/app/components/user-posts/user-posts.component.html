@@ -74,6 +74,9 @@
                   <span class="price">{{ post.price }}EGP</span>
                 </div>
                 <div class="wcf-right">{{ post.views }} Views</div>
+                <div style="text-align: center ; font-size: 2rem; color: red;"><i class="fa fa-trash"
+                    (click)="del(post.id,$event)"></i></div>
+
               </div>
             </div>
           </div>

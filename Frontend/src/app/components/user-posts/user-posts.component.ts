@@ -99,4 +99,46 @@ export class UserPostsComponent {
       this.router.navigateByUrl('search')
     }
   }
+  del(id: Number, e: Event) {
+    e.stopPropagation();
+
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.http.post('http://localhost:8080/remove', id, {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+            Authorization: localStorage.getItem('token') + '',
+          })
+        }
+        ).subscribe({
+          next: (data: any) => {
+            if (data == true) {
+              Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Deleted',
+                text: 'Your post has been deleted',
+                showConfirmButton: false,
+                timer: 1500
+              }).then(() => {
+                this.ngOnInit();
+              })
+            }
+          },
+          error: (error: any) => {
+            console.error(error);
+          }
+        });
+
+      }
+    })
+  }
 }
