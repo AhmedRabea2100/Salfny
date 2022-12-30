@@ -1,55 +1,64 @@
 <body>
-<div class="box-form">
-    <div class="left">
-        <div class="overlay">
+    <div class="box-form">
+        <div class="left">
+            <div class="overlay">
+
+            </div>
 
         </div>
 
+        <div class="right">
+            <label>Signup</label>
+
+            <p>You have an account already? <a routerLink='/login' routerLinkActive="Active">Sign in</a></p>
+            <form class="inputs" (ngSubmit)="onSubmit()" #signupForm="ngForm">
+                <div class="form-group">
+                    <input class="form-control" id="fullname" [(ngModel)]="signup.username" placeholder="Full Name"
+                        required name="uName" #fullname="ngModel" />
+                </div>
+                <div [hidden]="fullname.valid || fullname.pristine" class="alert alert-danger" class="req">Name is
+                    required
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" id="emailField" [(ngModel)]="signup.email" required
+                        placeholder="name@example.com" name="uEmail" #email="ngModel" />
+                </div>
+                <div [hidden]="email.valid || email.pristine" class="alert alert-danger" class="req">Email address is
+                    required</div>
+                <!--<div [hidden]="emailFormat" class="alert alert-danger" class="req">Not email format</div>-->
+                <div class="form-group">
+
+                    <input type="password" class="form-control" id="password" [(ngModel)]="signup.password"
+                        name="password" (blur)="confirmPassword()" placeholder="Password" #pswd="ngModel" required
+                        minlength="8" />
+                </div>
+                <div [hidden]="pswd.valid || pswd.pristine" class="alert alert-danger" class="req">Password is required
+                    (minlength required= 8)</div>
+                <div class="form-group">
+
+                    <input type="password" class="form-control" id="cnfpassword" [(ngModel)]="passwordConfirmationTxt"
+                        (blur)="confirmPassword()" name="passwordConfirmationTxt" placeholder=" confirm Password" />
+                </div>
+                <div [hidden]="!passwordConfirmationFailed" class="alert alert-danger" class="req">Password did not
+                    match
+                </div>
+                <div class="form-group">
+                    <input class="form-control" id="phonenumber" [(ngModel)]="signup.phoneNumber"
+                        placeholder="Phone number" required name="uName" #phonenumber="ngModel" />
+                </div>
+                <div [hidden]="phonenumber.valid || phonenumber.pristine" class="alert alert-danger" class="req">phone
+                    number is required</div>
+                <div class="form-group">
+                    <angular2-multiselect [data]="itemList" [(ngModel)]="selectedItems" [settings]="settings" 
+                        (onSelect)="onItemSelect($event)" (onDeSelect)="OnItemDeSelect($event)"
+                        (onSelectAll)="onSelectAll($event)" (onDeSelectAll)="onDeSelectAll($event)" [ngModelOptions]="{standalone: true}" style="font-weight:bold; color: #053777;">
+                    
+                    </angular2-multiselect>
+                </div>
+                <br><br>
+                <button type="submit" class="btn btn-success" [disabled]="!signupForm.form.valid">Submit</button>
+            </form>
+        </div>
+        <router-outlet></router-outlet>
     </div>
-
-    <div class="right">
-        <label>Signup</label>
-
-        <p>You have an account already? <a routerLink='/login' routerLinkActive="Active">Sign in</a></p>
-        <form class="inputs" (ngSubmit)="onSubmit()" #signupForm="ngForm">
-            <div class="form-group">
-                <input class="form-control" id="fullname" [(ngModel)]="signup.username" placeholder="Full Name" required
-                    name="uName" #fullname="ngModel" />
-            </div>
-            <div [hidden]="fullname.valid || fullname.pristine" class="alert alert-danger" class="req">Name is required
-            </div>
-            <div class="form-group">
-                <input type="email" class="form-control" id="emailField" [(ngModel)]="signup.email" required
-                    placeholder="name@example.com" name="uEmail" #email="ngModel" />
-            </div>
-            <div [hidden]="email.valid || email.pristine" class="alert alert-danger" class="req">Email address is
-                required</div>
-            <!--<div [hidden]="emailFormat" class="alert alert-danger" class="req">Not email format</div>-->
-            <div class="form-group">
-
-                <input type="password" class="form-control" id="password" [(ngModel)]="signup.password" name="password"
-                    (blur)="confirmPassword()" placeholder="Password" #pswd="ngModel" required minlength="8" />
-            </div>
-            <div [hidden]="pswd.valid || pswd.pristine" class="alert alert-danger" class="req">Password is required
-                (minlength required= 8)</div>
-            <div class="form-group">
-
-                <input type="password" class="form-control" id="cnfpassword" [(ngModel)]="passwordConfirmationTxt"
-                    (blur)="confirmPassword()" name="passwordConfirmationTxt" placeholder=" confirm Password" />
-            </div>
-            <div [hidden]="!passwordConfirmationFailed" class="alert alert-danger" class="req">Password did not match
-            </div>
-            <div class="form-group">
-                <input class="form-control" id="phonenumber" [(ngModel)]="signup.phoneNumber" placeholder="Phone number"
-                    required name="uName" #phonenumber="ngModel" />
-            </div>
-            <div [hidden]="phonenumber.valid || phonenumber.pristine" class="alert alert-danger" class="req">phone
-                number is required</div>
-
-            <br><br>
-            <button type="submit" class="btn btn-success" [disabled]="!signupForm.form.valid">Submit</button>
-        </form>
-    </div>
-    <router-outlet></router-outlet>
-</div>
 </body>
