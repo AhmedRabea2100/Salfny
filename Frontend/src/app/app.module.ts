@@ -13,6 +13,11 @@ import { ProductviewComponent } from './components/productview/productview.compo
 import { UploadItemsComponent } from './components/upload-items/upload-items.component';
 import { UserprofileComponent } from './components/userprofile/userprofile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserPostsComponent } from './components/user-posts/user-posts.component';
+import { UserFavPostsComponent } from './components/user-fav-posts/user-fav-posts.component';
+import { SearchComponent } from './components/search/search.component';
+import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
+
 
 @NgModule({
   declarations: [
@@ -22,14 +27,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     ProductviewComponent,
     UploadItemsComponent,
-    UserprofileComponent
+    UserprofileComponent,
+    UserPostsComponent,
+    UserFavPostsComponent,
+    UserprofileComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularMultiSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

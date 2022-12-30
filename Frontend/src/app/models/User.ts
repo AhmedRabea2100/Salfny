@@ -7,4 +7,6 @@ export type User = {
     memberSince: string[];
     rating: number;
     noOfDoneDeals: number;
+    numPosts: number;
+    password: string;
 }

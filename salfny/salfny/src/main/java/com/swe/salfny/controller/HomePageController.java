@@ -28,12 +28,11 @@ public class HomePageController {
     public ResponseEntity<List<Post>> homePage(@RequestHeader(name = "Authorization", required = false) String token) {
         HttpHeaders headers = new HttpHeaders();
         if (token!=null && !token.equals("null") && authHandler.validateToken(token)) {
-
-
             return ResponseEntity.ok()
                     .headers(headers)
                     .body(postRepo.showPreferredPosts(authHandler.getEmail()));
-        } else {
+        }
+        else {
             return ResponseEntity.status(401)
                     .headers(headers)
                     .body(postRepo.showRecentPosts(0, 100));

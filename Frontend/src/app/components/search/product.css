@@ -1,0 +1,265 @@
+.product{
+    position: relative;
+    overflow: hidden;
+    padding: 200px 0 20px 0;
+
+}
+
+.product-category{
+    padding: 0 10vw;
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 40px;
+    text-transform: capitalize;
+}
+
+.product-container{
+    padding: 0 10vw;
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+}
+
+.product-container::-webkit-scrollbar{
+    display: none;
+}
+
+.product-card{
+    flex: 0 0 auto;
+    width: 250px;
+    height: 450px;
+    margin-right: 40px;
+}
+
+.product-image{
+    position: relative;
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+}
+
+.product-thumb{
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+}
+
+.discount-tag{
+    position: absolute;
+    background: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    color: #ff7d7d;
+    right: 10px;
+    top: 10px;
+    text-transform: capitalize;
+}
+
+.card-btn{
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px;
+    width: 90%;
+    text-transform: capitalize;
+    border: none;
+    outline: none;
+    background: #2A65EA;
+    border-radius: 5px;
+    transition: 0.5s;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.product-card:hover .card-btn{
+    opacity: 1;
+}
+
+.card-btn:hover{
+    background: #82a3ee;
+}
+
+.product-info{
+    width: 100%;
+    height: 100px;
+    padding-top: 10px;
+}
+
+.product-brand{
+    text-transform: uppercase;
+}
+
+.product-short-des{
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    overflow: hidden;
+    opacity: 0.5;
+    text-transform: capitalize;
+    margin: 5px 0;
+}
+
+.price{
+    font-weight: 900;
+    font-size: 20px;
+}
+
+.actual-price{
+    margin-left: 20px;
+    opacity: 0.5;
+    text-decoration: line-through;
+}
+.pre-btn, .nxt-btn{
+    border: none;
+    width: 10vw;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #fff 100%);
+    z-index: 8;
+}
+
+.pre-btn{
+    left: 0;
+    transform: rotate(180deg);
+}
+
+.nxt-btn{
+    right: 0;
+}
+
+.pre-btn img, .nxt-btn img{
+    opacity: 0.2;
+}
+
+.pre-btn:hover img, .nxt-btn:hover img{
+    opacity: 1;
+}
+
+
+
+
+.prod-list {
+    background-color: #dfe6e9;
+    padding: 3em;
+  }
+  
+  .prod-list .card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 1em;
+    box-shadow: 0px 10px 5px #b2bec3;
+    text-align: center;
+  }
+  
+  .card .title {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .card img {
+    max-width: 100%;
+    border-radius: 5px;
+  }
+  
+  .card .text {
+    text-align: left;
+    /* margin-left: 2em; */
+    margin-bottom: 0.5em;
+    font-size: 12px;
+  }
+  
+  .buy-button {
+    background-color: #2A65EA;
+    border: none;
+    padding: 1em;
+    border-radius: 5px;
+    font-weight: bold;
+    width: 100%;
+  }
+  .buy-button:hover {
+    box-shadow: 0px 5px 5px #b2bec3;
+    color: #eb4d4b;
+  }
+  
+  /* .prod-container {
+    margin: 1em;
+  }
+   */
+  .align-center {
+    text-align: center;
+  }
+  .nav-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px 3em;
+  }
+  
+  .sub-menu {
+    max-width: 20%;
+    padding: 1em;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px #8395a7;
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s ease;
+  }
+  
+  .sub-menu a:hover {
+    color: #8395a7;
+  }
+  
+  nav ul li:hover .sub-menu {
+    opacity: 1;
+    visibility: visible;
+    transition: 0.5s ease;
+  }
+  
+  .card img {
+    transition: 0.25s ease;
+  }
+  
+  .card:hover img {
+    transform: scale(1.1);
+    transition: 0.5s ease;
+  }
+  
+  .card .details {
+    position: relative;
+    top: 50px;
+    transition: 1s ease;
+    /* visibility: hidden; */
+    opacity: 0;
+  }
+  
+  .card:hover .details {
+    opacity: 1;
+    visibility: visible;
+    top: 0px;
+    transition: 1s ease;
+  }
+  
+  .text,
+  .title {
+    opacity: 1;
+    transition: 0.5s ease;
+  }
+  
+  .card:hover .text,
+  .card:hover .title {
+    opacity: 0;
+    transition: 0.5 ease;
+  }
+  .card{
+    width: 30em;
+    display: inline-block;
+    margin: 1em 2em;
+  }
