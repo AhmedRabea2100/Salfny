@@ -17,14 +17,22 @@ export class UserPostsComponent {
     private http: HttpClient,
     private activatedRoute: ActivatedRoute,
     private sanitizer: DomSanitizer
-  ) {}
-  
+  ) { }
+  searchWord: string;
+  categoryName: string = 'All';
   posts: Post[] | undefined;
   logged: any;
   state: any;
   path: string = '/productview';
 
   ngOnInit() {
+    if (localStorage.getItem("token") != null) {
+      document.getElementById("userbtn").style.display = "initial"
+      document.getElementById("signinBtn").style.display = "none";
+    } else {
+      document.getElementById("userbtn").style.display = "none";
+      document.getElementById("signinBtn").style.display = "initial";
+    }
     const headerr = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: localStorage.getItem('token') + '',
@@ -49,7 +57,7 @@ export class UserPostsComponent {
         },
       });
   }
-  
+
   sell() {
     if (this.state == 'Login') {
       Swal.fire({
@@ -76,5 +84,19 @@ export class UserPostsComponent {
   }
   sanitize(url: string) {
     return this.sanitizer.bypassSecurityTrustUrl(url);
+  }
+  home() {
+    this.router.navigateByUrl('home');
+  }
+
+  /*********************************************Search****************************************/
+  search() {
+
+    if ((<HTMLInputElement>document.getElementById("searchField")).value !== "") {
+      localStorage.setItem("category", this.categoryName + "")
+      this.searchWord = (<HTMLInputElement>document.getElementById("searchField")).value
+      localStorage.setItem("searchWord", this.searchWord + "")
+      this.router.navigateByUrl('search')
+    }
   }
 }

@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/User';
 import Swal from 'sweetalert2';
 
@@ -9,13 +10,22 @@ import Swal from 'sweetalert2';
   styleUrls: ['./userprofile.component.css'],
 })
 export class UserprofileComponent {
-  constructor(private http: HttpClient) {}
-
+  constructor(private http: HttpClient, private router: Router) { }
+  searchWord: string;
+  categoryName: string = 'All';
   user!: User;
   changePassword: boolean = false;
   samePassword: boolean = false;
   confirmPassword: string = '';
   ngOnInit() {
+    if (localStorage.getItem("token") != null) {
+      document.getElementById("userbtn").style.display = "initial"
+      document.getElementById("signinBtn").style.display = "none";
+    } else {
+      document.getElementById("userbtn").style.display = "none";
+      document.getElementById("signinBtn").style.display = "initial";
+    }
+
     const header = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: localStorage.getItem('token') + '',
@@ -126,4 +136,20 @@ export class UserprofileComponent {
     localStorage.removeItem('token');
     localStorage.removeItem('user_id');
   }
+  home() {
+    this.router.navigateByUrl('home');
+  }
+  search() {
+
+    if ((<HTMLInputElement>document.getElementById("searchField")).value !== "") {
+      localStorage.setItem("category", this.categoryName + "")
+      this.searchWord = (<HTMLInputElement>document.getElementById("searchField")).value
+      localStorage.setItem("searchWord", this.searchWord + "")
+      this.router.navigateByUrl('search')
+    }
+  }
+  sell() {
+    this.router.navigateByUrl('uploadItems')
+  }
+
 }

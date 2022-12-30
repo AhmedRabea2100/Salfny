@@ -32,6 +32,9 @@ export class SearchComponent {
   topPosts: Post[] | undefined;
   path: string = '/productview';
   ngOnInit() {
+    document.getElementById("searchField").focus()
+
+
 
     if (localStorage.getItem("token") != null) {
       document.getElementById("userbtn").style.display = "initial"
