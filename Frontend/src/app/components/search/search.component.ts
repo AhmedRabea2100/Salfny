@@ -41,6 +41,7 @@ export class SearchComponent {
     if (localStorage.getItem('isCategory') === 'true') {
       this.searchh(2);
       localStorage.setItem("isCategory", false + "")
+      this.products = localStorage.getItem('category')
 
     } else {
       // this.categoryName='All'
@@ -72,6 +73,18 @@ export class SearchComponent {
     this.http.post<Post[]>('http://localhost:8080/search', this.word, { headers: headerr }
     ).subscribe({
       next: (data: Post[]) => {
+        if(data.length===0){
+          Swal.fire({
+            position: 'center',
+            imageUrl: "./assets/images/oopsSearch.png",
+            title: 'Oops...',
+            text: 'There was no match for your search.',
+            imageWidth: 300,
+            imageHeight: 200,
+            showConfirmButton: false,
+            timer: 1700
+          })
+        }
         this.posts = data;
       },
       error: (error: any) => {
@@ -84,9 +97,6 @@ export class SearchComponent {
       }
     });
     localStorage.setItem("searchWord", this.searchWord + "")
-
-    // localStorage.setItem("searchWord", this.searchWord + "")
-    //this.router.navigateByUrl('search')
 
 
   }

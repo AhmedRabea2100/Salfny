@@ -53,12 +53,9 @@
             <div class="bottom">
                 <div class="container">
                     <div class="dropdown">
-                        <!-- <button class="dropbtn" class="form-controll"  [(ngModel)]="categoryName" name="caption" id ="caption" href="#" id="browseCategories">Browse by Categories <i class="fas fa-angle-down"></i></button>
-                        <div class="dropdown-content">
-                            <option *ngFor="let category of categories" [value]="category">{{category}}</option>
-                        </div> -->
+
                         <div class="form-group" class="custom-select" style="width:200px;">
-                            <label for="category"><strong>Category</strong></label>
+                            <label for="category"><strong> Choose Category</strong></label>
                             <select (change)="category()" class="dropbtn" class="form-controll"
                                 [(ngModel)]="categoryName" required>
                                 <option class="dropdown-content" *ngFor="let category of categories" [value]="category">
@@ -71,29 +68,6 @@
 
         </header>
         <!-- /header -->
-
-        <!-- <section class="product">
-            <h2 class="product-category">Most Viewed</h2>
-            <button class="pre-btn" disabled><img src="/../assets/images/arrow.png" alt=""></button>
-            <button class="nxt-btn" disabled><img src="/../assets/images/arrow.png" alt=""></button>
-            <div class="product-container">
-
-                <div class="product-card" routerLinkActive="active" *ngFor="let post of topPosts;" [routerLink]="[path]"
-                    (click)="view(post.id)">
-                    <div class="product-image">
-
-                        <img src="../../../assets/db/{{post.photos[0]}}" class="product-thumb" alt="">
-                        <button class="card-btn">view product</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">{{post.title}}</h2>
-                       
-                        <span class="price">{{post.price}} EGP</span>
-                    </div>
-                </div>
-
-            </div>
-        </section> -->
 
         <div>
             <h1 class="align-center">{{products}}</h1>

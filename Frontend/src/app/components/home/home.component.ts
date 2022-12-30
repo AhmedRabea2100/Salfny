@@ -13,8 +13,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class HomeComponent {
   constructor(private router: Router, private http: HttpClient, private activatedRoute: ActivatedRoute, private sanitizer: DomSanitizer) { }
   searchWord: string;
-  categories = ['All','cars', 'department', 'bikes', 'suit', 'dresses', 'electronic devices', 'others'];
-  categoryName: string=this.categories[0]
+  categories = ['All', 'cars', 'department', 'bikes', 'suit', 'dresses', 'electronic devices', 'others'];
+  categoryName: string = this.categories[0]
   logged: any
   state: any
   p1: any
@@ -102,16 +102,16 @@ export class HomeComponent {
     }
   }
   /**************************************category********************************/
-  category(){
-    if(this.categoryName!='All'){
-      localStorage.setItem("category",this.categoryName + "")
-      localStorage.setItem("isCategory",true + "")
+  category() {
+    if (this.categoryName != 'All') {
+      localStorage.setItem("category", this.categoryName + "")
+      localStorage.setItem("isCategory", true + "")
       this.router.navigateByUrl('search')
     }
     console.log(this.categoryName);
   }
-  
-  
+
+
 
 
 
