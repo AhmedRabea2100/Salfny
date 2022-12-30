@@ -32,10 +32,13 @@ export class SearchComponent {
   topPosts: Post[] | undefined;
   path: string = '/productview';
   ngOnInit() {
-    if (localStorage.getItem("user_login") == null) {
-      document.getElementById("userbtn").style.visibility = "visible"
+
+    if (localStorage.getItem("token") != null) {
+      document.getElementById("userbtn").style.display = "initial"
+      document.getElementById("signinBtn").style.display = "none";
     } else {
-      document.getElementById("userbtn").style.visibility = "visible"
+      document.getElementById("userbtn").style.display = "none";
+      document.getElementById("signinBtn").style.display = "initial";
     }
 
     if (localStorage.getItem('isCategory') === 'true') {
@@ -130,5 +133,8 @@ export class SearchComponent {
     this.searchh(1)
 
 
+  }
+  home() {
+    this.router.navigateByUrl('home');
   }
 }
