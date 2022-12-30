@@ -26,7 +26,7 @@ export class SearchComponent {
   products = 'Products'
   word: String
   logged: any
-  state=localStorage.getItem("state")
+  state = localStorage.getItem("state")
   p1: any
   posts: Post[] | undefined;
   topPosts: Post[] | undefined;
@@ -73,17 +73,10 @@ export class SearchComponent {
     this.http.post<Post[]>('http://localhost:8080/search', this.word, { headers: headerr }
     ).subscribe({
       next: (data: Post[]) => {
-        if(data.length===0){
-          Swal.fire({
-            position: 'center',
-            imageUrl: "./assets/images/oopsSearch.png",
-            title: 'Oops...',
-            text: 'There was no match for your search.',
-            imageWidth: 300,
-            imageHeight: 200,
-            showConfirmButton: false,
-            timer: 1700
-          })
+        if (data.length === 0) {
+          document.getElementById("nomatch").style.display = "block";
+        } else {
+          document.getElementById("nomatch").style.display = "none";
         }
         this.posts = data;
       },
