@@ -38,6 +38,8 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
 
     @Query(value = "SELECT * FROM post p  WHERE p.id = ?1", nativeQuery = true)
     public Post showSpecificPost(int id);
+    @Query(value = "SELECT user_id FROM save WHERE user_id = ?1 AND post_id= ?2", nativeQuery = true)
+    public String checkFavorite(int userid,int postid);
     @Modifying
     @Transactional
     @Query(value = "UPDATE post SET views = views+1 WHERE id = ?1", nativeQuery = true)

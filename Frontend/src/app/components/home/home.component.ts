@@ -12,7 +12,6 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 
 export class HomeComponent {
-
   constructor(private router: Router, private http: HttpClient, private activatedRoute: ActivatedRoute, private sanitizer: DomSanitizer) { }
   searchWord: string;
   categories = ['All', 'cars', 'department', 'bikes', 'suit', 'dresses', 'electronic devices', 'others'];
@@ -24,13 +23,14 @@ export class HomeComponent {
   topPosts: Post[] | undefined;
   path: string = '/productview';
   ngOnInit() {
-    if (localStorage.getItem("user_login") == null) {
-      document.getElementById("userbtn").style.visibility = "visible"
+    if (localStorage.getItem("token") != null) {
+      document.getElementById("userbtn").style.display = "initial"
+      document.getElementById("signinBtn").style.display = "none";
     } else {
-      document.getElementById("userbtn").style.visibility = "visible"
+      document.getElementById("userbtn").style.display = "none";
+      document.getElementById("signinBtn").style.display = "initial";
     }
     this.p1 = "/../assets/images/pr2.jpg"
-
 
     const headerr = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': localStorage.getItem("token") + "" });
 
@@ -62,7 +62,6 @@ export class HomeComponent {
       },
       error: (error: any) => {
         console.error(error);
-
       }
     });
   }
@@ -93,6 +92,10 @@ export class HomeComponent {
   }
   sanitize(url: string) {
     return this.sanitizer.bypassSecurityTrustUrl(url);
+  }
+
+  home() {
+    this.router.navigateByUrl('home');
   }
 
   /*********************************************Search****************************************/

@@ -25,7 +25,6 @@ public class LoginController {
     public String login(@RequestBody Credential c) {
         String email = c.getEmail();
         String c2 = repo.authenticate(email);
-
         if (c2 == null)
             return "Email not found";
 

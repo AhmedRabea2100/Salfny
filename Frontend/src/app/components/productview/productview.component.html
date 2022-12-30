@@ -1,62 +1,120 @@
-<div class="product_img">
+<body>
+    <div id="main">
+        <header>
+            <div class="top">
+                <div class="container">
+                    <div class="left">
+                        <div class="mainLogo">
+                            <img src="./assets/images/logo.png" alt="logo">
+                        </div>
+
+                        <div class="search">
+                            <div class="searchFieldDiv">
+                                <input type="text" placeholder="Search.." id="searchField">
+                            </div>
+                            <div class="searchBtnDiv">
+                                <button id="searchBtn"><i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="right">
+
+                        <div class="signinBtnDiv">
+                            <div class="dropdown">
+                                <button id="signinBtn" (click)="log(state)" class="showSignoutBtnHover"
+                                    routerLink='/login'>
+                                    {{state}}
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="sellBtnDiv">
+                            <button id="sellBtn" (click)="sell()">sell item</button>
+                        </div>
 
 
-    <div class="image_discription">
-        <div class="swiper">
-                <img src="../../../assets/db/{{photo}}"> 
-        </div>
-    
-       
-    </div>
-
-    <div class="product_details">
-        <div class="box">
-            <div class="price">
-                <h3> {{price}}<sup style="font-weight: normal;font-size:small">EGP</sup></h3>
-            </div>
-            <span> {{Name}} </span>
-            <div class="location">
-                <p>{{address}}</p>
-                <p>{{date}}</p>
-            </div>
-
-            
-                <button id="first" class="both">Add to Cart</button>
-                <button id="second" class="both" (click)="addToFav()">Add to Favourite</button>
-              
-        </div>
-
-        <div class="descriptiopn">
-            <h3> Descriptiopn </h3>
-            <p>{{this.description}}</p>
-        </div>
-
-
-        <div class="box" id="box2">
-            <p class="Seller_description"> Seller Description </p>
-            <div class="seller_detail">
-                <img src="/../assets/images/2.png">
-                <div>
-                    <h2> {{username}} </h2>
-                    <p>Member since {{memberSince}}</p>
+                        <div class="profile" id="userbtn">
+                            <button routerLink="/profile" style="color: #2A65EA;"> <i
+                                    class="far fa-id-badge">USERPROFILE</i></button>
+                        </div>
+                    </div>
                 </div>
             </div>
-        <!-- /banner -->
-<section class="product-details">
-    <div class="image-slider" >
-        <div class="product-image" style="width: 500px;height: 500px;background-size: cover;position: relative;background-image: url();">
-            <!-- '/../assets/images/pr2.jpg' -->
-           
 
+        </header>
+
+
+        <div class="product_img">
+
+
+            <div class="image_discription">
+                <div class="swiper">
+                    <img src="../../../assets/db/{{photo}}">
+                </div>
+
+
+            </div>
+
+            <div class="product_details">
+                <div class="box">
+                    <div class="price">
+                        <h3> {{price}}<sup style="font-weight: normal;font-size:small">EGP</sup></h3>
+                    </div>
+                    <div style="font-size: 200%;   text-align: center;"> {{Name}}
+                    </div>
+                    <div>
+                        <span>{{address}}</span>
+                        <span style="float: right;">{{date}}</span>
+                    </div>
+
+
+
+
+                </div>
+
+                <div class="descriptiopn">
+                    <h3 style="text-align: center;"> Descriptiopn </h3>
+                    <p>{{this.description}}</p>
+                    <div id="star" style="cursor: pointer;" (click)="addToFav()" [class.active]="this.fav">
+                        <svg width="42px" height="40px" viewBox="0 0 42 40" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <path
+                                d="M21,34 L10.4346982,39.5545079 C8.47875732,40.5828068 7.19697214,39.6450119 7.56952871,37.4728404 L9.5873218,25.7082039 L1.03981311,17.3764421 C-0.542576313,15.8339937 -0.0467737017,14.3251489 2.13421047,14.0082334 L13.946577,12.2917961 L19.2292279,1.58797623 C20.2071983,-0.393608322 21.7954064,-0.388330682 22.7707721,1.58797623 L28.053423,12.2917961 L39.8657895,14.0082334 C42.0525979,14.3259953 42.5383619,15.8381017 40.9601869,17.3764421 L32.4126782,25.7082039 L34.4304713,37.4728404 C34.8040228,39.6508126 33.5160333,40.5800681 31.5653018,39.5545079 L21,34 Z">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+
+
+                <div class="box" id="box2">
+                    <p class="Seller_description"> Seller Description </p>
+                    <div class="seller_detail">
+                        <img src="/../assets/images/2.png">
+                        <div>
+                            <h2> {{username}} </h2>
+                            <p>Member since {{memberSince}}</p>
+                            <p>{{phone}}</p>
+                        </div>
+                    </div>
+                    <section class="product-details">
+                        <div class="image-slider">
+                            <div class="product-image"
+                                style="width: 500px;height: 500px;background-size: cover;position: relative;background-image: url();">
+
+
+                            </div>
+
+
+
+
+
+                        </div>
+                    </section>
+                </div>
+            </div>
         </div>
 
-
-      
-
-
     </div>
-
-
-
-
-
+</body>
