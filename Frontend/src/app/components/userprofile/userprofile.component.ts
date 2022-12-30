@@ -9,19 +9,20 @@ import Swal from 'sweetalert2';
   styleUrls: ['./userprofile.component.css'],
 })
 export class UserprofileComponent {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   user!: User;
   changePassword: boolean = false;
   samePassword: boolean = false;
-  confirmPassword: string = "";
+  confirmPassword: string = '';
   ngOnInit() {
     const header = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: localStorage.getItem('token') + '',
     });
 
-    this.http.get<User>('http://localhost:8080/profile', { headers: header })
+    this.http
+      .get<User>('http://localhost:8080/profile', { headers: header })
       .subscribe({
         next: (data: User) => {
           this.user = data;
@@ -80,10 +81,11 @@ export class UserprofileComponent {
       'Content-Type': 'application/json',
       authentication: 'key',
     });
-    this.http.post('http://localhost:8080/profile', this.user, {
-      headers: header,
-      responseType: 'text',
-    })
+    this.http
+      .post('http://localhost:8080/profile', this.user, {
+        headers: header,
+        responseType: 'text',
+      })
       .subscribe({
         next: (data: any) => {
           console.log(data);
@@ -91,10 +93,10 @@ export class UserprofileComponent {
             Swal.fire({
               position: 'center',
               icon: 'success',
-              title: "Saved",
+              title: 'Saved',
               showConfirmButton: false,
-              timer: 1500
-            })
+              timer: 1500,
+            });
             this.ngOnInit();
           }
         },
@@ -104,10 +106,8 @@ export class UserprofileComponent {
       });
   }
 
-
   onFileChange(event: any) {
     const reader = new FileReader();
-
     if (event.target.files && event.target.files.length) {
       const [file] = event.target.files;
       reader.readAsDataURL(file);
@@ -119,6 +119,11 @@ export class UserprofileComponent {
     }
   }
   fun() {
-    document.getElementById("images").click();
+    document.getElementById('images').click();
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user_id');
   }
 }

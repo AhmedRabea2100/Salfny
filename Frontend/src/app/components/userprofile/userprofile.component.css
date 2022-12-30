@@ -43,12 +43,15 @@
   
   .edit-btn,
   .user-posts-btn,
-  .user-fav-posts-btn{
+  .user-fav-posts-btn,
+  .user-logout-btn{
     font-size: 20px !important;
+    text-shadow: 0px 0px 2px rgb(173, 173, 173);
   }
 
   .user-posts-btn,
-  .user-fav-posts-btn{
+  .user-fav-posts-btn,
+  .user-logout-btn{
     margin-bottom: 15px;
   }
 
@@ -60,7 +63,13 @@
 
   .user-fav-posts-btn{
     width: 100%;
-    background-color:yellow !important;
+    background-color:gold !important;
+    border: none !important;
+  }
+
+  .user-logout-btn{
+    width: 100%;
+    background-color:firebrick !important;
     border: none !important;
   }
 
