@@ -12,9 +12,11 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.web.servlet.MockMvc;
 
 import org.springframework.test.web.servlet.ResultActions;
@@ -28,7 +30,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @AutoConfigureMockMvc
 @SpringBootTest
-
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+@Rollback()
 public class SearchEndpointTest {
 
     @Autowired
@@ -41,6 +44,7 @@ public class SearchEndpointTest {
     Post post3;
     @BeforeEach
     public void initTest() {
+        postRepository.deleteAll();
         post1 =  new Post("BMW", null, 1500000, 0, 1, LocalDateTime.now());
         postRepository.save(post1);
         post2 =  new Post("T_shirt", "Cotton 100%", 150, 4, 1, LocalDateTime.now());
