@@ -14,6 +14,7 @@ import { UploadItemsComponent } from './components/upload-items/upload-items.com
 import { UserprofileComponent } from './components/userprofile/userprofile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchComponent } from './components/search/search.component';
+import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { SearchComponent } from './components/search/search.component';
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularMultiSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
