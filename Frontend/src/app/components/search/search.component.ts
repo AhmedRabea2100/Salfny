@@ -26,7 +26,7 @@ export class SearchComponent {
   products = 'Products'
   word: String
   logged: any
-  state: any
+  state=localStorage.getItem("state")
   p1: any
   posts: Post[] | undefined;
   topPosts: Post[] | undefined;

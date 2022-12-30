@@ -36,11 +36,13 @@ export class HomeComponent {
     ).subscribe({
       next: (data: any) => {
         this.state = "Log Out"
+        localStorage.setItem("state",this.state+ "")
         this.posts = data;
         console.log(data);
       },
       error: (error: any) => {
         this.state = "Login"
+        localStorage.setItem("state",this.state+ "")
         if (error.status == 401) {
           this.posts = error.error;
           console.log(error.error);
