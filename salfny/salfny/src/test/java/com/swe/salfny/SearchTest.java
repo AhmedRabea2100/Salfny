@@ -5,6 +5,8 @@ import com.swe.salfny.Model.post.Post;
 import com.swe.salfny.Model.post.PostRepository;
 import com.swe.salfny.Model.post.SearchRepository;
 
+import com.swe.salfny.Model.user.User;
+import com.swe.salfny.Model.user.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -30,17 +32,24 @@ public class SearchTest {
 
     @Autowired
     private SearchRepository searchRepository;
+    @Autowired
+    private UserRepository repo;
+
+    int id;
 
 
     @BeforeEach
     void clear() {
+        User u = new User("Usef Ashraf", null, "zz@gmail.com", null, LocalDateTime.now(), "123456789", "01150161459", 3, 3);
+        repo.save(u);
+        id = Integer.parseInt(repo.findByEmail(u.getEmail()));
         postRepository.deleteAll();
     }
     @Test
     @Order(1)
     public void searchLikeTest(){
-        Post post1 =  new Post("BMW", null, 1500000, 0, 1, LocalDateTime.now());
-        Post post2 = new Post("T_shirt", "Cotton 100%", 150, 4, 1, LocalDateTime.now());
+        Post post1 =  new Post("BMW", null, 1500000, 0, id, LocalDateTime.now());
+        Post post2 = new Post("T_shirt", "Cotton 100%", 150, 4, id, LocalDateTime.now());
         postRepository.save(post1);
         postRepository.save(post2);
         List<Post> res1 = searchRepository.searchLike("B");
@@ -57,8 +66,8 @@ public class SearchTest {
     @Test
     @Order(2)
     public void allCategoryTest(){
-        Post post1 =  new Post("BMW", null, 1500000, 0, 1, LocalDateTime.now());
-        Post post2 = new Post("T_shirt", "Cotton 100%", 150, 4, 1, LocalDateTime.now());
+        Post post1 =  new Post("BMW", null, 1500000, 0, id, LocalDateTime.now());
+        Post post2 = new Post("T_shirt", "Cotton 100%", 150, 4, id, LocalDateTime.now());
         postRepository.save(post1);
         postRepository.save(post2);
         List<Post> res = searchRepository.allCategory();
@@ -68,9 +77,9 @@ public class SearchTest {
     @Test
     @Order(3)
     public void searchByCategoryLikeTest(){
-        Post post1 =  new Post("BMW", null, 1500000, 0, 1, LocalDateTime.now());
-        Post post2 = new Post("T_shirt", "Cotton 100%", 150, 4, 1, LocalDateTime.now());
-        Post post3 = new Post("LabTop", "Core i7", 17000, 5, 1, LocalDateTime.now());
+        Post post1 =  new Post("BMW", "null", 1500000, 0, id, LocalDateTime.now());
+        Post post2 = new Post("T_shirt", "Cotton 100%", 150, 4, id, LocalDateTime.now());
+        Post post3 = new Post("LabTop", "Core i7", 17000, 5, id, LocalDateTime.now());
         postRepository.save(post1);
         postRepository.save(post2);
         postRepository.save(post3);
