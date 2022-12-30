@@ -41,8 +41,36 @@
     box-sizing: border-box;
   }
   
-  .edit-btn{
+  .edit-btn,
+  .user-posts-btn,
+  .user-fav-posts-btn,
+  .user-logout-btn{
     font-size: 20px !important;
+    text-shadow: 0px 0px 2px rgb(173, 173, 173);
+  }
+
+  .user-posts-btn,
+  .user-fav-posts-btn,
+  .user-logout-btn{
+    margin-bottom: 15px;
+  }
+
+  .user-posts-btn{
+    background-color:#2dce89 !important;
+    border: none !important;
+    width: 100%;
+  }
+
+  .user-fav-posts-btn{
+    width: 100%;
+    background-color:gold !important;
+    border: none !important;
+  }
+
+  .user-logout-btn{
+    width: 100%;
+    background-color:firebrick !important;
+    border: none !important;
   }
 
   .save-btn{
@@ -2040,4 +2068,13 @@
   
   #navbar .navbar {
     margin-bottom: 20px;
+  }
+
+  #changePass{
+    color: #324cdd;
+    cursor:pointer;
+  }
+  #changePass:hover{
+    text-decoration: underline;
+    color: #233dd2;
   }

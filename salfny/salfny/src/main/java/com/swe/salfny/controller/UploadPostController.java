@@ -13,6 +13,7 @@ import java.io.*;
 import java.time.LocalDateTime;
 
 @RestController
+@CrossOrigin
 public class UploadPostController {
     @Autowired
     private PostRepository repo;

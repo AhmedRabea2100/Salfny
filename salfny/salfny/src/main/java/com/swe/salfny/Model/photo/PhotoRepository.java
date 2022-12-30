@@ -5,5 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 public interface PhotoRepository extends JpaRepository<Photo, Integer> {
-
+    @Query("SELECT MAX(id) FROM Photo")
+    public int findMaxId();
 }

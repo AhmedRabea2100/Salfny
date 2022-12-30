@@ -13,6 +13,8 @@ import { ProductviewComponent } from './components/productview/productview.compo
 import { UploadItemsComponent } from './components/upload-items/upload-items.component';
 import { UserprofileComponent } from './components/userprofile/userprofile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserPostsComponent } from './components/user-posts/user-posts.component';
+import { UserFavPostsComponent } from './components/user-fav-posts/user-fav-posts.component';
 import { SearchComponent } from './components/search/search.component';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 
@@ -26,8 +28,10 @@ import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
     ProductviewComponent,
     UploadItemsComponent,
     UserprofileComponent,
-    SearchComponent,
-    
+    UserPostsComponent,
+    UserFavPostsComponent,
+    UserprofileComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

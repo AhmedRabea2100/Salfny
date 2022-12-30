@@ -34,6 +34,4 @@ public class Photo {
     public void setUrl(String photo) {
         this.photo = photo;
     }
-
-
 }

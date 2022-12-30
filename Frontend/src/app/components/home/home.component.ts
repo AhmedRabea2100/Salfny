@@ -8,9 +8,11 @@ import { DomSanitizer } from '@angular/platform-browser';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
+
 export class HomeComponent {
+
   constructor(private router: Router, private http: HttpClient, private activatedRoute: ActivatedRoute, private sanitizer: DomSanitizer) { }
   searchWord: string;
   categories = ['All', 'cars', 'department', 'bikes', 'suit', 'dresses', 'electronic devices', 'others'];
@@ -112,9 +114,4 @@ export class HomeComponent {
     }
     console.log(this.categoryName);
   }
-
-
-
-
-
 }
