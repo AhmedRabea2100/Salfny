@@ -11,7 +11,7 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
     @Query(value = "SELECT * FROM post p ORDER BY p.date DESC LIMIT ?1, ?2", nativeQuery = true)
     public List<Post> showRecentPosts(int offset, int limit);
 
-    @Query(value = "SELECT * FROM post p WHERE p.user_id = ?1 ORDER BY p.date", nativeQuery = true)
+    @Query(value = "SELECT * FROM post p WHERE p.user_id = ?1 ORDER BY p.date DESC", nativeQuery = true)
     public List<Post> getUserPosts(int id);
 
     @Query(value = "SELECT p.* FROM " +
@@ -21,7 +21,7 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
 
     @Query(value = "SELECT p.* FROM " +
                     "post p JOIN preferences pre ON p.category_id = pre.category_id " +
-                    "JOIN user u ON u.id = pre.user_id WHERE u.email = ?1", nativeQuery = true)
+                    "JOIN user u ON u.id = pre.user_id WHERE u.email = ?1 ORDER BY p.date DESC", nativeQuery = true)
     public List<Post> showPreferredPosts(String email);
 
     @Query(value = "SELECT p.* FROM " +
