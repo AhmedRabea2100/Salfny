@@ -54,7 +54,7 @@
                     <div class="dropdown">
                         <div class="form-group" class="custom-select" style="width:200px;">
                             <label for="category"><strong>Choose Category</strong></label>
-                            <select (click)="category()" class="dropbtn" class="form-controll"
+                            <select (change)="category()" class="dropbtn" class="form-controll"
                                 [(ngModel)]="categoryName" required>
                                 <option class="dropdown-content" *ngFor="let category of categories" [value]="category">
                                     {{category}}</option>
