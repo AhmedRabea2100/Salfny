@@ -21,11 +21,11 @@
                 </div>
                 <div class="form-group">
                     <input type="email" class="form-control" id="emailField" [(ngModel)]="signup.email" required
-                        placeholder="name@example.com" name="uEmail" #email="ngModel" />
+                        placeholder="name@example.com" name="uEmail" #email="ngModel"  email/>
                 </div>
                 <div [hidden]="email.valid || email.pristine" class="alert alert-danger" class="req">Email address is
                     required</div>
-                <!--<div [hidden]="emailFormat" class="alert alert-danger" class="req">Not email format</div>-->
+                <!-- <div [hidden]="emailFormat" class="alert alert-danger" class="req">Not email format</div> -->
                 <div class="form-group">
 
                     <input type="password" class="form-control" id="password" [(ngModel)]="signup.password"
