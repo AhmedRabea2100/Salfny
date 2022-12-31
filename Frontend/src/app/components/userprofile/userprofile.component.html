@@ -1,6 +1,57 @@
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 
 <body>
+  <header>
+    <div class="top">
+      <div class="container">
+        <div class="left">
+          <div class="mainLogo">
+            <img src="./assets/images/logo.png" alt="logo" (click)="home()" style="cursor: pointer;">
+
+          </div>
+
+
+          <div class="search">
+            <div class="searchFieldDiv">
+              <input type="text" placeholder="Search.." id="searchField" (keyup)="search()">
+            </div>
+            <div class=" searchBtnDiv">
+              <button id="searchBtn" style="border-radius: 0 20px 20px 0;" (click)="search()"><i
+                  class="fas fa-search"></i></button>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="right">
+
+          <div class="signinBtnDiv" style="visibility: hidden;">
+            <div class="dropdown" style="background-color: transparent;">
+
+              <button style="visibility: hidden;" id="signinBtn" class="showSignoutBtnHover" routerLink='/login'
+                style="visibility: hidden;">
+
+              </button>
+              <button style="visibility: hidden;" id="userbtn" title="User Profile" routerLink="/profile"
+                style="color: #2A65EA; font-size: 1.5rem; border-radius: 50px; cursor: pointer;">
+              </button>
+
+            </div>
+          </div>
+
+
+          <div class="sellBtnDiv">
+            <button id="sellBtn" style="border-radius:20px;" (click)="sell()">sell item</button>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+  </header>
   <div class="main-content">
     <!-- Header -->
     <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
@@ -59,7 +110,8 @@
                       Posts</button>
                   </div>
                   <div class="col-1">
-                    <button class="btn btn-sm btn-primary user-logout-btn" routerLink="/home" (click)="logout()">Logout</button>
+                    <button class="btn btn-sm btn-primary user-logout-btn" routerLink="/home"
+                      (click)="logout()">Logout</button>
                   </div>
                 </div>
               </div>

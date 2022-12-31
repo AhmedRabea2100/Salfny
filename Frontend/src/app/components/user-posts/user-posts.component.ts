@@ -17,14 +17,22 @@ export class UserPostsComponent {
     private http: HttpClient,
     private activatedRoute: ActivatedRoute,
     private sanitizer: DomSanitizer
-  ) {}
-  
+  ) { }
+  searchWord: string;
+  categoryName: string = 'All';
   posts: Post[] | undefined;
   logged: any;
   state: any;
   path: string = '/productview';
 
   ngOnInit() {
+    if (localStorage.getItem("token") != null) {
+      document.getElementById("userbtn").style.display = "initial"
+      document.getElementById("signinBtn").style.display = "none";
+    } else {
+      document.getElementById("userbtn").style.display = "none";
+      document.getElementById("signinBtn").style.display = "initial";
+    }
     const headerr = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: localStorage.getItem('token') + '',
@@ -49,7 +57,7 @@ export class UserPostsComponent {
         },
       });
   }
-  
+
   sell() {
     if (this.state == 'Login') {
       Swal.fire({
@@ -76,5 +84,61 @@ export class UserPostsComponent {
   }
   sanitize(url: string) {
     return this.sanitizer.bypassSecurityTrustUrl(url);
+  }
+  home() {
+    this.router.navigateByUrl('home');
+  }
+
+  /*********************************************Search****************************************/
+  search() {
+
+    if ((<HTMLInputElement>document.getElementById("searchField")).value !== "") {
+      localStorage.setItem("category", this.categoryName + "")
+      this.searchWord = (<HTMLInputElement>document.getElementById("searchField")).value
+      localStorage.setItem("searchWord", this.searchWord + "")
+      this.router.navigateByUrl('search')
+    }
+  }
+  del(id: Number, e: Event) {
+    e.stopPropagation();
+
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.http.post('http://localhost:8080/remove', id, {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+            Authorization: localStorage.getItem('token') + '',
+          })
+        }
+        ).subscribe({
+          next: (data: any) => {
+            if (data == true) {
+              Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Deleted',
+                text: 'Your post has been deleted',
+                showConfirmButton: false,
+                timer: 1500
+              }).then(() => {
+                this.ngOnInit();
+              })
+            }
+          },
+          error: (error: any) => {
+            console.error(error);
+          }
+        });
+
+      }
+    })
   }
 }

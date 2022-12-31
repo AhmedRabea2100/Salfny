@@ -53,7 +53,12 @@ public class HomePageController {
     @RequestMapping("/isfav")
     public String isFav(@RequestBody String id) {
         int postId = Integer.parseInt(id.split(" ")[0]);
-        int userId = Integer.parseInt(id.split(" ")[1]);
+        int userId;
+        if(!id.split(" ")[1].equals("null")) {
+            userId = Integer.parseInt(id.split(" ")[1]);
+        }else{
+            return "null";
+        }
         return postRepo.checkFavorite(userId,postId);
     }
 

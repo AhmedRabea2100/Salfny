@@ -6,18 +6,14 @@
                 <div class="container">
                     <div class="left">
                         <div class="mainLogo">
-                            <img src="./assets/images/logo.png" alt="logo">
+                            <img src="./assets/images/logo.png" alt="logo" (click)="home()" style="cursor: pointer;">
+
                         </div>
 
-                        <div class="location">
-                            <!-- <i class="fas fa-globe-europe"></i> -->
-                            <input type="text" placeholder="Location..">
-                        </div>
 
                         <div class="search">
                             <div class="searchFieldDiv">
-                                <input type="text" placeholder={{searchWord}} id="searchField" (keyup)="searchh(1)"
-                                    autofocus #input>
+                                <input type="text" placeholder="Search.." id="searchField" (keyup)="search()">
                             </div>
                             <div class=" searchBtnDiv">
                                 <button id="searchBtn" (click)="search()"><i class="fas fa-search"></i></button>
@@ -29,33 +25,35 @@
                     <div class="right">
 
                         <div class="signinBtnDiv">
-                            <div class="dropdown">
+                            <div class="dropdown" style="background-color: transparent;">
+
                                 <button id="signinBtn" (click)="log(state)" class="showSignoutBtnHover"
                                     routerLink='/login'>
                                     {{state}}
                                 </button>
+                                <button id="userbtn" title="User Profile" routerLink="/profile"
+                                    style="color: #2A65EA; font-size: 1.5rem; border-radius: 50px; cursor: pointer;">
+                                    <i class="far fa-user"></i></button>
+
                             </div>
                         </div>
 
+
                         <div class="sellBtnDiv">
                             <button id="sellBtn" (click)="sell()">sell item</button>
+
                         </div>
 
-
-                        <div class="profile" id="userbtn">
-                            <button routerLink="/profile" style="color: #2A65EA;"> <i
-                                    class="far fa-id-badge">USERPROFILE</i></button>
-                        </div>
                     </div>
                 </div>
             </div>
 
+
             <div class="bottom">
                 <div class="container">
                     <div class="dropdown">
-
                         <div class="form-group" class="custom-select" style="width:200px;">
-                            <label for="category"><strong> Choose Category</strong></label>
+                            <label for="category"><strong>Choose Category</strong></label>
                             <select (change)="category()" class="dropbtn" class="form-controll"
                                 [(ngModel)]="categoryName" required>
                                 <option class="dropdown-content" *ngFor="let category of categories" [value]="category">
@@ -65,7 +63,6 @@
                     </div>
                 </div>
             </div>
-
         </header>
         <!-- /header -->
 
@@ -74,6 +71,11 @@
         </div>
 
         <div class="container">
+            <div id="nomatch" style="text-align: center; display: none;"><img src="./assets/images/oopsSearch.png"
+                    alt="">
+                <h1>Oops...</h1>
+                <h3>Ther is no match for your search</h3>
+            </div>
             <div class="row">
                 <div class="col-md-3" style="cursor: pointer;" *ngFor="let post of posts;" [routerLink]="[path]"
                     (click)="view(post.id)">

@@ -26,16 +26,22 @@ export class SearchComponent {
   products = 'Products'
   word: String
   logged: any
-  state=localStorage.getItem("state")
+  state = localStorage.getItem("state")
   p1: any
   posts: Post[] | undefined;
   topPosts: Post[] | undefined;
   path: string = '/productview';
   ngOnInit() {
-    if (localStorage.getItem("user_login") == null) {
-      document.getElementById("userbtn").style.visibility = "visible"
+    document.getElementById("searchField").focus()
+
+
+
+    if (localStorage.getItem("token") != null) {
+      document.getElementById("userbtn").style.display = "initial"
+      document.getElementById("signinBtn").style.display = "none";
     } else {
-      document.getElementById("userbtn").style.visibility = "visible"
+      document.getElementById("userbtn").style.display = "none";
+      document.getElementById("signinBtn").style.display = "initial";
     }
 
     if (localStorage.getItem('isCategory') === 'true') {
@@ -73,17 +79,10 @@ export class SearchComponent {
     this.http.post<Post[]>('http://localhost:8080/search', this.word, { headers: headerr }
     ).subscribe({
       next: (data: Post[]) => {
-        if(data.length===0){
-          Swal.fire({
-            position: 'center',
-            imageUrl: "./assets/images/oopsSearch.png",
-            title: 'Oops...',
-            text: 'There was no match for your search.',
-            imageWidth: 300,
-            imageHeight: 200,
-            showConfirmButton: false,
-            timer: 1700
-          })
+        if (data.length === 0) {
+          document.getElementById("nomatch").style.display = "block";
+        } else {
+          document.getElementById("nomatch").style.display = "none";
         }
         this.posts = data;
       },
@@ -137,5 +136,8 @@ export class SearchComponent {
     this.searchh(1)
 
 
+  }
+  home() {
+    this.router.navigateByUrl('home');
   }
 }

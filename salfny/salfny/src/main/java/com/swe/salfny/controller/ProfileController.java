@@ -118,4 +118,14 @@ public class ProfileController {
         }
         return e + "." + extension;
     }
+    @RequestMapping("/remove")
+    public String remove(@RequestHeader(name = "Authorization", required = true) String token,@RequestBody String id) {
+        if (token != null && !token.equals("null") && authHandler.validateToken(token)) {
+            if(repo.findByEmail(authHandler.getEmail()).equals(postRepo.getOwner(id))) {//check that the person who tries to remove the post is the owner
+                postRepo.remove(id);
+                return "true";
+            }
+        }
+        return "false";
+    }
 }

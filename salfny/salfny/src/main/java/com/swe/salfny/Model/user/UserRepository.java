@@ -36,4 +36,5 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Transactional
     @Query(value = "DELETE FROM save WHERE user_id= ?1 AND post_id= ?2", nativeQuery = true)
     public void deleteSave(int userid, int postid);
+
 }
