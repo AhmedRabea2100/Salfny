@@ -40,7 +40,6 @@ public class HomePageTest {
 
     @BeforeEach
     void initTest() {
-
         postRepository.deleteAll();
         User u = new User("Usef Ashraf", null, "zzzz@gmail.com", null, LocalDateTime.now(), "123456789", "01150161459", 3, 3);
         repo.save(u);
