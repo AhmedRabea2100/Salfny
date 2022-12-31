@@ -10,6 +10,9 @@ import Swal from 'sweetalert2';
   styleUrls: ['./productview.component.css']
 })
 export class ProductviewComponent {
+  searchWord: string;
+  categories = ['All', 'cars', 'department', 'bikes', 'suit', 'dresses', 'electronic devices', 'others'];
+  categoryName: string = this.categories[0]
   photo: any
   Name: any
   description: any
@@ -22,9 +25,21 @@ export class ProductviewComponent {
   user_id: any
   state: any
   fav: any
+  catid: any
   phone: any;
+  path: string = '/productview';
+  topPosts: Post[];
+  userPhoto: any
+
   constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient) { }
   ngOnInit(): void {
+    if (localStorage.getItem("token") != null) {
+      document.getElementById("userbtn").style.display = "initial"
+      document.getElementById("signinBtn").style.display = "none";
+    } else {
+      document.getElementById("userbtn").style.display = "none";
+      document.getElementById("signinBtn").style.display = "initial";
+    }
 
     this.http.post<Post>('http://localhost:8080/post', localStorage.getItem("post_id") + " " + localStorage.getItem("user_id")
     ).subscribe({
@@ -36,6 +51,27 @@ export class ProductviewComponent {
         this.address = data.address
         this.user_id = data.user_id
         this.date = data.date[0] + "/" + data.date[1] + "/" + data.date[2]
+        this.catid = data.category_id;
+        this.http.post<Post[]>('http://localhost:8080/search', " @" + this.categories[this.catid + 1], { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'authentication': 'key' }) }).subscribe({
+          next: (data: Post[]) => {
+            this.topPosts = new Array();
+            for (let i in data) {
+              if (data[i].id + "" != localStorage.getItem("post_id")) {
+                this.topPosts.push(data[i])
+              }
+            }
+            if (this.topPosts.length == 0) {
+              document.getElementById("norelated").style.display = "block";
+            } else {
+              document.getElementById("norelated").style.display = "none";
+            }
+          },
+          error: (error: any) => {
+            console.error(error);
+          }
+        });
+
+
 
         this.http.post<string>('http://localhost:8080/isfav', localStorage.getItem("post_id") + " " + localStorage.getItem("user_id")
         ).subscribe({
@@ -62,6 +98,7 @@ export class ProductviewComponent {
             this.userPic = data.profilePic
             this.memberSince = data.memberSince[0] + "/" + data.memberSince[1] + "/" + data.memberSince[2]
             this.phone = data.phoneNumber
+            this.userPhoto = data.profilePic
           },
           error: (error: any) => {
 
@@ -76,6 +113,8 @@ export class ProductviewComponent {
 
       }
     });
+
+
   }
 
   addToFav() {
@@ -105,9 +144,6 @@ export class ProductviewComponent {
       ).subscribe({
         next: (data) => {
           console.log(data)
-
-
-
         },
         error: (error: any) => {
           console.error(error);
@@ -139,9 +175,32 @@ export class ProductviewComponent {
     }
   }
   view(id: number) {
+    console.log(id);
     localStorage.setItem("post_id", id + "")
+    location.reload();
   }
 
+  /*********************************************Search****************************************/
+  search() {
 
+    if ((<HTMLInputElement>document.getElementById("searchField")).value !== "") {
+      localStorage.setItem("category", this.categoryName + "")
+      this.searchWord = (<HTMLInputElement>document.getElementById("searchField")).value
+      localStorage.setItem("searchWord", this.searchWord + "")
+      this.router.navigateByUrl('search')
+    }
+  }
+  /**************************************category********************************/
+  category() {
+    if (this.categoryName != 'All') {
+      localStorage.setItem("category", this.categoryName + "")
+      localStorage.setItem("isCategory", true + "")
+      this.router.navigateByUrl('search')
+    }
+    console.log(this.categoryName);
+  }
+  home() {
+    this.router.navigateByUrl('home');
+  }
 }
 

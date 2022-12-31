@@ -1,85 +1,63 @@
 <body>
   <div id="main">
-    
+
     <header>
       <div class="top">
         <div class="container">
           <div class="left">
             <div class="mainLogo">
-              <img src="./assets/images/logo.png" alt="logo" />
+              <img src="./assets/images/logo.png" alt="logo" (click)="home()" style="cursor: pointer;">
+
             </div>
 
-            <div class="location">
-              <!-- <i class="fas fa-globe-europe"></i> -->
-              <input type="text" placeholder="Location.." />
-            </div>
 
             <div class="search">
               <div class="searchFieldDiv">
-                <input type="text" placeholder="Search.." id="searchField" />
+                <input type="text" placeholder="Search.." id="searchField" (keyup)="search()">
               </div>
-              <div class="searchBtnDiv">
-                <button id="searchBtn"><i class="fas fa-search"></i></button>
+              <div class=" searchBtnDiv">
+                <button id="searchBtn" (click)="search()"><i class="fas fa-search"></i></button>
               </div>
             </div>
+
           </div>
 
           <div class="right">
+
             <div class="signinBtnDiv">
-              <div class="dropdown">
-                <button
-                  id="signinBtn"
-                  (click)="log(state)"
-                  class="showSignoutBtnHover"
-                  routerLink="/login"
-                >
-                  {{ state }}
+              <div class="dropdown" style="background-color: transparent;">
+
+                <button id="signinBtn" (click)="log(state)" class="showSignoutBtnHover" routerLink='/login'>
+                  {{state}}
                 </button>
+                <button id="userbtn" title="User Profile" routerLink="/profile"
+                  style="color: #2A65EA; font-size: 1.5rem; border-radius: 50px; cursor: pointer;">
+                  <i class="far fa-user"></i></button>
+
               </div>
             </div>
 
+
             <div class="sellBtnDiv">
               <button id="sellBtn" (click)="sell()">sell item</button>
+
             </div>
 
-            <div class="profile" id="userbtn">
-              <button routerLink="/profile" style="color: #2a65ea">
-                <i class="far fa-id-badge">USERPROFILE</i>
-              </button>
-            </div>
           </div>
         </div>
       </div>
-      <div class="bottom">
-        <div class="container">
-          <div class="dropdown">
-            <a href="javascript:void(0)" id="browseCategories"
-              >Browse by Categories &nbsp; <i class="fas fa-angle-down"></i
-            ></a>
-          </div>
-        </div>
-      </div>
+
     </header>
     <div>
       <h1 class="align-center">Products</h1>
     </div>
     <div class="container">
       <div class="row">
-        <div
-          class="col-md-3"
-          style="cursor: pointer"
-          *ngFor="let post of posts"
-          [routerLink]="[path]"
-          (click)="view(post.id)"
-        >
+        <div class="col-md-3" style="cursor: pointer" *ngFor="let post of posts" [routerLink]="[path]"
+          (click)="view(post.id)">
           <div class="wsk-cp-product">
             <div class="wsk-cp-img">
-              <img
-                height="250px"
-                src="../../../assets/db/{{ post.photos[0] }}"
-                alt="Product"
-                class="img-responsive"
-              />
+              <img height="250px" src="../../../assets/db/{{ post.photos[0] }}" alt="Product" class="img-responsive" />
             </div>
 
             <div class="wsk-cp-text">
@@ -96,6 +74,9 @@
                   <span class="price">{{ post.price }}EGP</span>
                 </div>
                 <div class="wcf-right">{{ post.views }} Views</div>
+                <div style="text-align: center ; font-size: 2rem; color: red;"><i class="fa fa-trash"
+                    (click)="del(post.id,$event)"></i></div>
+
               </div>
             </div>
           </div>
