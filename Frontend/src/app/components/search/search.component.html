@@ -54,7 +54,7 @@
                     <div class="dropdown">
                         <div class="form-group" class="custom-select" style="width:200px;">
                             <label for="category"><strong>Choose Category</strong></label>
-                            <select (click)="category()" class="dropbtn" class="form-controll"
+                            <select (change)="category()" class="dropbtn" class="form-controll"
                                 [(ngModel)]="categoryName" required>
                                 <option class="dropdown-content" *ngFor="let category of categories" [value]="category">
                                     {{category}}</option>
@@ -66,34 +66,16 @@
         </header>
         <!-- /header -->
 
-        <section class="product">
-            <h2 class="product-category">Most Viewed</h2>
-            <button class="pre-btn" disabled><img src="/../assets/images/arrow.png" alt=""></button>
-            <button class="nxt-btn" disabled><img src="/../assets/images/arrow.png" alt=""></button>
-            <div class="product-container">
-
-                <div class="product-card" routerLinkActive="active" *ngFor="let post of topPosts;" [routerLink]="[path]"
-                    (click)="view(post.id)">
-                    <div class="product-image">
-
-                        <img src="../../../assets/db/{{post.photos[0]}}" class="product-thumb" alt="">
-                        <button class="card-btn">view product</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">{{post.title}}</h2>
-                        <!-- <p class="product-short-des">a short line about the cloth..</p> -->
-                        <span class="price">{{post.price}} EGP</span>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
         <div>
-            <h1 class="align-center">Products</h1>
+            <h1 class="align-center">{{products}}</h1>
         </div>
 
         <div class="container">
+            <div id="nomatch" style="text-align: center; display: none;"><img src="./assets/images/oopsSearch.png"
+                    alt="">
+                <h1>Oops...</h1>
+                <h3>Ther is no match for your search</h3>
+            </div>
             <div class="row">
                 <div class="col-md-3" style="cursor: pointer;" *ngFor="let post of posts;" [routerLink]="[path]"
                     (click)="view(post.id)">
@@ -105,6 +87,8 @@
                         </div>
 
                         <div class="wsk-cp-text">
+
+
 
                             <div class="title-product">
                                 <h3>{{post.title}}</h3>
@@ -121,6 +105,8 @@
                         </div>
 
                     </div>
+
+
                 </div>
             </div>
         </div>

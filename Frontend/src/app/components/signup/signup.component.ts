@@ -14,9 +14,58 @@ import Swal from 'sweetalert2';
 })
 
 export class SignupComponent implements OnInit {
-  ngOnInit(): void {
+
+
+  itemList = [];
+  selectedItems = [];
+  settings = {};
+  ngOnInit() {
     global.logged=false
-  }
+    this.itemList = [
+      { "id": 1, "itemName": "cars" },
+      { "id": 2, "itemName": "department" },
+      { "id": 3, "itemName": "bikes" },
+      { "id": 4, "itemName": "suit" },
+      { "id": 5, "itemName": "dresses" },
+      { "id": 6, "itemName": "electronic devices" }
+  ];
+
+  this.settings = {
+      text: "Select Preferred Cateogries ♡",
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      classes: "myclass custom-class"
+  };
+}
+onItemSelect(item: any) {
+  console.log("jjj");
+  console.log(item);
+
+}
+OnItemDeSelect(item: any) {
+  console.log(item);
+  this.removeItem(item);
+
+}
+removeItem(doc){
+  this.selectedItems.forEach( (item, index) => {
+    if(item === doc) this.selectedItems.splice(index,1);
+  });
+}
+onSelectAll(items: any) {
+  console.log(items);
+  this.selectedItems=[      { "id": 1, "itemName": "cars" },
+  { "id": 2, "itemName": "department" },
+  { "id": 3, "itemName": "bikes" },
+  { "id": 4, "itemName": "suit" },
+  { "id": 5, "itemName": "dresses" },
+  { "id": 6, "itemName": "electronic devices" }]
+}
+onDeSelectAll(items: any) {
+  console.log(items);
+  this.selectedItems=[];
+}
+  
   constructor(private router: Router, private route: ActivatedRoute,private http: HttpClient) { }
   title = '';
   passwordConfirmationFailed = false;
@@ -53,6 +102,7 @@ export class SignupComponent implements OnInit {
       console.log(data)
       
     }) ;*/
+    console.log(this.selectedItems)
     this.signupp()
   }
 
@@ -66,6 +116,7 @@ export class SignupComponent implements OnInit {
             console.log("hii")
             console.log(data)
             if(data==='Registration Succeeded'){
+            
               Swal.fire({
                 position: 'center',
                 icon: 'success',
@@ -73,7 +124,9 @@ export class SignupComponent implements OnInit {
                 showConfirmButton: false,
                 timer: 1500
               })
+
               this.router.navigateByUrl('login')
+              this.sendPreferences()
             }else{
               Swal.fire({
                 position: 'center',
@@ -100,6 +153,26 @@ export class SignupComponent implements OnInit {
     return this.http.post<Signup>('http://localhost:8080/signup', body,{'headers':headers, responsetype: 'text'})
   }*/
  
+  sendPreferences(){
+    console.log("hii 222")
+    const headerr=new HttpHeaders({'Content-Type': 'application/text' });
+    this.selectedItems.push({ "user_email": this.signup.email})
+    this.http.post('http://localhost:8080/preferences', JSON.stringify(this.selectedItems), { headers: headerr, responseType:'text'})
+    .subscribe({
+
+        next: (data: any) => {
+            console.log("hii")
+            console.log(data)
+            if(data==='Registration Succeeded'){
+             console.log(data)
+            }
+            
+            },
+            error: (error: any) => {
+            console.error(error);
+            }
+        });
+  }
   
 
 

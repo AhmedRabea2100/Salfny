@@ -12,6 +12,8 @@ import java.util.Set;
 @Table(name = "user")
 public class User {
 
+    private final int LOG_ROUNDS = 12;
+
     public User() {}
 
     public User(String username, String address, String email, String profilePic, LocalDateTime memberSince, String password, String phoneNumber, float rating, int noOfDoneDeals) {
@@ -101,7 +103,7 @@ public class User {
         this.password = password;
     }
 
-    public void hashPassword(int LOG_ROUNDS) {
+    public void hashPassword() {
         password = BCrypt.hashpw(password, BCrypt.gensalt(LOG_ROUNDS));
     }
 
@@ -140,4 +142,17 @@ public class User {
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private Set<Post> posts;
 
+    public int getNumPosts(){
+        return posts.size();
+    }
+
+    public void update(User user){
+        this.address = user.address;
+        this.phoneNumber = user.phoneNumber;
+        this.username = user.username;
+        if (user.password != null){
+            this.password = user.password;
+            hashPassword();
+        }
+    }
 }
