@@ -1,3 +1,6 @@
+# Salfny
+---
+Online rental website. Implementation using Angular, Springboot, and MySQL JPA.
 ![logo](https://user-images.githubusercontent.com/77025553/209586849-10f38728-ca0b-44da-83cc-23b1945aeb04.png)
 
 Salfny is a classified app which enables users to offer their items for
@@ -10,11 +13,8 @@ make your rental process easier.
 
 
 
-# Online Book Store
----
-![alt text](homebook.png)
 
-Online Book Store is a simple online bookstore implementation using Angular, Springboot, and MySQL JDBC as a project for Database Systems CSE 371, University of Alexandria.
+
 ## Features
 There are two types of system users: **User with account** can do the following:
   - He can sell item for rent.
