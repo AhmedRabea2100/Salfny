@@ -9,7 +9,7 @@
 
 <div align="center">
   
-# Salfny :handshake:
+# Salfny 
 
 
 
