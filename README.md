@@ -24,7 +24,7 @@ looking for. Present your products at their best with product
 descriptions and images. Salfny's flexible and easy-to-use backend will
 make your rental process easier.
 
-Implementation using `Angular`, `Springboot`, and `MySQL JPA`.
+Implementation using <a href="https://angular.io" target="_blank" rel="noreferrer"> <img src="https://angular.io/assets/images/logos/angular/angular.svg" alt="angular" width="40" height="40"/> <a href="https://spring.io/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/springio/springio-icon.svg" alt="spring" width="40" height="40"/> <a href="https://www.mysql.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="mysql" width="40" height="40"/>
 
 # Demo 
 ---
