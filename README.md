@@ -33,7 +33,8 @@ https://user-images.githubusercontent.com/77179015/224142152-940ff826-e731-47a9-
 </div>
 
 
-## How To Run
+# How To Run
+  
 ### Front-End
 Required to have any release of [Node.js](https://nodejs.org/en/download/) and [Angular](https://angular.io/quick-start) (would be preferrable to have the latest releases).\
 Run the following lines in the frontend directory:\
@@ -46,22 +47,22 @@ Run `LibrarySystemApplication.java` on any IDE that runs java.
 Create a MySQL workbench connection with the specified details in `application.properties` and run the SQL script in `schema.sql` and `category.sql`.
 
 
-## Features
+  
+---  
+# Features
 There are two types of system users
 
 **User with account** can do the following:
-  - user can rent items.
-  - search for products by name or by category or by both.
-  - user able to starred products to save them.
-  - user profile can upload profile picture.
-  - user can edit his info.
+  -The user can rent items.
+  - search for products by name, category, or both.
+  - star products to save them.
+  - The user can upload a profile picture and edit his information.
   - user able to see his favorite and uploaded posts.
-  - user can delete his uploaded post. 
-  - in sign up the user enter his prefered categories.
+  - The user can delete his uploaded post. 
+  - In signing up, the user enters his preferred categories.
   
 ---
 A **guest user** can do the following:
-  - user can view the products of others.
+  - The user can view the products of others.
   - will not have permission to rent his product.
-
 
