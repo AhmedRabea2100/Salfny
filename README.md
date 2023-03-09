@@ -1,6 +1,7 @@
 # Salfny
----
 Online rental website. Implementation using Angular, Springboot, and MySQL JPA.
+---
+
 ![logo](https://user-images.githubusercontent.com/77025553/209586849-10f38728-ca0b-44da-83cc-23b1945aeb04.png)
 
 Salfny is a classified app which enables users to offer their items for
