@@ -1,6 +1,17 @@
-# Salfny
-Online rental website. Implementation using Angular, Springboot, and MySQL JPA.
----
+<!-- markdownlint-configure-file {
+  "MD013": {
+    "code_blocks": false,
+    "tables": false
+  },
+  "MD033": false,
+  "MD041": false
+} -->
+
+<div align="center">
+  
+# Salfny :handshake:
+
+
 
 ![logo](https://user-images.githubusercontent.com/77025553/209586849-10f38728-ca0b-44da-83cc-23b1945aeb04.png)
 
@@ -13,29 +24,13 @@ looking for. Present your products at their best with product
 descriptions and images. Salfny's flexible and easy-to-use backend will
 make your rental process easier.
 
+Implementation using `Angular`, `Springboot`, and `MySQL JPA`.
+
 # Demo 
 ---
-
 https://user-images.githubusercontent.com/77179015/224142152-940ff826-e731-47a9-920e-b64cb8cd3ba3.mp4
 
-
-
-
-
-
-## Features
-There are two types of system users: **User with account** can do the following:
-  - He can sell item for rent.
-  - search for products by name or by category or by both.
-  -  he able to starred products to save them.
-  -   
-  
----
-In addition to what user can do, a **guest user** can do the following:
-  - user can view the products of others.
-  - will not have permission to sell product.
-
----
+<div>
 ## How To Run
 ### Front-End
 Required to have any release of [Node.js](https://nodejs.org/en/download/) and [Angular](https://angular.io/quick-start) (would be preferrable to have the latest releases).\
@@ -48,4 +43,23 @@ Run `LibrarySystemApplication.java` on any IDE that runs java.
 ### Database
 Create a MySQL workbench connection with the specified details in `application.properties` and run the SQL script in `schema.sql` and `category.sql`.
 
- 
+
+## Features
+There are two types of system users
+
+**User with account** can do the following:
+  - user can rent items.
+  - search for products by name or by category or by both.
+  - user able to starred products to save them.
+  - user profile can upload profile picture.
+  - user can edit his info.
+  - user able to see his favorite and uploaded posts.
+  - user can delete his uploaded post. 
+  - in sign up the user enter his prefered categories.
+  
+---
+A **guest user** can do the following:
+  - user can view the products of others.
+  - will not have permission to rent his product.
+
+</div>
