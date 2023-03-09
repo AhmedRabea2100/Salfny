@@ -30,7 +30,9 @@ Implementation using `Angular`, `Springboot`, and `MySQL JPA`.
 ---
 https://user-images.githubusercontent.com/77179015/224142152-940ff826-e731-47a9-920e-b64cb8cd3ba3.mp4
 
-<div>
+</div>
+
+
 ## How To Run
 ### Front-End
 Required to have any release of [Node.js](https://nodejs.org/en/download/) and [Angular](https://angular.io/quick-start) (would be preferrable to have the latest releases).\
@@ -62,4 +64,4 @@ A **guest user** can do the following:
   - user can view the products of others.
   - will not have permission to rent his product.
 
-</div>
+
